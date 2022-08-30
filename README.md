@@ -43,8 +43,6 @@ we need to conduct some experiments as listed below:
 - Long range dependency with closure tokens 
   - How good is the model to predict closure tokens given a context window, we need to do experimentation with different setups.
 
-
-Gr4c3.gm41l.9499
   ---
  
 ### Necessary data
