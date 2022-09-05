@@ -54,7 +54,6 @@ protobuf==3.9.1
 ptyprocess==0.6.0
 pycrypto==2.6.1
 Pygments==2.4.2
-pygobject==3.26.1
 pyparsing==2.4.2
 pyrsistent==0.15.4
 python-dateutil==2.8.0
@@ -77,3 +76,6 @@ webencodings==0.5.1
 Werkzeug==0.15.5
 widgetsnbextension==3.5.1
 wrapt==1.11.2
+transformers
+tree-sitter
+astunparse
