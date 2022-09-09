@@ -1,8 +1,0 @@
-astunparse==1.6.3
-packaging
-pip
-torch==1.12.1
-transformers==4.21.3
-tree-sitter==0.20.1
-
-[dev]
