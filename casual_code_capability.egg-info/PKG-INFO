@@ -1,3 +1,26 @@
+Metadata-Version: 2.1
+Name: casual-code-capability
+Version: 1.0.0
+Summary: Casual Code Capability lib for NCMs Interpretability
+Home-page: https://github.com/svelascodimate/casual_code_capability/tree/master/
+Author: Alejandro Velasco
+Author-email: svelascodimate@wm.edu
+License: Apache Software License 2.0
+Keywords: interpretability NCM
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: License :: OSI Approved :: Apache Software License
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+License-File: LICENSE
+
 # :warning: This template is for an old version of nbdev, nbdev v1.  The template for v2 is [here](https://github.com/fastai/nbdev-template)
 
 # nbdev template
@@ -20,3 +43,5 @@ _If you are using an older version of this template, and want to upgrade to the 
 It is often desirable to preview nbdev generated documentation locally before having it built and rendered by GitHub Pages.  This requires you to run Jekyll locally, which requires installing Ruby and Jekyll. Instructions on how to install Jekyll are provided [on Jekyll's site](https://jekyllrb.com/). You can run the command `make docs_serve` from the root of your repo to serve the documentation locally after calling `nbdev_build_docs` to generate the docs. 
 
 In order to allow you to run Jekyll locally this project contains manifest files, called Gem files, that specify all Ruby dependencies for Jekyll & nbdev. **If you do not plan to preview documentation locally**, you can choose to delete `docs/Gemfile` and `docs/Gemfile.lock` from your nbdev project (for example, after creating a new repo from this template). 
+
+
