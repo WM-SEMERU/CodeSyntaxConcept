@@ -151,3 +151,7 @@ checklink/cookies.txt
 .quarto
 
 /.quarto/
+
+#tree sitter
+/tree-sitter/
+/experimental_notebooks/tree-sitter*/
