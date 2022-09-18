@@ -1,13 +1,14 @@
 # See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/python-3-miniconda/.devcontainer/base.Dockerfile
 
-FROM tensorflow/tensorflow:2.6.0rc1-gpu-jupyter
+FROM tensorflow/tensorflow:2.0.0rc0-gpu-py3-jupyter
 
-#RUN apt-get update && apt-get install -y git
-#RUN mkdir /init 
-#COPY ./requirements.txt /init/requirements.txt
-#RUN pip3 -q install pip --upgrade
-#RUN pip install -r /init/requirements.text
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A4B469963BF863CC
+ADD ./requirements.txt .
+RUN apt-get update && apt-get install -y git
 
+RUN pip3 -q install pip --upgrade
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
 # [Choice] Node.js version: none, lts/*, 16, 14, 12, 10
 #ARG NODE_VERSION="none"
 #RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
