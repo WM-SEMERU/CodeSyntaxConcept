@@ -1,4 +1,5 @@
 ## Semeru VS-Code mapping data folders and configuring DVC
+
 FROM tensorflow/tensorflow:2.10.0-gpu-jupyter
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A4B469963BF863CC
