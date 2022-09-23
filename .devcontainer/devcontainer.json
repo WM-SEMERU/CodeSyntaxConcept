@@ -9,7 +9,13 @@
 			"NODE_VERSION": "none"
 		}
 	},
-	"settings": {},
+	"settings": {
+		//TODO: DRC mapping folders for data 
+	},
+	"mounts": [
+		"source=/nfs/semeru/projects/causalcodecapability,target=/workspaces/CausalCodeCapability/data,type=bind,consistency=cached",
+		"source=/nfs/semeru/data/dvc,target=/tf/dvc,type=bind,consistency=cached"
+	],	
 	"extensions": [
 		"ms-python.python"
 	],

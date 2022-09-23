@@ -1,6 +1,5 @@
 _docs/
 _proc/
-
 *.bak
 .gitattributes
 .last_checked
@@ -155,3 +154,4 @@ checklink/cookies.txt
 #tree sitter
 /tree-sitter/
 /experimental_notebooks/tree-sitter*/
+/test
