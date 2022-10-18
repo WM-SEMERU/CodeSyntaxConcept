@@ -1,5 +1,5 @@
-from core.aligners.custom_aligner import CustomAligner
-from core.parsers.tree_sitter_unparser import TreeSitterParser
+from CausalCodeCapability.aligners.custom_aligner import CustomAligner
+from CausalCodeCapability.parsers.tree_sitter_unparser import TreeSitterParser
 
 
 class ConceptMapper:
@@ -8,9 +8,7 @@ class ConceptMapper:
         # model tokenizer output
         model_tokens = model_tokenizer.tokenize(source_code)
         # AST parser
-        tree_sitter_tokenizer = TreeSitterParser(source_code, programming_language)
-        tree_sitter_tokenizer.tokenize()
-        ast_tokens = tree_sitter_tokenizer.get_tokens()
+        ast_tokens = TreeSitterParser.tokenize(source_code, programming_language)
         # custom aligner
         custom_aligner = CustomAligner(model_tokens.copy(), ast_tokens.copy())
         custom_aligner.align_tokens()

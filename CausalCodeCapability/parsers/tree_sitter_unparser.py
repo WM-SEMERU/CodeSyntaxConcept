@@ -1,19 +1,17 @@
 from tree_sitter import Language, Parser
 
 LANGUAGES = [
-    'tree-sitter-python'
+    'tree-sitter-python',
+    'tree-sitter-java'
 ]
 
 Language.build_library(
-    # Store the library in the `build` directory
     'build/my-languages.so',
-    # Include one or more languages
     LANGUAGES
 )
 
 
-class TreeSitterParser:
-    PY_LANGUAGE = Language('build/my-languages.so', 'python')
+class TreeSitterAST:
 
     def __init__(self, source_code, language: Language) -> None:
         self.source_code = source_code
@@ -42,3 +40,11 @@ class TreeSitterParser:
 
     def get_tokens(self):
         return self.tokens
+
+
+class TreeSitterParser:
+    @staticmethod
+    def tokenize(source_code: str, language: str):
+        ast_tokenizer = TreeSitterAST(source_code, Language('build/my-languages.so', language))
+        ast_tokenizer.tokenize()
+        return ast_tokenizer.get_tokens()
