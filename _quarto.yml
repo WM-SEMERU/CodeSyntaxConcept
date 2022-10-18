@@ -15,20 +15,20 @@ format:
     toc-depth: 4
 
 website:
-  title: "CausalCodeCapability"
-  site-url: "https://WM-SEMERU.github.io/CausalCodeCapability"
+  title: "CodeSyntaxConcept"
+  site-url: "https://WM-SEMERU.github.io/CodeSyntaxConcept"
   description: "Code Syntax Concept Library for Neural Code Models Interpretability"
   twitter-card: true
   open-graph: true
   repo-branch: master
-  repo-url: "https://github.com/WM-SEMERU/CausalCodeCapability"
+  repo-url: "https://github.com/WM-SEMERU/CodeSyntaxConcept"
   repo-actions: [issue]
   navbar:
     background: primary
     search: true
     right:
       - icon: github
-        href: "https://github.com/WM-SEMERU/CausalCodeCapability"
+        href: "https://github.com/WM-SEMERU/CodeSyntaxConcept"
   sidebar:
     style: "floating"
 
