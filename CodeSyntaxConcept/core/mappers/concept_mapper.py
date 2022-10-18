@@ -1,5 +1,5 @@
-from CausalCodeCapability.aligners.custom_aligner import CustomAligner
-from CausalCodeCapability.parsers.tree_sitter_unparser import TreeSitterParser
+from CodeSyntaxConcept.core.aligners.custom_aligner import CustomAligner
+from CodeSyntaxConcept.core.parsers.tree_sitter_unparser import TreeSitterParser
 
 
 class ConceptMapper:

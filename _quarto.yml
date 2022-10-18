@@ -17,7 +17,7 @@ format:
 website:
   title: "CausalCodeCapability"
   site-url: "https://WM-SEMERU.github.io/CausalCodeCapability"
-  description: "Casual Code Capability Library for Neural Code Model Interpretability Assesstment"
+  description: "Code Syntax Concept Library for Neural Code Models Interpretability"
   twitter-card: true
   open-graph: true
   repo-branch: master
