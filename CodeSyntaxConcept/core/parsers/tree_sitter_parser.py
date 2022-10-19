@@ -3,6 +3,7 @@ import os
 
 import pandas as pd
 from tree_sitter import Language, Parser
+from transformers import PreTrainedTokenizerFast
 
 
 class TreeSitterParser:
@@ -60,7 +61,7 @@ class TreeSitterParser:
                 return nodes[i].parent.type, nodes[i].type
 
     @staticmethod
-    def process_model_source_code(source_code: str, language: str, model_tokenizer):
+    def process_model_source_code(source_code: str, language: str, model_tokenizer: PreTrainedTokenizerFast):
         ## Define Tree Sitter Parser
         parser = Parser()
         parser.set_language(Language('build/my-languages.so', language))
