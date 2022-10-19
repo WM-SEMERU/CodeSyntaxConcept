@@ -2,3 +2,5 @@ transformers==4.21.3
 tree-sitter==0.20.1
 astunparse==1.6.3
 torch==1.12.1
+pandas==1.4.4
+datasets==2.6.1
