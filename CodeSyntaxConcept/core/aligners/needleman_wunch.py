@@ -1,5 +1,6 @@
 import numpy as np
 
+'''DEPRECATED'''
 class NeedlemanWunch:
     # scores
     MATCH_SCORE = 1

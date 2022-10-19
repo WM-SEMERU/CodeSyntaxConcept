@@ -16,7 +16,7 @@ from six import StringIO
 # We unparse those infinities to INFSTR.
 INFSTR = "1e" + repr(sys.float_info.max_10_exp + 1)
 
-
+'''DEPRECATED'''
 def interleave(inter, f, seq):
     """Call f on each item in seq, calling inter() in between.
     """

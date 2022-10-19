@@ -2,6 +2,7 @@ import re
 import pandas as pd
 
 
+'''DEPRECATED'''
 class CustomAligner:
 
     def __init__(self, model_tokens, ast_tokens):

@@ -4,15 +4,16 @@ from multiprocess import set_start_method
 
 
 class CodeSearchNetSplitter:
+
     SMALL = 200
     MEDIUM = 500
     LARGE = 1000
 
     @staticmethod
     def split():
-        testset = load_dataset("code_search_net", split='test')
+        test_set = load_dataset("code_search_net", split='test')
         n_gpus = torch.cuda.device_count()
-        return CodeSearchNetSplitter.split_testsets(testset,
+        return CodeSearchNetSplitter.split_testsets(test_set,
                                                     CodeSearchNetSplitter.SMALL,
                                                     CodeSearchNetSplitter.MEDIUM,
                                                     CodeSearchNetSplitter.LARGE,
