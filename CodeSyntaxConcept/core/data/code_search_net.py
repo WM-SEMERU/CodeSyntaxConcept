@@ -49,7 +49,13 @@ class CodeSearchNet:
         df_total_parent_node_type_counts.reset_index(inplace=True)
         df_total_parent_node_type_counts.columns = ['parent_type', 'counts']
         return df_total_token_counts, df_total_node_type_counts, df_total_parent_node_type_counts
-        
+    
+    @staticmethod
+    def add_count_average(count_dataframe: pd.DataFrame):
+        total_count = count_dataframe['counts'].sum()
+        average_column = [(row['counts']/total_count)*100 for index, row in count_dataframe.iterrows()]
+        count_dataframe['avg'] = average_column
+        return count_dataframe
 
     @staticmethod
     def count_ast_type_frequency(test_set):
