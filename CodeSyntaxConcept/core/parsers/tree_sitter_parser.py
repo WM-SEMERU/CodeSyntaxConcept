@@ -1,9 +1,8 @@
-from transformers import AutoTokenizer, AutoModelWithLMHead
-from tree_sitter import Language, Parser
-
 import json
 import os
+
 import pandas as pd
+from tree_sitter import Language, Parser
 
 
 class TreeSitterParser:
