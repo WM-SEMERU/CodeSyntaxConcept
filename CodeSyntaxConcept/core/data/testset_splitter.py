@@ -6,7 +6,7 @@ class CodeSearchNetSplitter:
     LARGE = 1000
 
     @staticmethod
-    def get_test_sets(test_set, with_ranks: False, num_proc=1):
+    def get_test_sets(test_set, with_ranks=False, num_proc=1):
         if with_ranks:
             set_start_method("spawn")
         # perform tasks
