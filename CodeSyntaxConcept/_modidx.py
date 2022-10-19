@@ -5,4 +5,4 @@ d = { 'settings': { 'branch': 'master',
                 'doc_host': 'https://WM-SEMERU.github.io',
                 'git_url': 'https://github.com/WM-SEMERU/CodeSyntaxConcept',
                 'lib_path': 'CodeSyntaxConcept'},
-  'syms': {'CodeSyntaxConcept.core.data.testset_splitter': {}, 'CodeSyntaxConcept.core.parsers.tree_sitter_parser': {}}}
+  'syms': {'CodeSyntaxConcept.core.data.code_search_net': {}, 'CodeSyntaxConcept.core.parsers.tree_sitter_parser': {}}}
