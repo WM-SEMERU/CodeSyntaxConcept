@@ -38,11 +38,11 @@ class CodeSearchNet:
 
     @staticmethod
     def create_ast_concepts_dataframe_from_testset(test_set, max_length: int, model_tokenizer: PreTrainedTokenizerFast):
-        test_set_concepts = pd.DataFrame([], columns=['max_method_length', 'ast_concepts', 'model_tokenizer_concepts'])
+        test_set_concepts = pd.DataFrame([], columns=['max_method_length', 'whole_func_string', 'ast_concepts', 'model_tokenizer_concepts'])
         for test_sample in test_set: 
             ast_concepts = TreeSitterParser.process_source_code(test_sample['whole_func_string'], test_sample['language']).to_numpy()
             tokenizer_concepts =  TreeSitterParser.process_model_source_code(test_sample['whole_func_string'], test_sample['language'], model_tokenizer).to_numpy()
-            test_set_concepts.loc[len(test_set_concepts.index)] = [max_length, ast_concepts, tokenizer_concepts] 
+            test_set_concepts.loc[len(test_set_concepts.index)] = (max_length, test_sample['whole_func_string'], ast_concepts, tokenizer_concepts)
         return test_set_concepts
         
     @staticmethod
