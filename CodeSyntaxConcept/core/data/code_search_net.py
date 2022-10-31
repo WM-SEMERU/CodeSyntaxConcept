@@ -1,6 +1,8 @@
 from multiprocess import set_start_method
 import pandas as pd
 from CodeSyntaxConcept.core.parsers.tree_sitter_parser import TreeSitterParser
+from transformers import PreTrainedTokenizerFast
+import numpy as np
 
 class CodeSearchNet:
 
@@ -34,6 +36,15 @@ class CodeSearchNet:
         parent_node_type_counts = code_sample_node_types[code_sample_node_types.columns[2]].value_counts(dropna=True, sort=True)
         return token_counts, node_type_counts, parent_node_type_counts
 
+    @staticmethod
+    def create_ast_concepts_dataframe_from_testset(test_set, max_length: int, model_tokenizer: PreTrainedTokenizerFast):
+        test_set_concepts = pd.DataFrame([], columns=['max_method_length', 'whole_func_string', 'ast_concepts', 'model_tokenizer_concepts'])
+        for test_sample in test_set: 
+            ast_concepts = TreeSitterParser.process_source_code(test_sample['whole_func_string'], test_sample['language']).to_numpy()
+            tokenizer_concepts =  TreeSitterParser.process_model_source_code(test_sample['whole_func_string'], test_sample['language'], model_tokenizer).to_numpy()
+            test_set_concepts.loc[len(test_set_concepts.index)] = (max_length, test_sample['whole_func_string'], ast_concepts, tokenizer_concepts)
+        return test_set_concepts
+        
     @staticmethod
     def transform_code_counts_to_dataframe(total_token_counts: pd.Series, total_node_type_counts: pd.Series, total_parent_node_type_counts: pd.Series):
         ## total token frequency counts
