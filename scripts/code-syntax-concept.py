@@ -6,8 +6,8 @@ from CodeSyntaxConcept.evaluator import Evaluator
 
 
 ######### YOU NEED TO SET THIS FIRST #########
-checkpoint = "EleutherAI/gpt-neo-1.3B"
-#checkpoint = "EleutherAI/gpt-neo-125M"
+#checkpoint = "EleutherAI/gpt-neo-1.3B"
+checkpoint = "EleutherAI/gpt-neo-125M"
 language = "python"
 maximun_number_of_samples = 100
 save_path = "output/"
