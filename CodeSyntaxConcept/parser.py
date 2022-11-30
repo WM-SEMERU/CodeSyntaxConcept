@@ -24,7 +24,7 @@ class TreeSitterParser:
         for node_index, node in enumerate(ast_nodes):
             #source_code_ast_types.append([node.text.decode("utf-8"), self.tokenizer.node_types.index(node.type), self.tokenizer.node_types.index(node.parent.type)])
             source_code_ast_types.append((node.text.decode("utf-8"), node.type, node.parent.type))
-        return pd.DataFrame(source_code_ast_types, columns=['input', 'ast_concept', 'parent_ast_concept'])
+        return source_code_ast_types
 
     def process_model_source_code(self, source_code: str):
         source_code_encoding = self.tokenizer(source_code)
@@ -35,4 +35,4 @@ class TreeSitterParser:
                 input_id, 
                 'ERROR' if source_code_encoding['ast_ids'][input_id_index] == -1 else self.tokenizer.node_types[source_code_encoding['ast_ids'][input_id_index]], 
                 'ERROR' if source_code_encoding['ast_ids'][input_id_index] == -1 else self.tokenizer.node_types[source_code_encoding['parent_ast_ids'][input_id_index]]))
-        return source_code_encoding, pd.DataFrame(source_code_ast_types, columns=['input_id', 'ast_concept', 'parent_ast_concept'])
+        return source_code_encoding, source_code_ast_types
