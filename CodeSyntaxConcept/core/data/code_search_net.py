@@ -12,6 +12,7 @@ class CodeSearchNet:
 
     @staticmethod
     def get_test_sets(test_set, with_ranks=False, num_proc=1):
+        """deprecated"""
         if with_ranks:
             set_start_method("spawn")
         # perform tasks
@@ -29,6 +30,27 @@ class CodeSearchNet:
         return testset_small, testset_medium, testset_large
 
     @staticmethod
+    def get_test_sets(test_set, language, max_token_number, model_tokenizer: PreTrainedTokenizerFast, with_ranks=False, num_proc=1):
+        subset = test_set.filter(lambda sample: True if sample['language']== language 
+            and len(sample['func_code_tokens']) <= max_token_number
+            and len(model_tokenizer(sample['whole_func_string'])) <= max_token_number
+            else False, num_proc=num_proc)
+        return subset
+        #return test_set.filter(lambda sample: True if sample['language']== language 
+        #    and len(sample['func_code_tokens']) <= max_token_number else False, num_proc=num_proc)
+
+
+    @staticmethod
+    def get_sub_set_test_set(test_set, test_size:int):
+        sub_samples = []
+        for sample in test_set:
+            sub_samples.append(sample)
+            if len(sub_samples)>=test_size:
+                break
+        return sub_samples
+        
+
+    @staticmethod
     def count_source_code_ast_type_frequency(source_code: str, language: str):
         code_sample_node_types = TreeSitterParser.process_source_code(source_code, language)
         token_counts = code_sample_node_types[code_sample_node_types.columns[0]].value_counts(dropna=True, sort=True)
@@ -37,12 +59,12 @@ class CodeSearchNet:
         return token_counts, node_type_counts, parent_node_type_counts
 
     @staticmethod
-    def create_ast_concepts_dataframe_from_testset(test_set, max_length: int, model_tokenizer: PreTrainedTokenizerFast):
-        test_set_concepts = pd.DataFrame([], columns=['max_method_length', 'whole_func_string', 'ast_concepts', 'model_tokenizer_concepts'])
+    def create_ast_concepts_dataframe_from_testset(test_set, model_tokenizer: PreTrainedTokenizerFast):
+        test_set_concepts = pd.DataFrame([], columns=['whole_func_string', 'ast_concepts', 'model_tokenizer_concepts'])
         for test_sample in test_set: 
             ast_concepts = TreeSitterParser.process_source_code(test_sample['whole_func_string'], test_sample['language']).to_numpy()
             tokenizer_concepts =  TreeSitterParser.process_model_source_code(test_sample['whole_func_string'], test_sample['language'], model_tokenizer).to_numpy()
-            test_set_concepts.loc[len(test_set_concepts.index)] = (max_length, test_sample['whole_func_string'], ast_concepts, tokenizer_concepts)
+            test_set_concepts.loc[len(test_set_concepts.index)] = (test_sample['whole_func_string'], ast_concepts, tokenizer_concepts)
         return test_set_concepts
         
     @staticmethod
