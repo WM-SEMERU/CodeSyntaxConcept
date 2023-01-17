@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/python-3-miniconda
 {
-	"name": "Tensforflow 2.6",
+	"name": "Code Syntax Concept 1.0",
 	"build": { 
 		"context": "..",
 		"dockerfile": "Dockerfile",
@@ -13,11 +13,15 @@
 		//TODO: DRC mapping folders for data 
 	},
 	"mounts": [
-		"source=/nfs/semeru/projects/causalcodecapability,target=/workspaces/CausalCodeCapability/data,type=bind,consistency=cached",
+		"source=/nfs/semeru/projects/code_syntax_concept,target=/workspaces/CodeSyntaxConcept/data,type=bind,consistency=cached",
 		"source=/nfs/semeru/data/dvc,target=/tf/dvc,type=bind,consistency=cached"
 	],	
 	"extensions": [
 		"ms-python.python"
 	],
+	"remoteEnv": {
+        //"MY_PROJECT_NAME": "The-container-name-here" //NOTE: make this name the same as the folder containing the repo
+        "MY_PROJECT_NAME": "CodeSyntaxConcept"
+    },
 	"runArgs": [ "--gpus", "all"]
 }

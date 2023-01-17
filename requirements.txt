@@ -1,0 +1,7 @@
+tree-sitter
+astunparse==1.6.3
+torch
+pandas
+scipy
+nbdev
+numpy
