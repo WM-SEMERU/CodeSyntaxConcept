@@ -155,4 +155,10 @@ checklink/cookies.txt
 /tree-sitter/
 /experimental_notebooks/tree-sitter*/
 /test
+
+#outputs 
+scripts/output
+experimental_notebooks/output
+
 data
+
