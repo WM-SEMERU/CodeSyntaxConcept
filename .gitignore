@@ -158,6 +158,7 @@ checklink/cookies.txt
 
 #outputs 
 scripts/output
+scripts/logs
 experimental_notebooks/output
 
 data
