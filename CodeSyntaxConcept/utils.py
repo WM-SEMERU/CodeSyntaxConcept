@@ -2,11 +2,12 @@
 
 # %% auto 0
 __all__ = ['traverse', 'find_nodes', 'find_parent_nodes', 'unroll_node_types', 'convert_to_offset', 'get_test_sets',
-           'get_sub_set_test_set', 'get_random_sub_set_test_set']
+           'get_sub_set_test_set', 'get_random_sub_set_test_set', 'bootstrapping']
 
 # %% ../nbs/utils.ipynb 2
 import CodeSyntaxConcept
 import random
+import numpy as np
 
 # %% ../nbs/utils.ipynb 3
 # From: https://github.com/github/CodeSearchNet/tree/master/function_parser
@@ -82,7 +83,7 @@ def convert_to_offset(
 def get_test_sets(test_set, language, max_token_number, model_tokenizer, with_ranks=False, num_proc=1):
     subset = test_set.filter(lambda sample: True if sample['language']== language 
             and len(sample['func_code_tokens']) < max_token_number
-            and len(model_tokenizer.tokenizer(sample['whole_func_string'])['input_ids']) < max_token_number
+            and len(model_tokenizer.tokenizer(sample['whole_func_string'])['input_ids']) <= max_token_number
             else False, num_proc=num_proc)
     return subset
 
@@ -102,3 +103,25 @@ def get_random_sub_set_test_set(test_set, test_size:int):
         random_index = random.randrange(0,len(test_set))
         sub_samples.append(test_set[random_index])
     return sub_samples
+
+# %% ../nbs/utils.ipynb 11
+def bootstrapping( np_data, np_func, size ):
+    """Create a bootstrap sample given data and a function
+    For instance, a bootstrap sample of means, or mediands. 
+    The bootstrap replicates are a long as the original size
+    we can choose any observation more than once (resampling with replacement:np.random.choice)
+    """
+    
+    #Cleaning NaNs
+    #np_data_clean = np_data[ np.logical_not( np.isnan(np_data) ) ] 
+    
+    #The size of the bootstrap replicate is as big as size
+    #Creating the boostrap replicates as long as the orignal data size
+    #This strategy might work as imputation 
+    bootstrap_repl = [ np_func( np.random.choice( np_data, size=len(np_data) ) ) for i in range( size ) ]
+    
+    #logging.info("Covariate: " + cov) #Empirical Mean
+    #logging.info("Empirical Mean: " + str(np.mean(np_data_clean))) #Empirical Mean
+    #logging.info("Bootstrapped Mean: " + str( np.mean(bootstrap_repl) ) ) #Bootstrapped Mean
+    
+    return np.array( bootstrap_repl )
