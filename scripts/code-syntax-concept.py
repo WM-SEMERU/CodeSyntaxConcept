@@ -9,12 +9,13 @@ from CodeSyntaxConcept.evaluator import Evaluator
 #checkpoint = "EleutherAI/gpt-neo-125M"
 #checkpoint = "EleutherAI/gpt-neo-1.3B"
 #checkpoint = "EleutherAI/gpt-neo-2.7B"
-checkpoint = "microsoft/CodeGPT-small-py"
+#checkpoint = "microsoft/CodeGPT-small-py"
 #checkpoint = "microsoft/CodeGPT-small-py-adaptedGPT2"
 #checkpoint = "Salesforce/codegen-16B-multi"
 #checkpoint = "Salesforce/codegen-6B-multi"
 #checkpoint = "Salesforce/codegen-2B-multi"
 #checkpoint = "himanshu-dutta/pycoder-gpt2"
+checkpoint = "EleutherAI/gpt-neox-20b"
 
 language = "python"
 maximun_number_of_samples = 10000
