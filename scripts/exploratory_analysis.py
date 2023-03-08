@@ -10,11 +10,11 @@ import pandas as pd
 #checkpoint = "EleutherAI/gpt-neo-1.3B"
 #checkpoint = "EleutherAI/gpt-neo-2.7B"
 #checkpoint = "microsoft/CodeGPT-small-py"
-#checkpoint = "microsoft/CodeGPT-small-py-adaptedGPT2"
+checkpoint = "microsoft/CodeGPT-small-py-adaptedGPT2"
 #checkpoint = "Salesforce/codegen-16B-multi"
 #checkpoint = "Salesforce/codegen-6B-multi"
 #checkpoint = "Salesforce/codegen-2B-multi"
-checkpoint = "himanshu-dutta/pycoder-gpt2"
+#checkpoint = "himanshu-dutta/pycoder-gpt2"
 
 number_of_samples = 10000
 language = "python"
