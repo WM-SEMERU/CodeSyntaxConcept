@@ -11,10 +11,10 @@ from statistics import mean, median
 import json
 
 ### PARAMETERS
-checkpoint = "EleutherAI/gpt-neo-2.7B"
-file_path = "output/raw_logits/out_codesearch_tesbed_EleutherAI-gpt-neo-2.7B_10000.csv"
+checkpoint = "EleutherAI/gpt-neo-125M"
+file_path = "output/raw_logits/out_codesearch_tesbed_EleutherAI-gpt-neo-125M_10000.csv"
 language = "python"
-output_path = "output/aggregation_function/codesearch_tesbed_EleutherAI-gpt-neo-2.7B_10000_aggregated.csv"
+output_path = "output/aggregation_function/codesearch_tesbed_EleutherAI-gpt-neo-125M_10000_aggregated.csv"
 
 ### TOKENIZER
 tokenizer = CodeTokenizer.from_pretrained(checkpoint, language)

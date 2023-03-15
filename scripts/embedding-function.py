@@ -13,11 +13,11 @@ import json
 
 #Paramenters 
 language = "python"
-checkpoint = "EleutherAI/gpt-neo-2.7B"
+checkpoint = "EleutherAI/gpt-neo-125M"
 parent_node_types_path = "output/nodes/parent_node_types.csv"
 child_node_types_path = "output/nodes/child_node_types.csv"
-aggregates_path = "output/aggregation_function/codesearch_tesbed_EleutherAI-gpt-neo-2.7B_10000_aggregated.csv"
-output_path = "output/embedding/codesearch_tesbed_EleutherAI-gpt-neo-2.7B_10000_embeddings.csv"
+aggregates_path = "output/aggregation_function/codesearch_tesbed_EleutherAI-gpt-neo-125M_10000_aggregated.csv"
+output_path = "output/embedding/codesearch_tesbed_EleutherAI-gpt-neo-125M_10000_embeddings.csv"
 
 
 tokenizer = CodeTokenizer.from_pretrained(checkpoint, language)
@@ -61,7 +61,7 @@ def get_concept_embeddings(node, concepts):
     
 #### MOST FREQUENT CONCEPTS - EXPLORATORY ANALYSIS
 most_frequent_leaves = ['identifier', '.', '(', ')', ',', '=', 'string',':','[',']','integer']
-most_frequent_parents = ['attribute','expression_statement','argument_list','call','assignment','comparison_operator', 'if_statement','return_statement','for_statement', 'parameters', '']
+most_frequent_parents = ['attribute','expression_statement','argument_list','call','assignment','comparison_operator', 'if_statement','return_statement','for_statement', 'parameters', 'function_definition']
 concepts = most_frequent_leaves + most_frequent_parents
 df_concept_embeddings = pd.DataFrame([], columns= concepts)
 for binded_tree in df_actual_ntp['binded_tree']:
