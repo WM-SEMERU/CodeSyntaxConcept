@@ -5,3 +5,5 @@ pandas
 scipy
 nbdev
 numpy
+seaborn
+transformers
