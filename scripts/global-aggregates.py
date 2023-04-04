@@ -13,11 +13,11 @@ import json
 
 ## Parameters 
 language = "python"
-checkpoint = "EleutherAI/gpt-neo-2.7B"
+checkpoint = "EleutherAI/gpt-neo-125M"
 parent_node_types_path = "output/nodes/parent_node_types.csv"
 child_node_types_path = "output/nodes/child_node_types.csv"
-aggregates_path = "output/aggregation_function/codesearch_tesbed_EleutherAI-gpt-neo-2.7B_10000_aggregated.csv"
-output_path = "output/global_aggregation/codesearch_tesbed_EleutherAI-gpt-neo-2.7B_10000_global.csv"
+aggregates_path = "output/aggregation_function/codesearch_tesbed_EleutherAI-gpt-neo-125M_10000_aggregated.csv"
+output_path = "output/global_aggregation/codesearch_tesbed_EleutherAI-gpt-neo-125M_10000_global.csv"
 
 tokenizer = CodeTokenizer.from_pretrained(checkpoint, language)
 
