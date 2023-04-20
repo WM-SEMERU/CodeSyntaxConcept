@@ -15,7 +15,7 @@ RUN pip install dvc
 
 RUN nbdev_install_quarto
 ## Matching the cuda version for this container and T5 server Feb 2023
-pip install --upgrade torch==1.12.1 --extra-index-url https://download.pytorch.org/whl/cu113 
+RUN pip install --upgrade torch==1.12.1 --extra-index-url https://download.pytorch.org/whl/cu113 
 
 #TODO: How to change the project name dynamicaly
 RUN git config --global --add safe.directory /workspaces/${MY-PROJECT-NAME}
