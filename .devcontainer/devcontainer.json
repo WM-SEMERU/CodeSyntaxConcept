@@ -9,15 +9,9 @@
 			"NODE_VERSION": "none"
 		}
 	},
-	"settings": {
-		//TODO: DRC mapping folders for data 
-	},
 	"mounts": [
 		"source=/nfs/semeru/projects/code_syntax_concept,target=/workspaces/CodeSyntaxConcept/data,type=bind,consistency=cached",
 		"source=/nfs/semeru/data/dvc,target=/tf/dvc,type=bind,consistency=cached"
-	],	
-	"extensions": [
-		"ms-python.python"
 	],
 	"remoteEnv": {
         //"MY_PROJECT_NAME": "The-container-name-here" //NOTE: make this name the same as the folder containing the repo
