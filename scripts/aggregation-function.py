@@ -22,7 +22,6 @@ tokenizer = CodeTokenizer.from_pretrained(checkpoint, language)
 ### ACTUAL TOKEN PREDICTIONS
 
 df_actual_ntp = pd.read_csv(file_path, index_col=0)
-df_actual_ntp = df_actual_ntp.head()
 
 #### TOKEN BINDINGS
 
