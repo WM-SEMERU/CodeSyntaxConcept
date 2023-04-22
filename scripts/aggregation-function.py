@@ -11,10 +11,10 @@ from statistics import mean, median
 import json
 
 ### PARAMETERS
-checkpoint = "EleutherAI/gpt-neo-125M"
-file_path = "output/raw_logits/out_codesearch_tesbed_EleutherAI-gpt-neo-125M_10000.csv"
+checkpoint = "EleutherAI/gpt-neo-1.3B"
+file_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/raw_logits/out_astevalverticalfiltered_c2.csv"
 language = "python"
-output_path = "output/aggregation_function/codesearch_tesbed_EleutherAI-gpt-neo-125M_10000_aggregated.csv"
+output_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/aggregation_function/out_astevalverticalfiltered_c2.csv"
 
 ### TOKENIZER
 tokenizer = CodeTokenizer.from_pretrained(checkpoint, language)
@@ -22,6 +22,7 @@ tokenizer = CodeTokenizer.from_pretrained(checkpoint, language)
 ### ACTUAL TOKEN PREDICTIONS
 
 df_actual_ntp = pd.read_csv(file_path, index_col=0)
+df_actual_ntp = df_actual_ntp.head()
 
 #### TOKEN BINDINGS
 
@@ -49,16 +50,16 @@ def bind_bpe_tokens(
 
     return tree_node
         
-encoding = tokenizer.tokenizer(df_actual_ntp.iloc[0]['whole_func_string'], return_offsets_mapping=True)
-assert len(eval(df_actual_ntp.iloc[0]['model_input_ids'])) == len(encoding['input_ids'])
+encoding = tokenizer.tokenizer(df_actual_ntp.iloc[0]['code'], return_offsets_mapping=True)
+assert len(eval(df_actual_ntp.iloc[0]['ids'])) == len(encoding['input_ids'])
 
 binded_tree_col = []
 for index, row in df_actual_ntp.iterrows():
-    tree = tokenizer.parser.parse(bytes(row['whole_func_string'], "utf8"))
-    encoding = tokenizer.tokenizer(row['whole_func_string'], return_offsets_mapping=True)
-    actual_logits = eval(row['actual_prob_case'])
-    actual_logits.insert(0,(tokenizer.tokenizer.decode(eval(row['model_input_ids'])[0]),'FIRST_TOKEN'))
-    binded_tree = bind_bpe_tokens(tree.root_node, encoding, actual_logits, row['whole_func_string'].split('\n'))
+    tree = tokenizer.parser.parse(bytes(row['code'], "utf8"))
+    encoding = tokenizer.tokenizer(row['code'], return_offsets_mapping=True)
+    actual_logits = eval(row['actual_prob'])
+    actual_logits.insert(0,(tokenizer.tokenizer.decode(eval(row['ids'])[0]),'FIRST_TOKEN'))
+    binded_tree = bind_bpe_tokens(tree.root_node, encoding, actual_logits, row['code'].split('\n'))
     binded_tree_col.append(binded_tree)
 df_actual_ntp['binded_tree'] = binded_tree_col
 
@@ -70,7 +71,7 @@ def process_bindings(
     ## len is zero if node correspond to FIRST_TOKEN = 'def' 
     if(len(node_actual_probs) > 0):
         ## BOOTSTRAPPING-> 
-        node_actual_probs = utils.bootstrapping(node_actual_probs, np.mean, size=100).tolist()
+        node_actual_probs = utils.bootstrapping(node_actual_probs, np.mean, size=500).tolist()
         ##
         node['median_prob'] = median(node_actual_probs) 
         node['max_prob'] = max(node_actual_probs) 
