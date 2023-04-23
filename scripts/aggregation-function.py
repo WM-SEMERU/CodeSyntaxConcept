@@ -10,11 +10,19 @@ import CodeSyntaxConcept.utils as utils
 from statistics import mean, median
 import json
 
-### PARAMETERS
-checkpoint = "EleutherAI/gpt-neo-1.3B"
-file_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/raw_logits/out_astevalverticalfiltered_c2.csv"
 language = "python"
-output_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/aggregation_function/out_astevalverticalfiltered_c2.csv"
+### PARAMETERS
+#checkpoint = "EleutherAI/gpt-neo-1.3B"
+#checkpoint = "EleutherAI/gpt-neo-2.7B"
+checkpoint = "Salesforce/codegen-2B-nl"
+
+#file_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/raw_logits/out_astevalverticalfiltered_c2.csv"
+#file_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/raw_logits/out_astevalverticalfiltered_c3.csv"
+file_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/raw_logits/out_astevalverticalfiltered_c6.csv"
+
+#output_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/aggregation_function/out_astevalverticalfiltered_c2.csv"
+#output_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/aggregation_function/out_astevalverticalfiltered_c3.csv"
+output_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/aggregation_function/out_astevalverticalfiltered_c6.csv"
 
 ### TOKENIZER
 tokenizer = CodeTokenizer.from_pretrained(checkpoint, language)
@@ -70,7 +78,7 @@ def process_bindings(
     ## len is zero if node correspond to FIRST_TOKEN = 'def' 
     if(len(node_actual_probs) > 0):
         ## BOOTSTRAPPING-> 
-        node_actual_probs = utils.bootstrapping(node_actual_probs, np.mean, size=500).tolist()
+        node_actual_probs = utils.bootstrapping(node_actual_probs, np.mean, size=100).tolist()
         ##
         node['median_prob'] = median(node_actual_probs) 
         node['max_prob'] = max(node_actual_probs) 
