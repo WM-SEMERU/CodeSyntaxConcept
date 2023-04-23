@@ -13,11 +13,11 @@ import json
 
 ## Parameters 
 language = "python"
-checkpoint = "EleutherAI/gpt-neo-125M"
-parent_node_types_path = "output/nodes/parent_node_types.csv"
-child_node_types_path = "output/nodes/child_node_types.csv"
-aggregates_path = "output/aggregation_function/codesearch_tesbed_EleutherAI-gpt-neo-125M_10000_aggregated.csv"
-output_path = "output/global_aggregation/codesearch_tesbed_EleutherAI-gpt-neo-125M_10000_global.csv"
+checkpoint = "EleutherAI/gpt-neo-1.3B"
+parent_node_types_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/nodes/parent_node_types.csv"
+child_node_types_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/nodes/child_node_types.csv"
+aggregates_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/aggregation_function/out_astevalverticalfiltered_c2.csv"
+output_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/global_aggregation/out_astevalverticalfiltered_c2.csv"
 
 tokenizer = CodeTokenizer.from_pretrained(checkpoint, language)
 
@@ -80,6 +80,8 @@ for concept_idx in range(0,len(tokenizer.node_types)):
                                                                              concept_median_prob_list[concept_idx], 
                                                                              concept_min_prob_list[concept_idx], 
                                                                              concept_max_prob_list[concept_idx]]
+
+global_concept_dataframe['model'] = checkpoint
 
 print(global_concept_dataframe.head())
 global_concept_dataframe.to_csv(output_path)

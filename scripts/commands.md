@@ -16,10 +16,10 @@ nohup python3 -u code-syntax-concept.py > logs/codegen-2B-multi.txt &
 
 
 ### Agregation Function
-nohup python3 -u aggregation-function.py > logs/aggregation_function_function_gpt-neo-1.3B.txt &
+nohup python3 -u aggregation-function.py > logs/aggregation_function_gpt-neo-1.3B.txt &
 
 ### Embeddings 
-nohup python3 -u embedding-function.py > logs/embedding_function.txt &
+nohup python3 -u embedding-function.py > logs/embedding_function_gpt-neo-1.3B.txt &
 
 #### Global 
-nohup python3 -u global-aggregates.py > logs/global-aggregates.txt &
+nohup python3 -u global-aggregates.py > logs/global-aggregates_gpt-neo-1.3B.txt &

@@ -1,4 +1,4 @@
-## Import 
+`## Import 
 import pandas as pd
 import os
 import time
@@ -13,11 +13,11 @@ import json
 
 #Paramenters 
 language = "python"
-checkpoint = "EleutherAI/gpt-neo-125M"
-parent_node_types_path = "output/nodes/parent_node_types.csv"
-child_node_types_path = "output/nodes/child_node_types.csv"
-aggregates_path = "output/aggregation_function/codesearch_tesbed_EleutherAI-gpt-neo-125M_10000_aggregated.csv"
-output_path = "output/embedding/codesearch_tesbed_EleutherAI-gpt-neo-125M_10000_embeddings.csv"
+checkpoint = "EleutherAI/gpt-neo-1.3B"
+parent_node_types_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/nodes/parent_node_types.csv"
+child_node_types_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/nodes/child_node_types.csv"
+aggregates_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/aggregation_function/out_astevalverticalfiltered_c2.csv"
+output_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/embedding/out_astevalverticalfiltered_c2.csv"
 
 
 tokenizer = CodeTokenizer.from_pretrained(checkpoint, language)
@@ -66,6 +66,10 @@ concepts = most_frequent_leaves + most_frequent_parents
 df_concept_embeddings = pd.DataFrame([], columns= concepts)
 for binded_tree in df_actual_ntp['binded_tree']:
     df_concept_embeddings.loc[len(df_concept_embeddings.index)] = get_concept_embeddings(binded_tree, concepts)
+
+df_concept_embeddings = df_concept_embeddings.set_index(df_actual_ntp.index)
+for concept in concepts:
+    df_actual_ntp[str(concept)] = df_concept_embeddings[str(concept)]
 
 print(df_concept_embeddings.head())
 ### SAVE THE OUTPUT
