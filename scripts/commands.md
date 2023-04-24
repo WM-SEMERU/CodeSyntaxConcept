@@ -25,6 +25,13 @@ nohup python3 -u embedding-function.py > logs/embedding_function_gpt-neo-1.3B.tx
 nohup python3 -u embedding-function.py > logs/embedding_function_gpt-neo-2.7B.txt &
 nohup python3 -u embedding-function.py > logs/embedding_function_codegen-2B-nl.txt &
 
+
+## Merging
+nohup python3 -u merge_dataframes.py > logs/embedding_function_gpt-neo-1.3B_merging.txt &
+nohup python3 -u merge_dataframes.py > logs/embedding_function_gpt-neo-2.7B_merging.txt &
+nohup python3 -u merge_dataframes.py > logs/embedding_function_codegen-2B-nl_merging.txt &
+
+
 #### Global 
 nohup python3 -u global-aggregates.py > logs/global-aggregates_gpt-neo-1.3B.txt &
 nohup python3 -u global-aggregates.py > logs/global-aggregates_gpt-neo-2.7B.txt &

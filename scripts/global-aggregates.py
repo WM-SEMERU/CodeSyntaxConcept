@@ -13,11 +13,21 @@ import json
 
 ## Parameters 
 language = "python"
-checkpoint = "EleutherAI/gpt-neo-1.3B"
+
 parent_node_types_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/nodes/parent_node_types.csv"
 child_node_types_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/nodes/child_node_types.csv"
-aggregates_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/aggregation_function/out_astevalverticalfiltered_c2.csv"
-output_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/global_aggregation/out_astevalverticalfiltered_c2.csv"
+
+#checkpoint = "EleutherAI/gpt-neo-1.3B"
+#checkpoint = "EleutherAI/gpt-neo-2.7B"
+checkpoint = "Salesforce/codegen-2B-nl"
+
+#aggregates_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/aggregation_function/out_astevalverticalfiltered_c2.csv"
+#aggregates_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/aggregation_function/out_astevalverticalfiltered_c3.csv"
+aggregates_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/aggregation_function/out_astevalverticalfiltered_c6.csv"
+
+#output_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/global_aggregation/out_astevalverticalfiltered_c2.csv"
+#output_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/global_aggregation/out_astevalverticalfiltered_c3.csv"
+output_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/global_aggregation/out_astevalverticalfiltered_c6.csv"
 
 tokenizer = CodeTokenizer.from_pretrained(checkpoint, language)
 

@@ -13,11 +13,20 @@ import json
 
 #Paramenters 
 language = "python"
-checkpoint = "EleutherAI/gpt-neo-1.3B"
 parent_node_types_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/nodes/parent_node_types.csv"
 child_node_types_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/nodes/child_node_types.csv"
-aggregates_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/aggregation_function/out_astevalverticalfiltered_c2.csv"
-output_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/embedding/out_astevalverticalfiltered_c2.csv"
+
+#checkpoint = "EleutherAI/gpt-neo-1.3B"
+#checkpoint = "EleutherAI/gpt-neo-2.7B"
+checkpoint = "Salesforce/codegen-2B-nl"
+
+#aggregates_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/aggregation_function/out_astevalverticalfiltered_c2.csv"
+#aggregates_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/aggregation_function/out_astevalverticalfiltered_c3.csv"
+aggregates_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/aggregation_function/out_astevalverticalfiltered_c6.csv"
+
+#otput_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/embedding/out_astevalverticalfiltered_c2.csv"
+#output_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/embedding/out_astevalverticalfiltered_c3.csv"
+output_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/embedding/out_astevalverticalfiltered_c6.csv"
 
 
 tokenizer = CodeTokenizer.from_pretrained(checkpoint, language)
@@ -71,7 +80,7 @@ df_concept_embeddings = df_concept_embeddings.set_index(df_actual_ntp.index)
 for concept in concepts:
     df_actual_ntp[str(concept)] = df_concept_embeddings[str(concept)]
 
-print(df_concept_embeddings.head())
+print(df_actual_ntp.head())
 ### SAVE THE OUTPUT
-df_concept_embeddings.to_csv(output_path)
+df_actual_ntp.to_csv(output_path)
 
