@@ -29,7 +29,7 @@ child_node_types_path = "/workspaces/CodeSyntaxConcept/data/scripts/child_node_t
 #checkpoint = "codeparrot/codeparrot-small" #c14
 #checkpoint = "codeparrot/codeparrot" #c15
 #checkpoint = "Salesforce/codegen-350M-mono" #c16
-#checkpoint = "Salesforce/codegen-2B-mono" #c17
+checkpoint = "Salesforce/codegen-2B-mono" #c17
 
 #aggregates_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c1.csv"
 #aggregates_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c2.csv"
@@ -42,20 +42,20 @@ child_node_types_path = "/workspaces/CodeSyntaxConcept/data/scripts/child_node_t
 #aggregates_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c14.csv"
 #aggregates_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c15.csv"
 #aggregates_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c16.csv"
-#aggregates_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c17.csv"
+aggregates_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c17.csv"
 
-#otput_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c1.csv"
-#otput_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c2.csv"
-#otput_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c3.csv"
-#otput_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c5.csv"
-#otput_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c6.csv"
-#otput_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c9.csv"
-#otput_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c10.csv"
-#otput_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c11.csv"
-#otput_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c14.csv"
-#otput_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c15.csv"
-#otput_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c16.csv"
-#otput_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c17.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c1.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c2.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c3.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c5.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c6.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c9.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c10.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c11.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c14.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c15.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c16.csv"
+output_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c17.csv"
 
 
 tokenizer = CodeTokenizer.from_pretrained(checkpoint, language)
@@ -98,9 +98,10 @@ def get_concept_embeddings(node, concepts):
     return embedding
     
 #### MOST FREQUENT CONCEPTS - EXPLORATORY ANALYSIS
-most_frequent_leaves = ['identifier', '.', '(', ')', ',', '=', 'string',':','[',']','integer']
-most_frequent_parents = ['attribute','expression_statement','argument_list','call','assignment','comparison_operator', 'if_statement','return_statement','for_statement', 'parameters', 'function_definition']
-concepts = most_frequent_leaves + most_frequent_parents
+#most_frequent_leaves = ['identifier', '.', '(', ')', ',', '=', 'string',':','[',']','integer']
+#most_frequent_parents = ['attribute','expression_statement','argument_list','call','assignment','comparison_operator', 'if_statement','return_statement','for_statement', 'parameters', 'function_definition']
+#concepts = most_frequent_leaves + most_frequent_parents
+concepts = ['for_statement', 'while_statement', 'return_statement', ']', ')', 'if_statement', 'comparison_operator', 'boolean_operator', 'for_in_clause', 'if_clause', 'list_comprehension', 'lambda', 'identifier' ,'string']
 df_concept_embeddings = pd.DataFrame([], columns= concepts)
 for binded_tree in df_actual_ntp['binded_tree']:
     df_concept_embeddings.loc[len(df_concept_embeddings.index)] = get_concept_embeddings(binded_tree, concepts)
