@@ -161,5 +161,7 @@ scripts/output
 scripts/logs
 experimental_notebooks/output
 
+scripts_output/
+
 data
 datax
