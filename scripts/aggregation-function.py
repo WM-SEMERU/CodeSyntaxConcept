@@ -10,11 +10,48 @@ import CodeSyntaxConcept.utils as utils
 from statistics import mean, median
 import json
 
-### PARAMETERS
-checkpoint = "EleutherAI/gpt-neo-1.3B"
-file_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/raw_logits/out_astevalverticalfiltered_c2.csv"
 language = "python"
-output_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/aggregation_function/out_astevalverticalfiltered_c2.csv"
+### PARAMETERS
+#checkpoint = "EleutherAI/gpt-neo-125m" #c1
+#checkpoint = "EleutherAI/gpt-neo-2.7B" #c2
+#checkpoint = "Salesforce/codegen-2B-nl" #c3
+#checkpoint = "Salesforce/codegen-350M-nl" #c5
+#checkpoint = "Salesforce/codegen-2B-nl" #c6
+#checkpoint = "codeparrot/codeparrot-small-multi" #c9
+#checkpoint = "Salesforce/codegen-350M-multi" #c10
+#checkpoint = "Salesforce/codegen-2B-multi" #c11
+#checkpoint = "codeparrot/codeparrot-small" #c14
+#checkpoint = "codeparrot/codeparrot" #c15
+#checkpoint = "Salesforce/codegen-350M-mono" #c16
+checkpoint = "Salesforce/codegen-2B-mono" #c17
+
+
+#file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalverticalfiltered_c1.csv"
+#file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalverticalfiltered_c2.csv"
+#file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalverticalfiltered_c3.csv"
+#file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalverticalfiltered_c5.csv"
+#file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalverticalfiltered_c6.csv"
+#file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalverticalfiltered_c9.csv"
+#file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalverticalfiltered_c10.csv"
+#file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalverticalfiltered_c11.csv"
+#file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalverticalfiltered_c14.csv"
+#file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalverticalfiltered_c15.csv"
+#file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalverticalfiltered_c16.csv"
+file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalverticalfiltered_c17.csv"
+
+
+#output_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c1.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c2.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c3.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c5.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c6.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c9.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c10.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c11.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c14.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c15.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c16.csv"
+output_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c17.csv"
 
 ### TOKENIZER
 tokenizer = CodeTokenizer.from_pretrained(checkpoint, language)
@@ -70,7 +107,7 @@ def process_bindings(
     ## len is zero if node correspond to FIRST_TOKEN = 'def' 
     if(len(node_actual_probs) > 0):
         ## BOOTSTRAPPING-> 
-        node_actual_probs = utils.bootstrapping(node_actual_probs, np.mean, size=500).tolist()
+        node_actual_probs = utils.bootstrapping(node_actual_probs, np.mean, size=100).tolist()
         ##
         node['median_prob'] = median(node_actual_probs) 
         node['max_prob'] = max(node_actual_probs) 

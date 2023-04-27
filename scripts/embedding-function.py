@@ -13,11 +13,49 @@ import json
 
 #Paramenters 
 language = "python"
-checkpoint = "EleutherAI/gpt-neo-125M"
-parent_node_types_path = "output/nodes/parent_node_types.csv"
-child_node_types_path = "output/nodes/child_node_types.csv"
-aggregates_path = "output/aggregation_function/codesearch_tesbed_EleutherAI-gpt-neo-125M_10000_aggregated.csv"
-output_path = "output/embedding/codesearch_tesbed_EleutherAI-gpt-neo-125M_10000_embeddings.csv"
+
+parent_node_types_path = "/workspaces/CodeSyntaxConcept/data/scripts/parent_node_types.csv"
+child_node_types_path = "/workspaces/CodeSyntaxConcept/data/scripts/child_node_types.csv"
+
+### PARAMETERS
+#checkpoint = "EleutherAI/gpt-neo-125m" #c1
+#checkpoint = "EleutherAI/gpt-neo-2.7B" #c2
+#checkpoint = "Salesforce/codegen-2B-nl" #c3
+#checkpoint = "Salesforce/codegen-350M-nl" #c5
+#checkpoint = "Salesforce/codegen-2B-nl" #c6
+#checkpoint = "codeparrot/codeparrot-small-multi" #c9
+#checkpoint = "Salesforce/codegen-350M-multi" #c10
+#checkpoint = "Salesforce/codegen-2B-multi" #c11
+#checkpoint = "codeparrot/codeparrot-small" #c14
+#checkpoint = "codeparrot/codeparrot" #c15
+#checkpoint = "Salesforce/codegen-350M-mono" #c16
+checkpoint = "Salesforce/codegen-2B-mono" #c17
+
+#aggregates_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c1.csv"
+#aggregates_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c2.csv"
+#aggregates_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c3.csv"
+#aggregates_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c5.csv"
+#aggregates_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c6.csv"
+#aggregates_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c9.csv"
+#aggregates_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c10.csv"
+#aggregates_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c11.csv"
+#aggregates_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c14.csv"
+#aggregates_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c15.csv"
+#aggregates_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c16.csv"
+aggregates_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c17.csv"
+
+#output_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c1.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c2.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c3.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c5.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c6.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c9.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c10.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c11.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c14.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c15.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c16.csv"
+output_path = "/workspaces/CodeSyntaxConcept/data/ds_processed_logits_local/out_astevalverticalfiltered_c17.csv"
 
 
 tokenizer = CodeTokenizer.from_pretrained(checkpoint, language)
@@ -60,14 +98,19 @@ def get_concept_embeddings(node, concepts):
     return embedding
     
 #### MOST FREQUENT CONCEPTS - EXPLORATORY ANALYSIS
-most_frequent_leaves = ['identifier', '.', '(', ')', ',', '=', 'string',':','[',']','integer']
-most_frequent_parents = ['attribute','expression_statement','argument_list','call','assignment','comparison_operator', 'if_statement','return_statement','for_statement', 'parameters', 'function_definition']
-concepts = most_frequent_leaves + most_frequent_parents
+#most_frequent_leaves = ['identifier', '.', '(', ')', ',', '=', 'string',':','[',']','integer']
+#most_frequent_parents = ['attribute','expression_statement','argument_list','call','assignment','comparison_operator', 'if_statement','return_statement','for_statement', 'parameters', 'function_definition']
+#concepts = most_frequent_leaves + most_frequent_parents
+concepts = ['for_statement', 'while_statement', 'return_statement', ']', ')', 'if_statement', 'comparison_operator', 'boolean_operator', 'for_in_clause', 'if_clause', 'list_comprehension', 'lambda', 'identifier' ,'string']
 df_concept_embeddings = pd.DataFrame([], columns= concepts)
 for binded_tree in df_actual_ntp['binded_tree']:
     df_concept_embeddings.loc[len(df_concept_embeddings.index)] = get_concept_embeddings(binded_tree, concepts)
 
-print(df_concept_embeddings.head())
+df_concept_embeddings = df_concept_embeddings.set_index(df_actual_ntp.index)
+for concept in concepts:
+    df_actual_ntp[str(concept)] = df_concept_embeddings[str(concept)]
+
+print(df_actual_ntp.head())
 ### SAVE THE OUTPUT
-df_concept_embeddings.to_csv(output_path)
+df_actual_ntp.to_csv(output_path)
 
