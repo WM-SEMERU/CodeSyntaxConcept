@@ -13,8 +13,8 @@ import json
 language = "python"
 ### PARAMETERS
 #checkpoint = "EleutherAI/gpt-neo-125m" #c1
-#checkpoint = "EleutherAI/gpt-neo-2.7B" #c2
-#checkpoint = "Salesforce/codegen-2B-nl" #c3
+#checkpoint = "EleutherAI/gpt-neo-1.3B" #c2
+checkpoint = "EleutherAI/gpt-neo-2.7B" #c3 
 #checkpoint = "Salesforce/codegen-350M-nl" #c5
 #checkpoint = "Salesforce/codegen-2B-nl" #c6
 #checkpoint = "codeparrot/codeparrot-small-multi" #c9
@@ -23,12 +23,12 @@ language = "python"
 #checkpoint = "codeparrot/codeparrot-small" #c14
 #checkpoint = "codeparrot/codeparrot" #c15
 #checkpoint = "Salesforce/codegen-350M-mono" #c16
-checkpoint = "Salesforce/codegen-2B-mono" #c17
+#checkpoint = "Salesforce/codegen-2B-mono" #c17
 
 
 #file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalverticalfiltered_c1.csv"
 #file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalverticalfiltered_c2.csv"
-#file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalverticalfiltered_c3.csv"
+file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalverticalfiltered_c3.csv"
 #file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalverticalfiltered_c5.csv"
 #file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalverticalfiltered_c6.csv"
 #file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalverticalfiltered_c9.csv"
@@ -37,12 +37,12 @@ checkpoint = "Salesforce/codegen-2B-mono" #c17
 #file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalverticalfiltered_c14.csv"
 #file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalverticalfiltered_c15.csv"
 #file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalverticalfiltered_c16.csv"
-file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalverticalfiltered_c17.csv"
+#file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalverticalfiltered_c17.csv"
 
 
 #output_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c1.csv"
 #output_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c2.csv"
-#output_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c3.csv"
+output_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c3.csv"
 #output_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c5.csv"
 #output_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c6.csv"
 #output_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c9.csv"
@@ -51,7 +51,7 @@ file_path = "/workspaces/CodeSyntaxConcept/data/ds_raw_logits/out_astevalvertica
 #output_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c14.csv"
 #output_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c15.csv"
 #output_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c16.csv"
-output_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c17.csv"
+#output_path = "/workspaces/CodeSyntaxConcept/scripts_output/out_astevalverticalfiltered_c17.csv"
 
 ### TOKENIZER
 tokenizer = CodeTokenizer.from_pretrained(checkpoint, language)
