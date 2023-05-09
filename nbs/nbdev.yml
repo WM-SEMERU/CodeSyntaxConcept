@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "CodeSyntaxConcept"
+  site-url: "https://WM-SEMERU.github.io/CodeSyntaxConcept"
+  description: "Code Syntax Concept Library for Neural Code Models Interpretability"
+  repo-branch: master
+  repo-url: "https://github.com/WM-SEMERU/CodeSyntaxConcept"
