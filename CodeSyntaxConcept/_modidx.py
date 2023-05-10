@@ -2,8 +2,8 @@
 
 d = { 'settings': { 'branch': 'master',
                 'doc_baseurl': '/CodeSyntaxConcept',
-                'doc_host': 'https://WM-SEMERU.github.io',
-                'git_url': 'https://github.com/WM-SEMERU/CodeSyntaxConcept',
+                'doc_host': 'https://XXXX-XXXXX.github.io',
+                'git_url': 'https://github.com/XXXX-XXXXX/CodeSyntaxConcept',
                 'lib_path': 'CodeSyntaxConcept'},
   'syms': { 'CodeSyntaxConcept.core.data.code_search_net': {},
             'CodeSyntaxConcept.core.parsers.tree_sitter_parser': {},
