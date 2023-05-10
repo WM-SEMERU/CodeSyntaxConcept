@@ -1,0 +1,9 @@
+website:
+  sidebar:
+    contents:
+      - index.ipynb
+      - evaluator.ipynb
+      - loader.ipynb
+      - parser.ipynb
+      - tokenizer.ipynb
+      - utils.ipynb
