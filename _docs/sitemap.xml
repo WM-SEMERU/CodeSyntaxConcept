@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://WM-SEMERU.github.io/CodeSyntaxConcept/evaluator.html</loc>
+    <lastmod>2023-05-10T21:33:22.430Z</lastmod>
+  </url>
+  <url>
+    <loc>https://WM-SEMERU.github.io/CodeSyntaxConcept/parser.html</loc>
+    <lastmod>2023-05-10T21:33:22.710Z</lastmod>
+  </url>
+  <url>
+    <loc>https://WM-SEMERU.github.io/CodeSyntaxConcept/utils.html</loc>
+    <lastmod>2023-05-10T21:33:23.110Z</lastmod>
+  </url>
+  <url>
+    <loc>https://WM-SEMERU.github.io/CodeSyntaxConcept/loader.html</loc>
+    <lastmod>2023-05-10T21:33:23.398Z</lastmod>
+  </url>
+  <url>
+    <loc>https://WM-SEMERU.github.io/CodeSyntaxConcept/index.html</loc>
+    <lastmod>2023-05-10T21:33:23.934Z</lastmod>
+  </url>
+  <url>
+    <loc>https://WM-SEMERU.github.io/CodeSyntaxConcept/tokenizer.html</loc>
+    <lastmod>2023-05-10T21:33:24.250Z</lastmod>
+  </url>
+</urlset>

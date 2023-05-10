@@ -2,8 +2,8 @@ website:
   sidebar:
     contents:
       - index.ipynb
-      - evaluator.ipynb
-      - loader.ipynb
-      - parser.ipynb
-      - tokenizer.ipynb
-      - utils.ipynb
+      - 00_evaluator.ipynb
+      - 00_loader.ipynb
+      - 00_parser.ipynb
+      - 00_tokenizer.ipynb
+      - 00_utils.ipynb

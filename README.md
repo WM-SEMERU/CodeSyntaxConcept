@@ -18,33 +18,32 @@ Step 1 - create a conda virtual Enviroment:
 ``` sh
 conda create -n CodeSyntaxConcept
 conda activate CodeSyntaxConcept
+```
 
 Step 2 - install nbdev
 
-```sh
+``` sh
 conda install -c fastai nbdev
+```
 
 Step 3 - build the library
-```sh
+
+``` sh
 nbdev_export
+```
 
 Step 4 - install dependencies
-```sh
+
+``` sh
 pip install .
+```
 
 ### Downloading the grammar
 
-::: {.cell execution_count=1}
-``` {.python .cell-code}
+``` python
 from CodeSyntaxConcept.loader import *
 
 download_grammars(['python'])
 ```
 
-<div class="cell-output cell-output-stdout">
-
     /scratch1/svelascodimate/CodeSyntaxConcept/CodeSyntaxConcept/grammars
-
-</div>
-
-:::

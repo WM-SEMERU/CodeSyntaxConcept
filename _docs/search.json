@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "evaluator.html",
+    "href": "evaluator.html",
+    "title": "Evaluation Module",
+    "section": "",
+    "text": "source\n\nEvaluator\n\n Evaluator (checkpoint:str, language)\n\nInitialize self. See help(type(self)) for accurate signature.\n\n\nTesting"
+  },
+  {
+    "objectID": "parser.html",
+    "href": "parser.html",
+    "title": "Parser",
+    "section": "",
+    "text": "source\n\nTreeSitterParser\n\n TreeSitterParser (tokenizer:CodeSyntaxConcept.tokenizer.CodeTokenizer)\n\nInitialize self. See help(type(self)) for accurate signature.\n\n\nTesting"
+  },
+  {
+    "objectID": "utils.html",
+    "href": "utils.html",
+    "title": "Utility Methods",
+    "section": "",
+    "text": "source\n\ntraverse\n\n traverse (node, results)\n\nTraverse in a recursive way, a tree-sitter node and append results to a list.\n\n\n\n\nType\nDetails\n\n\n\n\nnode\n\ntree-sitter node\n\n\nresults\n\nlist to append results to\n\n\nReturns\nNone\n\n\n\n\n\nsource\n\n\nfind_nodes\n\n find_nodes (node, target_node_type, results)\n\nTraverses the tree and find the specified node type\n\n\n\n\nType\nDetails\n\n\n\n\nnode\n\nTree sitter ast tree\n\n\ntarget_node_type\n\nTarget node type to search in the tree\n\n\nresults\n\nList to append the resutls to\n\n\nReturns\nNone\n\n\n\n\n\nsource\n\n\nfind_parent_nodes\n\n find_parent_nodes (node, results)\n\nTraverses the tree and find the parent nodes\n\n\n\n\nType\nDetails\n\n\n\n\nnode\n\nTree sitter ast tree\n\n\nresults\n\nList to append the resutls to\n\n\nReturns\nNone\n\n\n\n\n\nsource\n\n\nunroll_node_types\n\n unroll_node_types (nested_node_types:dict)\n\n\n\n\n\nType\nDetails\n\n\n\n\nnested_node_types\ndict\nnode_types from tree-sitter\n\n\nReturns\nlist\nlist of node types\n\n\n\n\nsource\n\n\nconvert_to_offset\n\n convert_to_offset (point, lines:list)\n\nConvert the point to an offset\n\n\n\n\nType\nDetails\n\n\n\n\npoint\n\npoint to convert\n\n\nlines\nlist\nlist of lines in the source code\n\n\n\n\nsource\n\n\nget_test_sets\n\n get_test_sets (test_set, language, max_token_number, model_tokenizer,\n                with_ranks=False, num_proc=1)\n\n\nsource\n\n\nget_sub_set_test_set\n\n get_sub_set_test_set (test_set, test_size:int)\n\n\nsource\n\n\nget_random_sub_set_test_set\n\n get_random_sub_set_test_set (test_set, test_size:int)\n\n\nsource\n\n\nbootstrapping\n\n bootstrapping (np_data, np_func, size)\n\nCreate a bootstrap sample given data and a function For instance, a bootstrap sample of means, or mediands. The bootstrap replicates are a long as the original size we can choose any observation more than once (resampling with replacement:np.random.choice)"
+  },
+  {
+    "objectID": "loader.html",
+    "href": "loader.html",
+    "title": "CLI Module",
+    "section": "",
+    "text": "source\n\ndownload_grammars\n\n download_grammars (languages)\n\nDownload Tree-sitter grammars\n\n\n\n\n\n\n\n\nDetails\n\n\n\n\nlanguages\nlanguages: Param(“Languages to download”, str, nargs=“+”) = “all”,"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "https://github.com/WM-SEMERU/CodeSyntaxConcept",
+    "section": "",
+    "text": "This file will become your README and also the index of your documentation."
+  },
+  {
+    "objectID": "index.html#install",
+    "href": "index.html#install",
+    "title": "https://github.com/WM-SEMERU/CodeSyntaxConcept",
+    "section": "Install",
+    "text": "Install\npip install https://github.com/WM_SEMERU/CodeSyntaxConcept\n\nSetup\nStep 1 - create a conda virtual Enviroment:\nconda create -n CodeSyntaxConcept\nconda activate CodeSyntaxConcept\nStep 2 - install nbdev\nconda install -c fastai nbdev\nStep 3 - build the library\nnbdev_export\nStep 4 - install dependencies\npip install .\n\n\nDownloading the grammar\n\nfrom CodeSyntaxConcept.loader import *\n\ndownload_grammars(['python'])\n\n/scratch1/svelascodimate/CodeSyntaxConcept/CodeSyntaxConcept/grammars"
+  },
+  {
+    "objectID": "tokenizer.html",
+    "href": "tokenizer.html",
+    "title": "Core Module Tokenizer",
+    "section": "",
+    "text": "source\n\nget_token_type\n\n get_token_type (tok_span:tuple, nodes:list, lines:list)\n\nGet the parent AST type and token AST type of a token.\n\n\n\n\nType\nDetails\n\n\n\n\ntok_span\ntuple\n(start, end) position of a token in tokenizer\n\n\nnodes\nlist\nlist of tree-sitter nodes\n\n\nlines\nlist\nlist of lines in the code\n\n\nReturns\ntuple\n(parent_type, token_type) of the token\n\n\n\n\nsource\n\n\nCodeTokenizer\n\n CodeTokenizer (tokenizer, parser, node_types)\n\nA tokenizer for code, which aligns the tokens with the AST nodes.\n\n\nTesting"
+  }
+]
