@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "embedding_function.html",
+    "href": "embedding_function.html",
+    "title": "Embedding Module for Local Analysis",
+    "section": "",
+    "text": "Imports\n\n\nParameters\n\n\nParent Node Types\n\n\nChildren Node Types\n\n\nLoad Aggregates\n\n\nSnippet Concept Embeddings\n\nsource\n\n\nget_concept_embeddings\n\n get_concept_embeddings (node, concepts)\n\nretrieve the concepts form the given sample’s AST\n\n\n\n\nDetails\n\n\n\n\nnode\nthe tree representation of the sample,\n\n\nconcepts\nthe list of concepts"
+  },
+  {
     "objectID": "extractor.html",
     "href": "extractor.html",
     "title": "Extractor",
@@ -33,6 +40,13 @@
     "title": "CLI Module",
     "section": "",
     "text": "source\n\ndownload_grammars\n\n download_grammars (languages)\n\nDownload Tree-sitter grammars\n\n\n\n\n\n\n\n\nDetails\n\n\n\n\nlanguages\nlanguages: Param(“Languages to download”, str, nargs=“+”) = “all”,"
+  },
+  {
+    "objectID": "aggregation_function.html",
+    "href": "aggregation_function.html",
+    "title": "Agregation Module",
+    "section": "",
+    "text": "Imports\n\n\nParameters\n\n\nTokenizer\n\n\nActual Token Predictions\n\n\nToken Binding\n\nsource\n\n\nbind_bpe_tokens\n\n bind_bpe_tokens (node, encoding, actual_probs, lines)\n\nTraverses the tree and bind the leaves with the corresponding node\n\n\n\n\nDetails\n\n\n\n\nnode\nTree sitter ast tree\n\n\nencoding\nToken encoding\n\n\nactual_probs\nActual probabilities\n\n\nlines\nSource code Snippet\n\n\n\n\nsource\n\n\nprocess_bindings\n\n process_bindings (node:dict)\n\nprocess the bindings in the tree to agregate the probabilities\n\n\n\n\nType\nDetails\n\n\n\n\nnode\ndict\nBinded AST tree with actual probabilities\n\n\nReturns\nNone"
   },
   {
     "objectID": "index.html",

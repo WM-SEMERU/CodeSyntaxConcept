@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CodeSyntaxConcept - Extractor</title>
+<title>CodeSyntaxConcept - Embedding Module for Local Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -61,10 +61,10 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="CodeSyntaxConcept - Extractor">
+<meta property="og:title" content="CodeSyntaxConcept - Embedding Module for Local Analysis">
 <meta property="og:description" content="">
 <meta property="og:site-name" content="CodeSyntaxConcept">
-<meta name="twitter:title" content="CodeSyntaxConcept - Extractor">
+<meta name="twitter:title" content="CodeSyntaxConcept - Embedding Module for Local Analysis">
 <meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
@@ -90,7 +90,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./extractor.html">Extractor</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./embedding_function.html">Embedding Module for Local Analysis</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -140,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./extractor.html" class="sidebar-item-text sidebar-link active">
+  <a href="./extractor.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Extractor</span></a>
   </div>
 </li>
@@ -158,7 +158,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./embedding_function.html" class="sidebar-item-text sidebar-link">
+  <a href="./embedding_function.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Embedding Module for Local Analysis</span></a>
   </div>
 </li>
@@ -172,20 +172,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#logits-extractor" id="toc-logits-extractor" class="nav-link active" data-scroll-target="#logits-extractor">Logits Extractor</a>
-  <ul class="collapse">
-  <li><a href="#init_model_args" id="toc-init_model_args" class="nav-link" data-scroll-target="#init_model_args">init_model_args</a></li>
-  <li><a href="#c_eleuther" id="toc-c_eleuther" class="nav-link" data-scroll-target="#c_eleuther">c_eleuther</a></li>
-  </ul></li>
-  <li><a href="#init-parameters" id="toc-init-parameters" class="nav-link" data-scroll-target="#init-parameters">Init Parameters</a></li>
-  <li><a href="#extracting-logits-from-a-given-model" id="toc-extracting-logits-from-a-given-model" class="nav-link" data-scroll-target="#extracting-logits-from-a-given-model">Extracting Logits From a Given Model</a>
-  <ul class="collapse">
-  <li><a href="#creating-data-tensors" id="toc-creating-data-tensors" class="nav-link" data-scroll-target="#creating-data-tensors">Creating data tensors</a></li>
-  <li><a href="#loading-model-to-memory" id="toc-loading-model-to-memory" class="nav-link" data-scroll-target="#loading-model-to-memory">Loading Model to Memory</a></li>
-  <li><a href="#executing-logits" id="toc-executing-logits" class="nav-link" data-scroll-target="#executing-logits">Executing Logits</a></li>
-  <li><a href="#create_folder" id="toc-create_folder" class="nav-link" data-scroll-target="#create_folder">create_folder</a></li>
-  <li><a href="#logit_extractor" id="toc-logit_extractor" class="nav-link" data-scroll-target="#logit_extractor">logit_extractor</a></li>
-  </ul></li>
+  <li><a href="#imports" id="toc-imports" class="nav-link active" data-scroll-target="#imports">Imports</a></li>
+  <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
+  <li><a href="#parent-node-types" id="toc-parent-node-types" class="nav-link" data-scroll-target="#parent-node-types">Parent Node Types</a></li>
+  <li><a href="#children-node-types" id="toc-children-node-types" class="nav-link" data-scroll-target="#children-node-types">Children Node Types</a></li>
+  <li><a href="#load-aggregates" id="toc-load-aggregates" class="nav-link" data-scroll-target="#load-aggregates">Load Aggregates</a></li>
+  <li><a href="#snippet-concept-embeddings" id="toc-snippet-concept-embeddings" class="nav-link" data-scroll-target="#snippet-concept-embeddings">Snippet Concept Embeddings</a></li>
+  <li><a href="#get_concept_embeddings" id="toc-get_concept_embeddings" class="nav-link" data-scroll-target="#get_concept_embeddings">get_concept_embeddings</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -194,7 +187,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Extractor</h1>
+<h1 class="title">Embedding Module for Local Analysis</h1>
 </div>
 
 
@@ -210,68 +203,52 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
-<blockquote class="blockquote">
-<p>A Libraray to extract logits from the last layer of a hugginface transformer.</p>
-</blockquote>
-<section id="logits-extractor" class="level1">
-<h1>Logits Extractor</h1>
-<blockquote class="blockquote">
-<p>Extracting Tensor Logits from a given Neural Code Model</p>
-</blockquote>
+<section id="imports" class="level3">
+<h3 class="anchored" data-anchor-id="imports">Imports</h3>
+</section>
+<section id="parameters" class="level3">
+<h3 class="anchored" data-anchor-id="parameters">Parameters</h3>
+</section>
+<section id="parent-node-types" class="level3">
+<h3 class="anchored" data-anchor-id="parent-node-types">Parent Node Types</h3>
+</section>
+<section id="children-node-types" class="level3">
+<h3 class="anchored" data-anchor-id="children-node-types">Children Node Types</h3>
+</section>
+<section id="load-aggregates" class="level3">
+<h3 class="anchored" data-anchor-id="load-aggregates">Load Aggregates</h3>
+</section>
+<section id="snippet-concept-embeddings" class="level3">
+<h3 class="anchored" data-anchor-id="snippet-concept-embeddings">Snippet Concept Embeddings</h3>
 <hr>
-<p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/CodeSyntaxConcept/statistics.py#L47" target="_blank" style="float:right; font-size:smaller">source</a></p>
-<section id="init_model_args" class="level3">
-<h3 class="anchored" data-anchor-id="init_model_args">init_model_args</h3>
+<p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/CodeSyntaxConcept/embedding.py#L19" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="get_concept_embeddings" class="level3">
+<h3 class="anchored" data-anchor-id="get_concept_embeddings">get_concept_embeddings</h3>
 <blockquote class="blockquote">
-<pre><code> init_model_args (current_case='c1', returnModel=False)</code></pre>
+<pre><code> get_concept_embeddings (node, concepts)</code></pre>
 </blockquote>
-<hr>
-<p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/CodeSyntaxConcept/statistics.py#L31" target="_blank" style="float:right; font-size:smaller">source</a></p>
-</section>
-<section id="c_eleuther" class="level3">
-<h3 class="anchored" data-anchor-id="c_eleuther">c_eleuther</h3>
-<blockquote class="blockquote">
-<pre><code> c_eleuther (model_type, returnModel=False, cache_path='../datax/cache')</code></pre>
-</blockquote>
-<p>Eleuther and Salesforce and Parrot uses the same importation</p>
-</section>
-</section>
-<section id="init-parameters" class="level1">
-<h1>Init Parameters</h1>
-<blockquote class="blockquote">
-<p>Loading Models and Testbeds</p>
-</blockquote>
-</section>
-<section id="extracting-logits-from-a-given-model" class="level1">
-<h1>Extracting Logits From a Given Model</h1>
-<section id="creating-data-tensors" class="level3">
-<h3 class="anchored" data-anchor-id="creating-data-tensors">Creating data tensors</h3>
-</section>
-<section id="loading-model-to-memory" class="level3">
-<h3 class="anchored" data-anchor-id="loading-model-to-memory">Loading Model to Memory</h3>
-</section>
-<section id="executing-logits" class="level3">
-<h3 class="anchored" data-anchor-id="executing-logits">Executing Logits</h3>
-<hr>
-<p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/CodeSyntaxConcept/extractor.py#L77" target="_blank" style="float:right; font-size:smaller">source</a></p>
-</section>
-<section id="create_folder" class="level3">
-<h3 class="anchored" data-anchor-id="create_folder">create_folder</h3>
-<blockquote class="blockquote">
-<pre><code> create_folder (path)</code></pre>
-</blockquote>
-<hr>
-<p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/CodeSyntaxConcept/extractor.py#L82" target="_blank" style="float:right; font-size:smaller">source</a></p>
-</section>
-<section id="logit_extractor" class="level3">
-<h3 class="anchored" data-anchor-id="logit_extractor">logit_extractor</h3>
-<blockquote class="blockquote">
-<pre><code> logit_extractor (batch, input, from_index=0)</code></pre>
-</blockquote>
-<p>Output is the class CausalLMOutputWithPast (https://huggingface.co/transformers/v4.10.1/main_classes/output.html?highlight=causallmoutputwithpast)” logits (torch.FloatTensor of shape (batch_size, sequence_length, config.vocab_size)) – Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax). The expression i.type(torch.LongTensor).to(device) is for casting labels for the loss</p>
+<p>retrieve the concepts form the given sample’s AST</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>node</td>
+<td>the tree representation of the sample,</td>
+</tr>
+<tr class="even">
+<td>concepts</td>
+<td>the list of concepts</td>
+</tr>
+</tbody>
+</table>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

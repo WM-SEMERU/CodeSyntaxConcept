@@ -9,3 +9,5 @@ website:
       - 00_utils.ipynb
       - 01_extractor.ipynb
       - 02_bootstrapping.ipynb
+      - 03_aggregation_function.ipynb
+      - 04_embedding_function.ipynb

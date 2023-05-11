@@ -1,35 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://WM-SEMERU.github.io/CodeSyntaxConcept/embedding_function.html</loc>
+    <lastmod>2023-05-11T23:11:49.643Z</lastmod>
+  </url>
+  <url>
     <loc>https://WM-SEMERU.github.io/CodeSyntaxConcept/extractor.html</loc>
-    <lastmod>2023-05-11T22:46:02.166Z</lastmod>
+    <lastmod>2023-05-11T23:11:49.951Z</lastmod>
   </url>
   <url>
     <loc>https://WM-SEMERU.github.io/CodeSyntaxConcept/evaluator.html</loc>
-    <lastmod>2023-05-11T22:46:02.462Z</lastmod>
+    <lastmod>2023-05-11T23:11:50.227Z</lastmod>
   </url>
   <url>
     <loc>https://WM-SEMERU.github.io/CodeSyntaxConcept/parser.html</loc>
-    <lastmod>2023-05-11T22:46:02.762Z</lastmod>
+    <lastmod>2023-05-11T23:11:50.515Z</lastmod>
   </url>
   <url>
     <loc>https://WM-SEMERU.github.io/CodeSyntaxConcept/utils.html</loc>
-    <lastmod>2023-05-11T22:46:03.174Z</lastmod>
+    <lastmod>2023-05-11T23:11:50.939Z</lastmod>
   </url>
   <url>
     <loc>https://WM-SEMERU.github.io/CodeSyntaxConcept/loader.html</loc>
-    <lastmod>2023-05-11T22:46:03.458Z</lastmod>
+    <lastmod>2023-05-11T23:11:51.231Z</lastmod>
+  </url>
+  <url>
+    <loc>https://WM-SEMERU.github.io/CodeSyntaxConcept/aggregation_function.html</loc>
+    <lastmod>2023-05-11T23:11:51.551Z</lastmod>
   </url>
   <url>
     <loc>https://WM-SEMERU.github.io/CodeSyntaxConcept/index.html</loc>
-    <lastmod>2023-05-11T22:46:04.002Z</lastmod>
+    <lastmod>2023-05-11T23:11:52.079Z</lastmod>
   </url>
   <url>
     <loc>https://WM-SEMERU.github.io/CodeSyntaxConcept/tokenizer.html</loc>
-    <lastmod>2023-05-11T22:46:04.318Z</lastmod>
+    <lastmod>2023-05-11T23:11:52.387Z</lastmod>
   </url>
   <url>
     <loc>https://WM-SEMERU.github.io/CodeSyntaxConcept/bootstrapping.html</loc>
-    <lastmod>2023-05-11T22:46:04.638Z</lastmod>
+    <lastmod>2023-05-11T23:11:52.707Z</lastmod>
   </url>
 </urlset>
