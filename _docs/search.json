@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "extractor.html",
+    "href": "extractor.html",
+    "title": "Extractor",
+    "section": "",
+    "text": "A Libraray to extract logits from the last layer of a hugginface transformer.\n\n\nLogits Extractor\n\nExtracting Tensor Logits from a given Neural Code Model\n\n\nsource\n\ninit_model_args\n\n init_model_args (current_case='c1', returnModel=False)\n\n\nsource\n\n\nc_eleuther\n\n c_eleuther (model_type, returnModel=False, cache_path='../datax/cache')\n\nEleuther and Salesforce and Parrot uses the same importation\n\n\n\nInit Parameters\n\nLoading Models and Testbeds\n\n\n\nExtracting Logits From a Given Model\n\nCreating data tensors\n\n\nLoading Model to Memory\n\n\nExecuting Logits\n\nsource\n\n\ncreate_folder\n\n create_folder (path)\n\n\nsource\n\n\nlogit_extractor\n\n logit_extractor (batch, input, from_index=0)\n\nOutput is the class CausalLMOutputWithPast (https://huggingface.co/transformers/v4.10.1/main_classes/output.html?highlight=causallmoutputwithpast)” logits (torch.FloatTensor of shape (batch_size, sequence_length, config.vocab_size)) – Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax). The expression i.type(torch.LongTensor).to(device) is for casting labels for the loss"
+  },
+  {
     "objectID": "evaluator.html",
     "href": "evaluator.html",
     "title": "Evaluation Module",
@@ -47,5 +54,54 @@
     "title": "Core Module Tokenizer",
     "section": "",
     "text": "source\n\nget_token_type\n\n get_token_type (tok_span:tuple, nodes:list, lines:list)\n\nGet the parent AST type and token AST type of a token.\n\n\n\n\nType\nDetails\n\n\n\n\ntok_span\ntuple\n(start, end) position of a token in tokenizer\n\n\nnodes\nlist\nlist of tree-sitter nodes\n\n\nlines\nlist\nlist of lines in the code\n\n\nReturns\ntuple\n(parent_type, token_type) of the token\n\n\n\n\nsource\n\n\nCodeTokenizer\n\n CodeTokenizer (tokenizer, parser, node_types)\n\nA tokenizer for code, which aligns the tokens with the AST nodes.\n\n\nTesting"
+  },
+  {
+    "objectID": "bootstrapping.html",
+    "href": "bootstrapping.html",
+    "title": "Statistical Module (Bootstrapping)",
+    "section": "",
+    "text": "Aggregation Module with Bootstrapping Algorihtms."
+  },
+  {
+    "objectID": "bootstrapping.html#init-parameters",
+    "href": "bootstrapping.html#init-parameters",
+    "title": "Statistical Module (Bootstrapping)",
+    "section": "Init Parameters",
+    "text": "Init Parameters"
+  },
+  {
+    "objectID": "bootstrapping.html#logit-uploading-and-flattening",
+    "href": "bootstrapping.html#logit-uploading-and-flattening",
+    "title": "Statistical Module (Bootstrapping)",
+    "section": "Logit Uploading and Flattening",
+    "text": "Logit Uploading and Flattening\n\nsource\n\nactual_logit\n\n actual_logit (logit_vocab_sample_tensor, tokenized_prompt, tokenizer_fn)\n\nCompute actual logits for a sample\n\nsource\n\n\nmin_max_logits\n\n min_max_logits (logit_vocab_sample_tensor, tokenizer_fn)\n\nCompute min_max for a sample\n\nsource\n\n\ntopk_tuple\n\n topk_tuple (logit_vocab_tensor, largest, tokenizer_fn)\n\nRun topk for a token"
+  },
+  {
+    "objectID": "bootstrapping.html#loss-retrieval",
+    "href": "bootstrapping.html#loss-retrieval",
+    "title": "Statistical Module (Bootstrapping)",
+    "section": "Loss Retrieval",
+    "text": "Loss Retrieval\n\nsource\n\nbatching_loss\n\n batching_loss (size)"
+  },
+  {
+    "objectID": "bootstrapping.html#combining-all-datasets",
+    "href": "bootstrapping.html#combining-all-datasets",
+    "title": "Statistical Module (Bootstrapping)",
+    "section": "Combining all datasets",
+    "text": "Combining all datasets"
+  },
+  {
+    "objectID": "bootstrapping.html#median-bootstrapping",
+    "href": "bootstrapping.html#median-bootstrapping",
+    "title": "Statistical Module (Bootstrapping)",
+    "section": "Median Bootstrapping",
+    "text": "Median Bootstrapping\n\nsource\n\nbootstrapping\n\n bootstrapping (np_data, np_func, size)\n\nCreate a bootstrap sample given data and a function For instance, a bootstrap sample of means, or mediands. The bootstrap replicates are a long as the original size we can choose any observation more than once (resampling with replacement:np.random.choice)\n\nsource\n\n\nconfidence_intervals_v2\n\n confidence_intervals_v2 (data, confidence=0.95)\n\n\nsource\n\n\nstandard_error\n\n standard_error (bootstrapped_data)"
+  },
+  {
+    "objectID": "bootstrapping.html#local-combination",
+    "href": "bootstrapping.html#local-combination",
+    "title": "Statistical Module (Bootstrapping)",
+    "section": "Local Combination",
+    "text": "Local Combination"
   }
 ]

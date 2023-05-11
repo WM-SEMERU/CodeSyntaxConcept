@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Syntax Code Concept Library for Neural Code Model Interpretability">
 
-<title>CodeSyntaxConcept - https://github.com/WM-SEMERU/CodeSyntaxConcept</title>
+<title>CodeSyntaxConcept - Extractor</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -96,11 +61,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="CodeSyntaxConcept - https://github.com/WM-SEMERU/CodeSyntaxConcept">
-<meta property="og:description" content="Syntax Code Concept Library for Neural Code Model Interpretability">
+<meta property="og:title" content="CodeSyntaxConcept - Extractor">
+<meta property="og:description" content="">
 <meta property="og:site-name" content="CodeSyntaxConcept">
-<meta name="twitter:title" content="CodeSyntaxConcept - https://github.com/WM-SEMERU/CodeSyntaxConcept">
-<meta name="twitter:description" content="Syntax Code Concept Library for Neural Code Model Interpretability">
+<meta name="twitter:title" content="CodeSyntaxConcept - Extractor">
+<meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -125,7 +90,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">https://github.com/WM-SEMERU/CodeSyntaxConcept</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./extractor.html">Extractor</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -139,7 +104,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">https://github.com/WM-SEMERU/CodeSyntaxConcept</span></a>
   </div>
 </li>
@@ -175,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./extractor.html" class="sidebar-item-text sidebar-link">
+  <a href="./extractor.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Extractor</span></a>
   </div>
 </li>
@@ -195,10 +160,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#install" id="toc-install" class="nav-link active" data-scroll-target="#install">Install</a>
+  <li><a href="#logits-extractor" id="toc-logits-extractor" class="nav-link active" data-scroll-target="#logits-extractor">Logits Extractor</a>
   <ul class="collapse">
-  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
-  <li><a href="#downloading-the-grammar" id="toc-downloading-the-grammar" class="nav-link" data-scroll-target="#downloading-the-grammar">Downloading the grammar</a></li>
+  <li><a href="#init_model_args" id="toc-init_model_args" class="nav-link" data-scroll-target="#init_model_args">init_model_args</a></li>
+  <li><a href="#c_eleuther" id="toc-c_eleuther" class="nav-link" data-scroll-target="#c_eleuther">c_eleuther</a></li>
+  </ul></li>
+  <li><a href="#init-parameters" id="toc-init-parameters" class="nav-link" data-scroll-target="#init-parameters">Init Parameters</a></li>
+  <li><a href="#extracting-logits-from-a-given-model" id="toc-extracting-logits-from-a-given-model" class="nav-link" data-scroll-target="#extracting-logits-from-a-given-model">Extracting Logits From a Given Model</a>
+  <ul class="collapse">
+  <li><a href="#creating-data-tensors" id="toc-creating-data-tensors" class="nav-link" data-scroll-target="#creating-data-tensors">Creating data tensors</a></li>
+  <li><a href="#loading-model-to-memory" id="toc-loading-model-to-memory" class="nav-link" data-scroll-target="#loading-model-to-memory">Loading Model to Memory</a></li>
+  <li><a href="#executing-logits" id="toc-executing-logits" class="nav-link" data-scroll-target="#executing-logits">Executing Logits</a></li>
+  <li><a href="#create_folder" id="toc-create_folder" class="nav-link" data-scroll-target="#create_folder">create_folder</a></li>
+  <li><a href="#logit_extractor" id="toc-logit_extractor" class="nav-link" data-scroll-target="#logit_extractor">logit_extractor</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -208,14 +182,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">https://github.com/WM-SEMERU/CodeSyntaxConcept</h1>
+<h1 class="title">Extractor</h1>
 </div>
 
-<div>
-  <div class="description">
-    Syntax Code Concept Library for Neural Code Model Interpretability
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -229,32 +198,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
-<p>This file will become your README and also the index of your documentation.</p>
-<section id="install" class="level2">
-<h2 class="anchored" data-anchor-id="install">Install</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install https://github.com/WM_SEMERU/CodeSyntaxConcept</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="setup" class="level3">
-<h3 class="anchored" data-anchor-id="setup">Setup</h3>
-<p>Step 1 - create a conda virtual Enviroment:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> CodeSyntaxConcept</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate CodeSyntaxConcept</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Step 2 - install nbdev</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> fastai nbdev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Step 3 - build the library</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_export</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Step 4 - install dependencies</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>A Libraray to extract logits from the last layer of a hugginface transformer.</p>
+</blockquote>
+<section id="logits-extractor" class="level1">
+<h1>Logits Extractor</h1>
+<blockquote class="blockquote">
+<p>Extracting Tensor Logits from a given Neural Code Model</p>
+</blockquote>
+<hr>
+<p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/CodeSyntaxConcept/statistics.py#L47" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="init_model_args" class="level3">
+<h3 class="anchored" data-anchor-id="init_model_args">init_model_args</h3>
+<blockquote class="blockquote">
+<pre><code> init_model_args (current_case='c1', returnModel=False)</code></pre>
+</blockquote>
+<hr>
+<p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/CodeSyntaxConcept/statistics.py#L31" target="_blank" style="float:right; font-size:smaller">source</a></p>
 </section>
-<section id="downloading-the-grammar" class="level3">
-<h3 class="anchored" data-anchor-id="downloading-the-grammar">Downloading the grammar</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> CodeSyntaxConcept.loader <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>download_grammars([<span class="st">'python'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>/scratch1/svelascodimate/CodeSyntaxConcept/CodeSyntaxConcept/grammars</code></pre>
-</div>
-</div>
+<section id="c_eleuther" class="level3">
+<h3 class="anchored" data-anchor-id="c_eleuther">c_eleuther</h3>
+<blockquote class="blockquote">
+<pre><code> c_eleuther (model_type, returnModel=False, cache_path='../datax/cache')</code></pre>
+</blockquote>
+<p>Eleuther and Salesforce and Parrot uses the same importation</p>
+</section>
+</section>
+<section id="init-parameters" class="level1">
+<h1>Init Parameters</h1>
+<blockquote class="blockquote">
+<p>Loading Models and Testbeds</p>
+</blockquote>
+</section>
+<section id="extracting-logits-from-a-given-model" class="level1">
+<h1>Extracting Logits From a Given Model</h1>
+<section id="creating-data-tensors" class="level3">
+<h3 class="anchored" data-anchor-id="creating-data-tensors">Creating data tensors</h3>
+</section>
+<section id="loading-model-to-memory" class="level3">
+<h3 class="anchored" data-anchor-id="loading-model-to-memory">Loading Model to Memory</h3>
+</section>
+<section id="executing-logits" class="level3">
+<h3 class="anchored" data-anchor-id="executing-logits">Executing Logits</h3>
+<hr>
+<p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/CodeSyntaxConcept/extractor.py#L77" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="create_folder" class="level3">
+<h3 class="anchored" data-anchor-id="create_folder">create_folder</h3>
+<blockquote class="blockquote">
+<pre><code> create_folder (path)</code></pre>
+</blockquote>
+<hr>
+<p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/CodeSyntaxConcept/extractor.py#L82" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="logit_extractor" class="level3">
+<h3 class="anchored" data-anchor-id="logit_extractor">logit_extractor</h3>
+<blockquote class="blockquote">
+<pre><code> logit_extractor (batch, input, from_index=0)</code></pre>
+</blockquote>
+<p>Output is the class CausalLMOutputWithPast (https://huggingface.co/transformers/v4.10.1/main_classes/output.html?highlight=causallmoutputwithpast)” logits (torch.FloatTensor of shape (batch_size, sequence_length, config.vocab_size)) – Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax). The expression i.type(torch.LongTensor).to(device) is for casting labels for the loss</p>
 
 
 </section>

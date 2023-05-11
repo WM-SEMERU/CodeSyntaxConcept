@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://WM-SEMERU.github.io/CodeSyntaxConcept/extractor.html</loc>
+    <lastmod>2023-05-11T20:54:17.684Z</lastmod>
+  </url>
+  <url>
     <loc>https://WM-SEMERU.github.io/CodeSyntaxConcept/evaluator.html</loc>
-    <lastmod>2023-05-10T21:33:22.430Z</lastmod>
+    <lastmod>2023-05-11T20:54:17.988Z</lastmod>
   </url>
   <url>
     <loc>https://WM-SEMERU.github.io/CodeSyntaxConcept/parser.html</loc>
-    <lastmod>2023-05-10T21:33:22.710Z</lastmod>
+    <lastmod>2023-05-11T20:54:18.272Z</lastmod>
   </url>
   <url>
     <loc>https://WM-SEMERU.github.io/CodeSyntaxConcept/utils.html</loc>
-    <lastmod>2023-05-10T21:33:23.110Z</lastmod>
+    <lastmod>2023-05-11T20:54:18.672Z</lastmod>
   </url>
   <url>
     <loc>https://WM-SEMERU.github.io/CodeSyntaxConcept/loader.html</loc>
-    <lastmod>2023-05-10T21:33:23.398Z</lastmod>
+    <lastmod>2023-05-11T20:54:18.956Z</lastmod>
   </url>
   <url>
     <loc>https://WM-SEMERU.github.io/CodeSyntaxConcept/index.html</loc>
-    <lastmod>2023-05-10T21:33:23.934Z</lastmod>
+    <lastmod>2023-05-11T20:54:19.532Z</lastmod>
   </url>
   <url>
     <loc>https://WM-SEMERU.github.io/CodeSyntaxConcept/tokenizer.html</loc>
-    <lastmod>2023-05-10T21:33:24.250Z</lastmod>
+    <lastmod>2023-05-11T20:54:19.832Z</lastmod>
+  </url>
+  <url>
+    <loc>https://WM-SEMERU.github.io/CodeSyntaxConcept/bootstrapping.html</loc>
+    <lastmod>2023-05-11T20:54:20.144Z</lastmod>
   </url>
 </urlset>

@@ -7,3 +7,5 @@ website:
       - 00_parser.ipynb
       - 00_tokenizer.ipynb
       - 00_utils.ipynb
+      - 01_extractor.ipynb
+      - 02_bootstrapping.ipynb

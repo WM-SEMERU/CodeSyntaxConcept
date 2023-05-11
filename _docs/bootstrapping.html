@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Syntax Code Concept Library for Neural Code Model Interpretability">
 
-<title>CodeSyntaxConcept - https://github.com/WM-SEMERU/CodeSyntaxConcept</title>
+<title>CodeSyntaxConcept - Statistical Module (Bootstrapping)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -96,11 +61,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="CodeSyntaxConcept - https://github.com/WM-SEMERU/CodeSyntaxConcept">
-<meta property="og:description" content="Syntax Code Concept Library for Neural Code Model Interpretability">
+<meta property="og:title" content="CodeSyntaxConcept - Statistical Module (Bootstrapping)">
+<meta property="og:description" content="">
 <meta property="og:site-name" content="CodeSyntaxConcept">
-<meta name="twitter:title" content="CodeSyntaxConcept - https://github.com/WM-SEMERU/CodeSyntaxConcept">
-<meta name="twitter:description" content="Syntax Code Concept Library for Neural Code Model Interpretability">
+<meta name="twitter:title" content="CodeSyntaxConcept - Statistical Module (Bootstrapping)">
+<meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -125,7 +90,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">https://github.com/WM-SEMERU/CodeSyntaxConcept</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bootstrapping.html">Statistical Module (Bootstrapping)</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -139,7 +104,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">https://github.com/WM-SEMERU/CodeSyntaxConcept</span></a>
   </div>
 </li>
@@ -181,7 +146,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bootstrapping.html" class="sidebar-item-text sidebar-link">
+  <a href="./bootstrapping.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Statistical Module (Bootstrapping)</span></a>
   </div>
 </li>
@@ -195,10 +160,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#install" id="toc-install" class="nav-link active" data-scroll-target="#install">Install</a>
+  <li><a href="#data-engineering" id="toc-data-engineering" class="nav-link active" data-scroll-target="#data-engineering">Data Engineering</a>
   <ul class="collapse">
-  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
-  <li><a href="#downloading-the-grammar" id="toc-downloading-the-grammar" class="nav-link" data-scroll-target="#downloading-the-grammar">Downloading the grammar</a></li>
+  <li><a href="#init_model_args" id="toc-init_model_args" class="nav-link" data-scroll-target="#init_model_args">init_model_args</a></li>
+  <li><a href="#c_eleuther" id="toc-c_eleuther" class="nav-link" data-scroll-target="#c_eleuther">c_eleuther</a></li>
+  <li><a href="#init-parameters" id="toc-init-parameters" class="nav-link" data-scroll-target="#init-parameters">Init Parameters</a></li>
+  </ul></li>
+  <li><a href="#softmax-normalization-and-data-engineering" id="toc-softmax-normalization-and-data-engineering" class="nav-link" data-scroll-target="#softmax-normalization-and-data-engineering">Softmax Normalization and Data Engineering</a>
+  <ul class="collapse">
+  <li><a href="#testing-tokenizer" id="toc-testing-tokenizer" class="nav-link" data-scroll-target="#testing-tokenizer">Testing Tokenizer</a></li>
+  <li><a href="#logit-uploading-and-flattening" id="toc-logit-uploading-and-flattening" class="nav-link" data-scroll-target="#logit-uploading-and-flattening">Logit Uploading and Flattening</a>
+  <ul class="collapse">
+  <li><a href="#actual_logit" id="toc-actual_logit" class="nav-link" data-scroll-target="#actual_logit">actual_logit</a></li>
+  <li><a href="#min_max_logits" id="toc-min_max_logits" class="nav-link" data-scroll-target="#min_max_logits">min_max_logits</a></li>
+  <li><a href="#topk_tuple" id="toc-topk_tuple" class="nav-link" data-scroll-target="#topk_tuple">topk_tuple</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#logits-execution" id="toc-logits-execution" class="nav-link" data-scroll-target="#logits-execution">Logits Execution</a>
+  <ul class="collapse">
+  <li><a href="#batching_logits" id="toc-batching_logits" class="nav-link" data-scroll-target="#batching_logits">batching_logits</a></li>
+  <li><a href="#loss-retrieval" id="toc-loss-retrieval" class="nav-link" data-scroll-target="#loss-retrieval">Loss Retrieval</a>
+  <ul class="collapse">
+  <li><a href="#batching_loss" id="toc-batching_loss" class="nav-link" data-scroll-target="#batching_loss">batching_loss</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#bootstrapping-analysis" id="toc-bootstrapping-analysis" class="nav-link" data-scroll-target="#bootstrapping-analysis">Bootstrapping Analysis</a>
+  <ul class="collapse">
+  <li><a href="#combining-all-datasets" id="toc-combining-all-datasets" class="nav-link" data-scroll-target="#combining-all-datasets">Combining all datasets</a></li>
+  <li><a href="#median-bootstrapping" id="toc-median-bootstrapping" class="nav-link" data-scroll-target="#median-bootstrapping">Median Bootstrapping</a>
+  <ul class="collapse">
+  <li><a href="#bootstrapping" id="toc-bootstrapping" class="nav-link" data-scroll-target="#bootstrapping">bootstrapping</a></li>
+  <li><a href="#confidence_intervals_v2" id="toc-confidence_intervals_v2" class="nav-link" data-scroll-target="#confidence_intervals_v2">confidence_intervals_v2</a></li>
+  <li><a href="#standard_error" id="toc-standard_error" class="nav-link" data-scroll-target="#standard_error">standard_error</a></li>
+  </ul></li>
+  <li><a href="#local-combination" id="toc-local-combination" class="nav-link" data-scroll-target="#local-combination">Local Combination</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -208,14 +203,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">https://github.com/WM-SEMERU/CodeSyntaxConcept</h1>
+<h1 class="title">Statistical Module (Bootstrapping)</h1>
 </div>
 
-<div>
-  <div class="description">
-    Syntax Code Concept Library for Neural Code Model Interpretability
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -229,32 +219,125 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
-<p>This file will become your README and also the index of your documentation.</p>
-<section id="install" class="level2">
-<h2 class="anchored" data-anchor-id="install">Install</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install https://github.com/WM_SEMERU/CodeSyntaxConcept</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="setup" class="level3">
-<h3 class="anchored" data-anchor-id="setup">Setup</h3>
-<p>Step 1 - create a conda virtual Enviroment:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> CodeSyntaxConcept</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate CodeSyntaxConcept</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Step 2 - install nbdev</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> fastai nbdev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Step 3 - build the library</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_export</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Step 4 - install dependencies</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>Aggregation Module with Bootstrapping Algorihtms.</p>
+</blockquote>
+<section id="data-engineering" class="level1">
+<h1>Data Engineering</h1>
+<hr>
+<p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/CodeSyntaxConcept/statistics.py#L47" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="init_model_args" class="level3">
+<h3 class="anchored" data-anchor-id="init_model_args">init_model_args</h3>
+<blockquote class="blockquote">
+<pre><code> init_model_args (current_case='c1', returnModel=False)</code></pre>
+</blockquote>
+<hr>
+<p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/CodeSyntaxConcept/statistics.py#L31" target="_blank" style="float:right; font-size:smaller">source</a></p>
 </section>
-<section id="downloading-the-grammar" class="level3">
-<h3 class="anchored" data-anchor-id="downloading-the-grammar">Downloading the grammar</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> CodeSyntaxConcept.loader <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>download_grammars([<span class="st">'python'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>/scratch1/svelascodimate/CodeSyntaxConcept/CodeSyntaxConcept/grammars</code></pre>
-</div>
-</div>
+<section id="c_eleuther" class="level3">
+<h3 class="anchored" data-anchor-id="c_eleuther">c_eleuther</h3>
+<blockquote class="blockquote">
+<pre><code> c_eleuther (returnModel=False, model_type='EleutherAI/gpt-neo-125m')</code></pre>
+</blockquote>
+<p>Eleuther and Salesforce and Parrot uses the same importation</p>
+</section>
+<section id="init-parameters" class="level2">
+<h2 class="anchored" data-anchor-id="init-parameters">Init Parameters</h2>
+</section>
+</section>
+<section id="softmax-normalization-and-data-engineering" class="level1">
+<h1>Softmax Normalization and Data Engineering</h1>
+<section id="testing-tokenizer" class="level3">
+<h3 class="anchored" data-anchor-id="testing-tokenizer">Testing Tokenizer</h3>
+</section>
+<section id="logit-uploading-and-flattening" class="level2">
+<h2 class="anchored" data-anchor-id="logit-uploading-and-flattening">Logit Uploading and Flattening</h2>
+<hr>
+<p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/CodeSyntaxConcept/statistics.py#L94" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="actual_logit" class="level3">
+<h3 class="anchored" data-anchor-id="actual_logit">actual_logit</h3>
+<blockquote class="blockquote">
+<pre><code> actual_logit (logit_vocab_sample_tensor, tokenized_prompt, tokenizer_fn)</code></pre>
+</blockquote>
+<p>Compute actual logits for a sample</p>
+<hr>
+<p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/CodeSyntaxConcept/statistics.py#L85" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="min_max_logits" class="level3">
+<h3 class="anchored" data-anchor-id="min_max_logits">min_max_logits</h3>
+<blockquote class="blockquote">
+<pre><code> min_max_logits (logit_vocab_sample_tensor, tokenizer_fn)</code></pre>
+</blockquote>
+<p>Compute min_max for a sample</p>
+<hr>
+<p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/CodeSyntaxConcept/statistics.py#L78" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="topk_tuple" class="level3">
+<h3 class="anchored" data-anchor-id="topk_tuple">topk_tuple</h3>
+<blockquote class="blockquote">
+<pre><code> topk_tuple (logit_vocab_tensor, largest, tokenizer_fn)</code></pre>
+</blockquote>
+<p>Run topk for a token</p>
+</section>
+</section>
+</section>
+<section id="logits-execution" class="level1">
+<h1>Logits Execution</h1>
+<hr>
+<p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/CodeSyntaxConcept/statistics.py#L109" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="batching_logits" class="level3">
+<h3 class="anchored" data-anchor-id="batching_logits">batching_logits</h3>
+<blockquote class="blockquote">
+<pre><code> batching_logits (size)</code></pre>
+</blockquote>
+</section>
+<section id="loss-retrieval" class="level2">
+<h2 class="anchored" data-anchor-id="loss-retrieval">Loss Retrieval</h2>
+<hr>
+<p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/CodeSyntaxConcept/statistics.py#L141" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="batching_loss" class="level3">
+<h3 class="anchored" data-anchor-id="batching_loss">batching_loss</h3>
+<blockquote class="blockquote">
+<pre><code> batching_loss (size)</code></pre>
+</blockquote>
+</section>
+</section>
+</section>
+<section id="bootstrapping-analysis" class="level1">
+<h1>Bootstrapping Analysis</h1>
+<section id="combining-all-datasets" class="level2">
+<h2 class="anchored" data-anchor-id="combining-all-datasets">Combining all datasets</h2>
+</section>
+<section id="median-bootstrapping" class="level2">
+<h2 class="anchored" data-anchor-id="median-bootstrapping">Median Bootstrapping</h2>
+<hr>
+<p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/CodeSyntaxConcept/utils.py#L108" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="bootstrapping" class="level3">
+<h3 class="anchored" data-anchor-id="bootstrapping">bootstrapping</h3>
+<blockquote class="blockquote">
+<pre><code> bootstrapping (np_data, np_func, size)</code></pre>
+</blockquote>
+<p>Create a bootstrap sample given data and a function For instance, a bootstrap sample of means, or mediands. The bootstrap replicates are a long as the original size we can choose any observation more than once (resampling with replacement:np.random.choice)</p>
+<hr>
+<p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/CodeSyntaxConcept/statistics.py#L192" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="confidence_intervals_v2" class="level3">
+<h3 class="anchored" data-anchor-id="confidence_intervals_v2">confidence_intervals_v2</h3>
+<blockquote class="blockquote">
+<pre><code> confidence_intervals_v2 (data, confidence=0.95)</code></pre>
+</blockquote>
+<hr>
+<p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/CodeSyntaxConcept/statistics.py#L201" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="standard_error" class="level3">
+<h3 class="anchored" data-anchor-id="standard_error">standard_error</h3>
+<blockquote class="blockquote">
+<pre><code> standard_error (bootstrapped_data)</code></pre>
+</blockquote>
+</section>
+</section>
+<section id="local-combination" class="level2">
+<h2 class="anchored" data-anchor-id="local-combination">Local Combination</h2>
 
 
 </section>
