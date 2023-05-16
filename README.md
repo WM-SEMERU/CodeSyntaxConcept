@@ -47,4 +47,8 @@ Step 4 - install dependencies
 pip install .
 ```
 
-### Downloading the grammar
+## Results
+
+![boxplot](./results/output_leaf_blox.png "Boxplot")
+
+![boxplot](./workspaces/CodeSyntaxConcept/results/output_leaf_blox.png "Boxplot")
