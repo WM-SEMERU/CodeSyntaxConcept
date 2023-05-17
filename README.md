@@ -4,15 +4,30 @@
 
 ## What is ASTxplainer?
 
-ASTxplainer, an explainability method specific to LLMs for code that
-enables both new methods for LLM evaluation and visualizations of LLM
-predictions that aid end-users in understanding model predictions. At
-its core, ASTxplainer provides an automated method for aligning token
-predictions with AST nodes, by extracting and aggregating normalized
-model logits within AST structures.
+ASTxplainer is an explainability method specific to LLMs for code.
+ASTxplainer enables both new methods for LLM evaluation and
+visualizations of LLM predictions that aid end-users in understanding
+model predictions. At its core, ASTxplainer provides an automated method
+for aligning token predictions with AST nodes, by extracting and
+aggregating normalized model logits within AST structures. Our approach
+is composed of AsC-*Eval*, AsC-*Causal*, and AsC-*Viz*
 
-This file will become your README and also the index of your
-documentation.
+![boxplot](./figures/approach/AstExplainer.png "Approach")
+
+The preconditions to use ASTxplainer is to have held-out testbed and a
+LLM under analysis. The first step, **inference**, is to generate Next
+Token Predictions of each sample in the testbed. The second,
+**evaluation**, step is to compute *Cross-Entropy Loss* and our
+aggregation metric AsC-*Eval*. The third step, **explainability**,
+measures the causal effect of AsC-*Eval* to Cross-Entropy.
+
+## What is AsC-*Eval*?
+
+![boxplot](./figures/approach/AstEval.png "Eval")
+
+## What is AsC-*Causal*?
+
+![boxplot](./figures/approach/docode.png "Causal")
 
 ## Replication Package
 
@@ -20,35 +35,22 @@ documentation.
 
 Below we provide links to the ASTxplainer data set and framework API.
 
-### Setup
-
-Step 1 - create a conda virtual Enviroment:
-
-``` sh
-conda create -n CodeSyntaxConcept
-conda activate CodeSyntaxConcept
-```
-
-Step 2 - install nbdev
-
-``` sh
-conda install -c fastai nbdev
-```
-
-Step 3 - build the library
-
-``` sh
-nbdev_export
-```
-
 Step 4 - install dependencies
 
 ``` sh
 pip install .
 ```
 
-## Results
+## Empirical Results
 
-![boxplot](./results/output_leaf_blox.png "Boxplot")
+### RQ1 AsC Performance Evaluation
 
-![boxplot](./workspaces/CodeSyntaxConcept/results/output_leaf_blox.png "Boxplot")
+![boxplot](./figures/results/rq1/ascperformance.png "ascperformance")
+
+### RQ2 Empirical Causal Evaluation
+
+![boxplot](./figures/results/rq1/ascperformance.png "ascperformance")
+
+### RQ3 User Study on AsC Visualization
+
+![boxplot](./figures/approach/AST-tree2.png "user-study")
