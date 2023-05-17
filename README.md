@@ -12,7 +12,7 @@ for aligning token predictions with AST nodes, by extracting and
 aggregating normalized model logits within AST structures. Our approach
 is composed of AsC-*Eval*, AsC-*Causal*, and AsC-*Viz*
 
-![boxplot](./figures/approach/AstExplainer.png "Approach")
+![boxplot](./figures/approach/AstEval.png "Approach")
 
 The preconditions to use ASTxplainer is to have held-out testbed and a
 LLM under analysis. The first step, **inference**, is to generate Next
@@ -23,11 +23,11 @@ measures the causal effect of AsC-*Eval* to Cross-Entropy.
 
 ## What is AsC-*Eval*?
 
-![boxplot](./figures/approach/AstEval.png "Eval")
+![boxplot](./figures/approach/asceval.png "Eval")
 
 ## What is AsC-*Causal*?
 
-![boxplot](./figures/approach/docode.png "Causal")
+![boxplot](./figures/approach/asccausal.png "Causal")
 
 ## Replication Package
 
@@ -49,8 +49,8 @@ pip install .
 
 ### RQ2 Empirical Causal Evaluation
 
-![boxplot](./figures/results/rq1/ascperformance.png "ascperformance")
+![boxplot](./figures/results/rq2/output_2.7B_corr_loss.png "corr_loss_ccp")
 
 ### RQ3 User Study on AsC Visualization
 
-![boxplot](./figures/approach/AST-tree2.png "user-study")
+![boxplot](./figures/approach/ascviz.png "ascviz")
