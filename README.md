@@ -163,7 +163,8 @@ AsC-*Eval* Performace of $0.84$ with the lowest variability.
 
 - The bar plot below depicts the percentage increments of AsC-*Eval*
   values between baseline and the largest models.
-  ![boxplot](./figures/results/rq1/increment_bars.png "ascperformance")
+
+![boxplot](./figures/results/rq1/increment_bars.png "ascperformance")
 
 ### RQ2 Empirical Causal Evaluation
 
