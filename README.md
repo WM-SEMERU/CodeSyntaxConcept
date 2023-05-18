@@ -35,11 +35,32 @@ estimates the prediction performance of a terminal and non-terminal
 nodes. We propose an explainability function $\varphi$ that relies on
 the alignment function $\delta$ and the aggregation function $\theta$ to
 perform the mapping from log-probabilites to developer-understandable
-concepts.
+concepts. AsC-*Eval*: Left: Nodes are employed as *concepts*. Center:
+Each token is aligned to the end nodes of the AST with an offset
+function. Right: Node probabilities are estimated with an aggregation
+function.
 
 ![boxplot](./figures/approach/asceval.png "Eval")
 
 ## What is AsC-*Causal*?
+
+AsC-*Causal* component can be used to explain and contextualize other
+canonical metrics such as the *cross-entropy loss*. To achieve that, we
+propose a causal inference technique to estimate the impact of Abstract
+Syntax Concepts (AsC) predictions on overall LLM performance. We can
+explain the prediction performance of LLMs using AsC-*Eval* values as
+treatment effects. These effects are computed from **Structural Causal
+Model** (SCM), which represents our assumptions about the underlying
+causal process. In our study, these assumptions take the form of the
+performance of each AsC (treatments $T$), code features (confounders
+$Z$), and the LLMs canonical performance (outcome $Y$). The relationship
+or directionality information of these causal variables is explicitly
+stated in the SCM (see Fig below). The goal of the causal analysis is to
+determine the *Average Treatment Effect* (ATE) that the prediction of
+AsC has on the Cross-Entropy after controlling the confounding
+variables. In other words, we want to estimate the probability
+$p(Y|do(T))$ to identify cases of *spurious correlations* (*i.e.,*
+association is not causation)
 
 ![boxplot](./figures/approach/asccausal.png "Causal")
 
@@ -48,11 +69,61 @@ concepts.
 ### Code & Data
 
 Below we provide links to the ASTxplainer data set and framework API.
+The code under the folder `CodeSyntaxConcept/` is organized as
+follows: - AST Generation: - Aggregation Function: `aggregator.py`,
+`statistics.py` - Alignment Function: - Logits (Next Token Prediction)
+Generator: `extractor.py`
 
-Step 4 - install dependencies
+The API is found in this link: `github Pages` The **galeras** dataset
+can be found here:
 
-``` sh
-pip install .
+### Usage
+
+Original empirical analysis notebooks are under the folder
+`CodeSyntaxConcept/experimental_notebooks/`.
+
+Logit extractor works with HugginFace API `CausalLMOutputWithPast`
+
+``` python
+def logit_extractor(batch, input, from_index=0):
+    """
+    """
+    #Output is in CausalLMOutputWithPast
+    CODEMODEL =  params['codemodel']
+    create_folder(params['numpy_files_logits_path'])
+
+    for idx, n in enumerate( range( from_index, len(input), batch) ):
+        output = [ model( 
+            input_ids = i, 
+            labels = i.type(torch.LongTensor).to(device) 
+            ) for i in input[n:n+batch] ] #Labels must be provided to compute loss
+    
+        output_logits = [ o.logits.detach().to('cpu').numpy() for o in output ]  #Logits Extraction
+        output_loss = np.array([ o.loss.detach().to('cpu').numpy() for o in output ])  #Language modeling loss (for next-token prediction).
+
+        #Saving Callbacks
+        current_batch = idx + (from_index//batch)
+        for jdx, o_logits in enumerate( output_logits ):
+            np.save( params['numpy_files_logits_path']+ '/'+ f'logits_tensor[{jdx+n}]_batch[{current_batch}]_model[{CODEMODEL}].npy', o_logits) #Saving LOGITS
+        np.save( params['numpy_files_logits_path']+ '/'+f'loss_batch[{current_batch}]_model[{CODEMODEL}].npy', output_loss) #Saving LOSS
+        
+        logging.info(f"Batch [{current_batch}] Completed")
+        
+        #Memory Liberated
+        for out in output:
+            del out.logits
+            torch.cuda.empty_cache()
+            del out.loss
+            torch.cuda.empty_cache()
+        for out in output_logits:
+            del out
+            torch.cuda.empty_cache()
+        for out in output_loss:
+            del out
+            torch.cuda.empty_cache()
+        del output
+        del output_logits
+        del output_loss
 ```
 
 ## Empirical Results
