@@ -21,7 +21,7 @@ def download_grammars(
     #languages: Param("Languages to download", str, nargs="+") = "all",
     languages
 ):
-    """Download Tree-sitter grammars"""
+    """Download Tree-sitter grammars, need to be called first"""
     try:
         grammars = _GRAMMARs if languages == "all" else {k: _GRAMMARs[k] for k in languages}
     except KeyError as e:

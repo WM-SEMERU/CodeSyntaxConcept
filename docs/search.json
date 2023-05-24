@@ -25,7 +25,7 @@
     "href": "parser.html",
     "title": "Parser",
     "section": "",
-    "text": "source\n\nTreeSitterParser\n\n TreeSitterParser (tokenizer:CodeSyntaxConcept.tokenizer.CodeTokenizer)\n\nInitialize self. See help(type(self)) for accurate signature.\n\n\nTesting"
+    "text": "source\n\nTreeSitterParser\n\n TreeSitterParser (tokenizer:CodeSyntaxConcept.tokenizer.CodeTokenizer)\n\nClass to parse source code snippets using the Tree-sitter grammar\n\n\nTesting"
   },
   {
     "objectID": "utils.html",
@@ -39,7 +39,7 @@
     "href": "loader.html",
     "title": "CLI Module",
     "section": "",
-    "text": "source\n\ndownload_grammars\n\n download_grammars (languages)\n\nDownload Tree-sitter grammars\n\n\n\n\n\n\n\n\nDetails\n\n\n\n\nlanguages\nlanguages: Param(“Languages to download”, str, nargs=“+”) = “all”,"
+    "text": "source\n\ndownload_grammars\n\n download_grammars (languages)\n\nDownload Tree-sitter grammars, need to be called first\n\n\n\n\n\n\n\n\nDetails\n\n\n\n\nlanguages\nlanguages: Param(“Languages to download”, str, nargs=“+”) = “all”,"
   },
   {
     "objectID": "aggregation_function.html",

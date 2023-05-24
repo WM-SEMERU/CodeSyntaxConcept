@@ -12,11 +12,14 @@ import pandas as pd
 
 # %% ../nbs/00_parser.ipynb 4
 class TreeSitterParser:
-    
+    """Class to parse source code snippets using the Tree-sitter grammar"""
     def __init__(self, tokenizer: CodeTokenizer):
         self.tokenizer = tokenizer
 
-    def process_source_code(self,source_code: str):
+    def process_source_code(self, 
+                            source_code: str #Source code to parse
+                            ):
+        """"Process the given source code snippet and gets the ast node types"""
         ast_representation = self.tokenizer.parser.parse(bytes(source_code, "utf8"))
         ast_nodes = []
         utils.traverse(ast_representation.root_node, ast_nodes)
@@ -26,7 +29,10 @@ class TreeSitterParser:
             source_code_ast_types.append((node.text.decode("utf-8"), node.type, node.parent.type))
         return source_code_ast_types
 
-    def process_model_source_code(self, source_code: str):
+    def process_model_source_code(self, 
+                                  source_code: str # Source code to process
+                                  ):
+        """Process the given source code snippet and gets the encodings and ast types"""
         source_code_encoding = self.tokenizer(source_code)
         source_code_ast_types = []
         for input_id_index, input_id in enumerate(source_code_encoding['input_ids']):
