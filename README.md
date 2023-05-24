@@ -14,9 +14,9 @@ is composed of AsC-*Eval*, AsC-*Causal*, and AsC-*Viz*
 
 ![boxplot](./figures/approach/approach.png "Approach")
 
-The preconditions to use ASTxplainer is to have held-out testbed and a
-LLM under analysis. The first step, **inference**, is to generate Next
-Token Predictions of each sample in the testbed. The second,
+The preconditions to using ASTxplainer is to have a held-out testbed and
+an LLM under analysis. The first step, **inference**, is to generate the
+Next Token Predictions of each sample in the testbed. The second,
 **evaluation**, step is to compute *Cross-Entropy Loss* and our
 aggregation metric AsC-*Eval*. The third step, **explainability**,
 measures the causal effect of AsC-*Eval* to Cross-Entropy.
@@ -57,7 +57,7 @@ $Z$), and the LLMs canonical performance (outcome $Y$). The relationship
 or directionality information of these causal variables is explicitly
 stated in the SCM (see Fig below). The goal of the causal analysis is to
 determine the *Average Treatment Effect* (ATE) that the prediction of
-AsC has on the Cross-Entropy after controlling the confounding
+*AsC* has on the Cross-Entropy after controlling the confounding
 variables. In other words, we want to estimate the probability
 $p(Y|do(T))$ to identify cases of *spurious correlations* (*i.e.,*
 association is not causation)
@@ -181,3 +181,33 @@ cross-entropy.
 
 *How useful is our AST evaluation method for developers in a practical
 scenario?*
+
+## Data Collection
+
+Our selected LLMs were trained on datasets such as BigQuery, BigPython,
+and Pile, which are based on code repositories from Github up until
+2021. We assume that our tested models have already seen the common
+testing datasets, so it is unfair to test code generation with trained
+data. Therefore, we generate a new dataset that consists of recent
+commits performed from January 1st, 2022 to January 1st, 2023. We
+selected Python repositories from Github that have more than one hundred
+stars. We took the commit differences, picked changed files and changed
+methods, and extracted the code snippet for all new and updated methods.
+Since two or more commits can affect the same method, we deleted
+duplicated ones. During the process, we generated the Abstract Syntax
+Tree (AST) for each method and obtained the commit message, code,
+comments (if any), number of nodes, AST levels, AST errors, whitespaces,
+lines of code, cyclomatic complexity, and token counts. We obtained a
+total of 50971 unique snippets.
+
+To build this extraction pipeline we: 1. Used the pydrill library
+\[https://pypi.org/project/pydrill/\] for git repository mining. 2. We
+filtered GitHub Python repositories with commits between January 1st
+2022 and January 1st 2023 and over 100 starts. 3. For each repository we
+extracted the diff change and extracted the changed methods. 4. We yous
+extracted the added and changed method, we assume this is a new unseen
+code. 5. We deleted duplicated methods where the code is exactly the
+same and there were small changes i.e, tabular or white spaces changes.
+6. We used tree-sitter to generate the AST for each method
+\[https://tree-sitter.github.io/tree-sitter/\] 7. We save the code and
+all related features to the output Json file.

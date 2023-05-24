@@ -225,6 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#rq2-empirical-causal-evaluation" id="toc-rq2-empirical-causal-evaluation" class="nav-link" data-scroll-target="#rq2-empirical-causal-evaluation">RQ2 Empirical Causal Evaluation</a></li>
   <li><a href="#rq3-user-study-on-asc-visualization" id="toc-rq3-user-study-on-asc-visualization" class="nav-link" data-scroll-target="#rq3-user-study-on-asc-visualization">RQ3 User Study on AsC Visualization</a></li>
   </ul></li>
+  <li><a href="#data-collection" id="toc-data-collection" class="nav-link" data-scroll-target="#data-collection">Data Collection</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -264,7 +265,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption class="figure-caption">boxplot</figcaption>
 </figure>
 </div>
-<p>The preconditions to use ASTxplainer is to have held-out testbed and a LLM under analysis. The first step, <strong>inference</strong>, is to generate Next Token Predictions of each sample in the testbed. The second, <strong>evaluation</strong>, step is to compute <em>Cross-Entropy Loss</em> and our aggregation metric AsC-<em>Eval</em>. The third step, <strong>explainability</strong>, measures the causal effect of AsC-<em>Eval</em> to Cross-Entropy.</p>
+<p>The preconditions to using ASTxplainer is to have a held-out testbed and an LLM under analysis. The first step, <strong>inference</strong>, is to generate the Next Token Predictions of each sample in the testbed. The second, <strong>evaluation</strong>, step is to compute <em>Cross-Entropy Loss</em> and our aggregation metric AsC-<em>Eval</em>. The third step, <strong>explainability</strong>, measures the causal effect of AsC-<em>Eval</em> to Cross-Entropy.</p>
 </section>
 <section id="what-is-asc-eval" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-asc-eval">What is AsC-<em>Eval</em>?</h2>
@@ -278,7 +279,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="what-is-asc-causal" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-asc-causal">What is AsC-<em>Causal</em>?</h2>
-<p>AsC-<em>Causal</em> component can be used to explain and contextualize other canonical metrics such as the <em>cross-entropy loss</em>. To achieve that, we propose a causal inference technique to estimate the impact of Abstract Syntax Concepts (AsC) predictions on overall LLM performance. We can explain the prediction performance of LLMs using AsC-<em>Eval</em> values as treatment effects. These effects are computed from <strong>Structural Causal Model</strong> (SCM), which represents our assumptions about the underlying causal process. In our study, these assumptions take the form of the performance of each AsC (treatments <span class="math inline">\(T\)</span>), code features (confounders <span class="math inline">\(Z\)</span>), and the LLMs canonical performance (outcome <span class="math inline">\(Y\)</span>). The relationship or directionality information of these causal variables is explicitly stated in the SCM (see Fig below). The goal of the causal analysis is to determine the <em>Average Treatment Effect</em> (ATE) that the prediction of AsC has on the Cross-Entropy after controlling the confounding variables. In other words, we want to estimate the probability <span class="math inline">\(p(Y|do(T))\)</span> to identify cases of <em>spurious correlations</em> (<em>i.e.,</em> association is not causation)</p>
+<p>AsC-<em>Causal</em> component can be used to explain and contextualize other canonical metrics such as the <em>cross-entropy loss</em>. To achieve that, we propose a causal inference technique to estimate the impact of Abstract Syntax Concepts (AsC) predictions on overall LLM performance. We can explain the prediction performance of LLMs using AsC-<em>Eval</em> values as treatment effects. These effects are computed from <strong>Structural Causal Model</strong> (SCM), which represents our assumptions about the underlying causal process. In our study, these assumptions take the form of the performance of each AsC (treatments <span class="math inline">\(T\)</span>), code features (confounders <span class="math inline">\(Z\)</span>), and the LLMs canonical performance (outcome <span class="math inline">\(Y\)</span>). The relationship or directionality information of these causal variables is explicitly stated in the SCM (see Fig below). The goal of the causal analysis is to determine the <em>Average Treatment Effect</em> (ATE) that the prediction of <em>AsC</em> has on the Cross-Entropy after controlling the confounding variables. In other words, we want to estimate the probability <span class="math inline">\(p(Y|do(T))\)</span> to identify cases of <em>spurious correlations</em> (<em>i.e.,</em> association is not causation)</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./figures/approach/asccausal.png" title="Causal" class="img-fluid figure-img"></p>
@@ -381,9 +382,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="rq3-user-study-on-asc-visualization" class="level3">
 <h3 class="anchored" data-anchor-id="rq3-user-study-on-asc-visualization">RQ3 User Study on AsC Visualization</h3>
 <p><em>How useful is our AST evaluation method for developers in a practical scenario?</em></p>
-
-
 </section>
+</section>
+<section id="data-collection" class="level2">
+<h2 class="anchored" data-anchor-id="data-collection">Data Collection</h2>
+<p>Our selected LLMs were trained on datasets such as BigQuery, BigPython, and Pile, which are based on code repositories from Github up until 2021. We assume that our tested models have already seen the common testing datasets, so it is unfair to test code generation with trained data. Therefore, we generate a new dataset that consists of recent commits performed from January 1st, 2022 to January 1st, 2023. We selected Python repositories from Github that have more than one hundred stars. We took the commit differences, picked changed files and changed methods, and extracted the code snippet for all new and updated methods. Since two or more commits can affect the same method, we deleted duplicated ones. During the process, we generated the Abstract Syntax Tree (AST) for each method and obtained the commit message, code, comments (if any), number of nodes, AST levels, AST errors, whitespaces, lines of code, cyclomatic complexity, and token counts. We obtained a total of 50971 unique snippets.</p>
+<p>To build this extraction pipeline we: 1. Used the pydrill library [https://pypi.org/project/pydrill/] for git repository mining. 2. We filtered GitHub Python repositories with commits between January 1st 2022 and January 1st 2023 and over 100 starts. 3. For each repository we extracted the diff change and extracted the changed methods. 4. We yous extracted the added and changed method, we assume this is a new unseen code. 5. We deleted duplicated methods where the code is exactly the same and there were small changes i.e, tabular or white spaces changes. 6. We used tree-sitter to generate the AST for each method [https://tree-sitter.github.io/tree-sitter/] 7. We save the code and all related features to the output Json file.</p>
+
+
 </section>
 </section>
 
