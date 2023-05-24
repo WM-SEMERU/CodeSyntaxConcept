@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Syntax Code Concept Library for Neural Code Model Interpretability">
+<meta name="description" content="Syntax Code Concept Library for Neural Code Model Interpretability (API)[https://github.com/WM-SEMERU/CodeSyntaxConcept]">
 
-<title>CodeSyntaxConcept - https://github.com/WM-SEMERU/CodeSyntaxConcept</title>
+<title>CodeSyntaxConcept - ASTxplainer</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -94,14 +94,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="CodeSyntaxConcept - https://github.com/WM-SEMERU/CodeSyntaxConcept">
-<meta property="og:description" content="Syntax Code Concept Library for Neural Code Model Interpretability">
+<meta property="og:title" content="CodeSyntaxConcept - ASTxplainer">
+<meta property="og:description" content="Syntax Code Concept Library for Neural Code Model Interpretability (API)[https://github.com/WM-SEMERU/CodeSyntaxConcept]">
+<meta property="og:image" content="https://WM-SEMERU.github.io/CodeSyntaxConcept/figures/approach/approach.png">
 <meta property="og:site-name" content="CodeSyntaxConcept">
-<meta name="twitter:title" content="CodeSyntaxConcept - https://github.com/WM-SEMERU/CodeSyntaxConcept">
-<meta name="twitter:description" content="Syntax Code Concept Library for Neural Code Model Interpretability">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CodeSyntaxConcept - ASTxplainer">
+<meta name="twitter:description" content="Syntax Code Concept Library for Neural Code Model Interpretability (API)[https://github.com/WM-SEMERU/CodeSyntaxConcept]">
+<meta name="twitter:image" content="https://WM-SEMERU.github.io/CodeSyntaxConcept/figures/approach/approach.png">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -125,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">https://github.com/WM-SEMERU/CodeSyntaxConcept</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">ASTxplainer</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -140,7 +144,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">https://github.com/WM-SEMERU/CodeSyntaxConcept</span></a>
+ <span class="menu-text">ASTxplainer</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -207,10 +211,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#install" id="toc-install" class="nav-link active" data-scroll-target="#install">Install</a>
+  <li><a href="#what-is-astxplainer" id="toc-what-is-astxplainer" class="nav-link active" data-scroll-target="#what-is-astxplainer">What is ASTxplainer?</a></li>
+  <li><a href="#what-is-asc-eval" id="toc-what-is-asc-eval" class="nav-link" data-scroll-target="#what-is-asc-eval">What is AsC-<em>Eval</em>?</a></li>
+  <li><a href="#what-is-asc-causal" id="toc-what-is-asc-causal" class="nav-link" data-scroll-target="#what-is-asc-causal">What is AsC-<em>Causal</em>?</a></li>
+  <li><a href="#what-is-asc-viz" id="toc-what-is-asc-viz" class="nav-link" data-scroll-target="#what-is-asc-viz">What is AsC-<em>Viz</em>?</a></li>
+  <li><a href="#replication-package" id="toc-replication-package" class="nav-link" data-scroll-target="#replication-package">Replication Package</a>
   <ul class="collapse">
-  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
-  <li><a href="#downloading-the-grammar" id="toc-downloading-the-grammar" class="nav-link" data-scroll-target="#downloading-the-grammar">Downloading the grammar</a></li>
+  <li><a href="#code-data" id="toc-code-data" class="nav-link" data-scroll-target="#code-data">Code &amp; Data</a></li>
+  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a></li>
+  <li><a href="#empirical-results" id="toc-empirical-results" class="nav-link" data-scroll-target="#empirical-results">Empirical Results</a>
+  <ul class="collapse">
+  <li><a href="#rq1-asc-performance-evaluation" id="toc-rq1-asc-performance-evaluation" class="nav-link" data-scroll-target="#rq1-asc-performance-evaluation">RQ1 AsC Performance Evaluation</a></li>
+  <li><a href="#rq2-empirical-causal-evaluation" id="toc-rq2-empirical-causal-evaluation" class="nav-link" data-scroll-target="#rq2-empirical-causal-evaluation">RQ2 Empirical Causal Evaluation</a></li>
+  <li><a href="#rq3-user-study-on-asc-visualization" id="toc-rq3-user-study-on-asc-visualization" class="nav-link" data-scroll-target="#rq3-user-study-on-asc-visualization">RQ3 User Study on AsC Visualization</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -220,12 +234,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">https://github.com/WM-SEMERU/CodeSyntaxConcept</h1>
+<h1 class="title">ASTxplainer</h1>
 </div>
 
 <div>
   <div class="description">
-    Syntax Code Concept Library for Neural Code Model Interpretability
+    Syntax Code Concept Library for Neural Code Model Interpretability (API)[https://github.com/WM-SEMERU/CodeSyntaxConcept]
   </div>
 </div>
 
@@ -241,34 +255,135 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
-<p>This file will become your README and also the index of your documentation.</p>
-<section id="install" class="level2">
-<h2 class="anchored" data-anchor-id="install">Install</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install https://github.com/WM_SEMERU/CodeSyntaxConcept</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="setup" class="level3">
-<h3 class="anchored" data-anchor-id="setup">Setup</h3>
-<p>Step 1 - create a conda virtual Enviroment:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> CodeSyntaxConcept</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate CodeSyntaxConcept</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Step 2 - install nbdev</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> fastai nbdev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Step 3 - build the library</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_export</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Step 4 - install dependencies</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="what-is-astxplainer" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-astxplainer">What is ASTxplainer?</h2>
+<p>ASTxplainer is an explainability method specific to LLMs for code. ASTxplainer enables both new methods for LLM evaluation and visualizations of LLM predictions that aid end-users in understanding model predictions. At its core, ASTxplainer provides an automated method for aligning token predictions with AST nodes, by extracting and aggregating normalized model logits within AST structures. Our approach is composed of AsC-<em>Eval</em>, AsC-<em>Causal</em>, and AsC-<em>Viz</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./figures/approach/approach.png" title="Approach" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">boxplot</figcaption>
+</figure>
+</div>
+<p>The preconditions to use ASTxplainer is to have held-out testbed and a LLM under analysis. The first step, <strong>inference</strong>, is to generate Next Token Predictions of each sample in the testbed. The second, <strong>evaluation</strong>, step is to compute <em>Cross-Entropy Loss</em> and our aggregation metric AsC-<em>Eval</em>. The third step, <strong>explainability</strong>, measures the causal effect of AsC-<em>Eval</em> to Cross-Entropy.</p>
 </section>
-<section id="downloading-the-grammar" class="level3">
-<h3 class="anchored" data-anchor-id="downloading-the-grammar">Downloading the grammar</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> CodeSyntaxConcept.loader <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>download_grammars([<span class="st">'python'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>/scratch1/svelascodimate/CodeSyntaxConcept/CodeSyntaxConcept/grammars</code></pre>
+<section id="what-is-asc-eval" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-asc-eval">What is AsC-<em>Eval</em>?</h2>
+<p>While LLMs have seen striking advances with regard to code generation and other downstream SE tasks, researchers are still not able to evaluate what aspects of code are actually statistically learned by these models. We propose a new metric, AsC-<em>Eval</em>, to showcase the statistical behavior of syntactic elements generated by LLMs. AsC-<em>Eval</em> comprises the basic units for explainability (see Fig. below) as Abstract Syntax Concepts (AsC), an alignment function <span class="math inline">\(\delta\)</span> that links tokens with ASTs, and an aggregation function <span class="math inline">\(\theta\)</span> that estimates the prediction performance of a terminal and non-terminal nodes. We propose an explainability function <span class="math inline">\(\varphi\)</span> that relies on the alignment function <span class="math inline">\(\delta\)</span> and the aggregation function <span class="math inline">\(\theta\)</span> to perform the mapping from log-probabilites to developer-understandable concepts. AsC-<em>Eval</em>: Left: Nodes are employed as <em>concepts</em>. Center: Each token is aligned to the end nodes of the AST with an offset function. Right: Node probabilities are estimated with an aggregation function.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./figures/approach/asceval.png" title="Eval" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">boxplot</figcaption>
+</figure>
 </div>
+</section>
+<section id="what-is-asc-causal" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-asc-causal">What is AsC-<em>Causal</em>?</h2>
+<p>AsC-<em>Causal</em> component can be used to explain and contextualize other canonical metrics such as the <em>cross-entropy loss</em>. To achieve that, we propose a causal inference technique to estimate the impact of Abstract Syntax Concepts (AsC) predictions on overall LLM performance. We can explain the prediction performance of LLMs using AsC-<em>Eval</em> values as treatment effects. These effects are computed from <strong>Structural Causal Model</strong> (SCM), which represents our assumptions about the underlying causal process. In our study, these assumptions take the form of the performance of each AsC (treatments <span class="math inline">\(T\)</span>), code features (confounders <span class="math inline">\(Z\)</span>), and the LLMs canonical performance (outcome <span class="math inline">\(Y\)</span>). The relationship or directionality information of these causal variables is explicitly stated in the SCM (see Fig below). The goal of the causal analysis is to determine the <em>Average Treatment Effect</em> (ATE) that the prediction of AsC has on the Cross-Entropy after controlling the confounding variables. In other words, we want to estimate the probability <span class="math inline">\(p(Y|do(T))\)</span> to identify cases of <em>spurious correlations</em> (<em>i.e.,</em> association is not causation)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./figures/approach/asccausal.png" title="Causal" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">boxplot</figcaption>
+</figure>
 </div>
+</section>
+<section id="what-is-asc-viz" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-asc-viz">What is AsC-<em>Viz</em>?</h2>
+<p>The visualization component AsC-<em>Viz</em> is a graphical explainability technique that displays the AsC-<em>Eval</em> performance values of the terminal and non-terminal nodes for a <em>single</em> local evaluation. We take advantage of the hierarchical structure of PLs to visually accommodate AsC-<em>Eval</em> values into the AST. Fig. below illustrates how we accommodate the AsC-<em>Eval</em> values for a code generation task using <em>gpt-3</em> model. Region <strong>1</strong> shows a box with a prompt with an incomplete snippet followed by a second box with generated tokens in blue. Then, in region <strong>2</strong>, the resulting auto-completed snippet is processed with AsC-<em>Eval</em> and represented as an AST. Each node has information about the AsC-<em>Eval</em> performance after applying local aggregations <span class="math inline">\(\theta\)</span>. The nodes are color-coded. The highest aggregated values (<em>i.e.,</em> best predictions) are displayed in shades of blue. In contrast, nodes with the smallest values (<em>i.e.,</em> worst predictions) are displayed in shades of red. Nodes, in region <strong>2</strong>, encapsulate the code tokens generated by the LLM as presented in region <strong>3</strong>. We refer to tokens linearly organized as <em>sequence representation</em>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./figures/approach/ascviz.png" title="ascviz" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">boxplot</figcaption>
+</figure>
+</div>
+</section>
+<section id="replication-package" class="level1">
+<h1>Replication Package</h1>
+<section id="code-data" class="level2">
+<h2 class="anchored" data-anchor-id="code-data">Code &amp; Data</h2>
+<p>Below we provide links to the ASTxplainer data set and framework API. The code under the folder <code>CodeSyntaxConcept/</code> is organized as follows: - AST Generation: <code>loader.py</code>, <code>parser.py</code>, <code>tokenizer.py</code> - Aggregation Function: <code>aggregator.py</code>, <code>statistics.py</code> - Alignment Function: <code>embedding.py</code> - Logits (Next Token Prediction) Generator: <code>extractor.py</code></p>
+<p>The API is found in this link: <code>github Pages</code> The <strong>galeras</strong> dataset can be found here:</p>
+</section>
+<section id="usage" class="level2">
+<h2 class="anchored" data-anchor-id="usage">Usage</h2>
+<p>Original empirical analysis notebooks are under the folder <code>CodeSyntaxConcept/experimental_notebooks/</code>.</p>
+<p>Logit extractor works with HugginFace API <code>CausalLMOutputWithPast</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> logit_extractor(batch, <span class="bu">input</span>, from_index<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Output is in CausalLMOutputWithPast</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    CODEMODEL <span class="op">=</span>  params[<span class="st">'codemodel'</span>]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    create_folder(params[<span class="st">'numpy_files_logits_path'</span>])</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> idx, n <span class="kw">in</span> <span class="bu">enumerate</span>( <span class="bu">range</span>( from_index, <span class="bu">len</span>(<span class="bu">input</span>), batch) ):</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        output <span class="op">=</span> [ model( </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            input_ids <span class="op">=</span> i, </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            labels <span class="op">=</span> i.<span class="bu">type</span>(torch.LongTensor).to(device) </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            ) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">input</span>[n:n<span class="op">+</span>batch] ] <span class="co">#Labels must be provided to compute loss</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        output_logits <span class="op">=</span> [ o.logits.detach().to(<span class="st">'cpu'</span>).numpy() <span class="cf">for</span> o <span class="kw">in</span> output ]  <span class="co">#Logits Extraction</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        output_loss <span class="op">=</span> np.array([ o.loss.detach().to(<span class="st">'cpu'</span>).numpy() <span class="cf">for</span> o <span class="kw">in</span> output ])  <span class="co">#Language modeling loss (for next-token prediction).</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="co">#Saving Callbacks</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        current_batch <span class="op">=</span> idx <span class="op">+</span> (from_index<span class="op">//</span>batch)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> jdx, o_logits <span class="kw">in</span> <span class="bu">enumerate</span>( output_logits ):</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>            np.save( params[<span class="st">'numpy_files_logits_path'</span>]<span class="op">+</span> <span class="st">'/'</span><span class="op">+</span> <span class="ss">f'logits_tensor[</span><span class="sc">{</span>jdx<span class="op">+</span>n<span class="sc">}</span><span class="ss">]_batch[</span><span class="sc">{</span>current_batch<span class="sc">}</span><span class="ss">]_model[</span><span class="sc">{</span>CODEMODEL<span class="sc">}</span><span class="ss">].npy'</span>, o_logits) <span class="co">#Saving LOGITS</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        np.save( params[<span class="st">'numpy_files_logits_path'</span>]<span class="op">+</span> <span class="st">'/'</span><span class="op">+</span><span class="ss">f'loss_batch[</span><span class="sc">{</span>current_batch<span class="sc">}</span><span class="ss">]_model[</span><span class="sc">{</span>CODEMODEL<span class="sc">}</span><span class="ss">].npy'</span>, output_loss) <span class="co">#Saving LOSS</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        logging.info(<span class="ss">f"Batch [</span><span class="sc">{</span>current_batch<span class="sc">}</span><span class="ss">] Completed"</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="co">#Memory Liberated</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> out <span class="kw">in</span> output:</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>            <span class="kw">del</span> out.logits</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>            torch.cuda.empty_cache()</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>            <span class="kw">del</span> out.loss</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>            torch.cuda.empty_cache()</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> out <span class="kw">in</span> output_logits:</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>            <span class="kw">del</span> out</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>            torch.cuda.empty_cache()</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> out <span class="kw">in</span> output_loss:</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>            <span class="kw">del</span> out</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>            torch.cuda.empty_cache()</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        <span class="kw">del</span> output</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        <span class="kw">del</span> output_logits</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>        <span class="kw">del</span> output_loss</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="empirical-results" class="level2">
+<h2 class="anchored" data-anchor-id="empirical-results">Empirical Results</h2>
+<section id="rq1-asc-performance-evaluation" class="level3">
+<h3 class="anchored" data-anchor-id="rq1-asc-performance-evaluation">RQ1 AsC Performance Evaluation</h3>
+<p><em>To what extent do Large Language Models for code predict syntactic structures?</em> The prediction of syntactic structures highly depends on LLMs’ parameter size and fine-tuning strategy. More specifically the largest evaluated mono language model (2B) , which was fine-tuned with the BigPython and BigQuery datasets, obtains the highest global average AsC-<em>Eval</em> Performace of <span class="math inline">\(0.84\)</span> with the lowest variability.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./figures/results/rq1/ascperformance.png" title="ascperformance" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">boxplot</figcaption>
+</figure>
+</div>
+<ul>
+<li>The bar plot below depicts the percentage increments of AsC-<em>Eval</em> values between baseline and the largest models.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./figures/results/rq1/increment_bars.png" title="ascperformance" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">boxplot</figcaption>
+</figure>
+</div>
+</section>
+<section id="rq2-empirical-causal-evaluation" class="level3">
+<h3 class="anchored" data-anchor-id="rq2-empirical-causal-evaluation">RQ2 Empirical Causal Evaluation</h3>
+<p><em>How do Abstract Syntax Concepts impact LLMs’ canonical prediction performance?</em> We can observe that cross-entropy loss of LLMs tends to be negatively impacted by the AsC-<em>Eval</em> values at snippet granularity. The figure below shows how the function definition concept impacts the cross-entropy.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./figures/results/rq2/output_2.7B_corr_loss.png" title="corr_loss_ccp" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">boxplot</figcaption>
+</figure>
+</div>
+</section>
+<section id="rq3-user-study-on-asc-visualization" class="level3">
+<h3 class="anchored" data-anchor-id="rq3-user-study-on-asc-visualization">RQ3 User Study on AsC Visualization</h3>
+<p><em>How useful is our AST evaluation method for developers in a practical scenario?</em></p>
 
 
+</section>
 </section>
 </section>
 

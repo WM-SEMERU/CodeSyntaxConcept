@@ -92,9 +92,10 @@ organized as *sequence representation*.
 
 Below we provide links to the ASTxplainer data set and framework API.
 The code under the folder `CodeSyntaxConcept/` is organized as
-follows: - AST Generation: - Aggregation Function: `aggregator.py`,
-`statistics.py` - Alignment Function: - Logits (Next Token Prediction)
-Generator: `extractor.py`
+follows: - AST Generation: `loader.py`, `parser.py`, `tokenizer.py` -
+Aggregation Function: `aggregator.py`, `statistics.py` - Alignment
+Function: `embedding.py` - Logits (Next Token Prediction) Generator:
+`extractor.py`
 
 The API is found in this link: `github Pages` The **galeras** dataset
 can be found here:
