@@ -200,14 +200,15 @@ comments (if any), number of nodes, AST levels, AST errors, whitespaces,
 lines of code, cyclomatic complexity, and token counts. We obtained a
 total of 50971 unique snippets.
 
-To build this extraction pipeline we: 1. Used the pydrill library
-\[https://pypi.org/project/pydrill/\] for git repository mining. 2. We
-filtered GitHub Python repositories with commits between January 1st
-2022 and January 1st 2023 and over 100 starts. 3. For each repository we
-extracted the diff change and extracted the changed methods. 4. We yous
-extracted the added and changed method, we assume this is a new unseen
-code. 5. We deleted duplicated methods where the code is exactly the
-same and there were small changes i.e, tabular or white spaces changes.
-6. We used tree-sitter to generate the AST for each method
-\[https://tree-sitter.github.io/tree-sitter/\] 7. We save the code and
-all related features to the output Json file.
+To build this extraction pipeline we: 1. Used the
+[pydrill](https://pypi.org/project/pydrill/) library for git repository
+mining 2. We filtered GitHub Python repositories with commits between
+January 1st 2022 and January 1st 2023 and over 100 starts 3. For each
+repository we extracted the diff change and extracted the changed
+methods 4. We yous extracted the added and changed method, we assume
+this is a new unseen code 5. We deleted duplicated methods where the
+code is exactly the same and there were small changes i.e, tabular or
+white spaces changes 6. We used
+[tree-sitter](https://tree-sitter.github.io/tree-sitter/) to generate
+the AST for each method 7. We save the code and all related features to
+the output Json file
