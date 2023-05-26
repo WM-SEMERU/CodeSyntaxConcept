@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Syntax Code Concept Library for Neural Code Model Interpretability (API)[https://github.com/WM-SEMERU/CodeSyntaxConcept]">
+
+<title>CodeSyntaxConcept - ASTxplainer</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="CodeSyntaxConcept - ASTxplainer">
+<meta property="og:description" content="Syntax Code Concept Library for Neural Code Model Interpretability (API)[https://github.com/WM-SEMERU/CodeSyntaxConcept]">
+<meta property="og:image" content="https://WM-SEMERU.github.io/CodeSyntaxConcept/figures/approach/approach.png">
+<meta property="og:site-name" content="CodeSyntaxConcept">
+<meta name="twitter:title" content="CodeSyntaxConcept - ASTxplainer">
+<meta name="twitter:description" content="Syntax Code Concept Library for Neural Code Model Interpretability (API)[https://github.com/WM-SEMERU/CodeSyntaxConcept]">
+<meta name="twitter:image" content="https://WM-SEMERU.github.io/CodeSyntaxConcept/figures/approach/approach.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">CodeSyntaxConcept</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools ms-auto">
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">ASTxplainer</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">ASTxplainer</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./evaluator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Evaluation Module</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./loader.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CLI Module</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./parser.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Parser</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tokenizer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Core Module Tokenizer</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./utils.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Utility Methods</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./extractor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extractor</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootstrapping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistical Module (Bootstrapping)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./aggregation_function.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Agregation Module</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./embedding_function.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Embedding Module for Local Analysis</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-is-astxplainer" id="toc-what-is-astxplainer" class="nav-link active" data-scroll-target="#what-is-astxplainer">What is ASTxplainer?</a></li>
+  <li><a href="#what-is-asc-eval" id="toc-what-is-asc-eval" class="nav-link" data-scroll-target="#what-is-asc-eval">What is AsC-<em>Eval</em>?</a></li>
+  <li><a href="#what-is-asc-causal" id="toc-what-is-asc-causal" class="nav-link" data-scroll-target="#what-is-asc-causal">What is AsC-<em>Causal</em>?</a></li>
+  <li><a href="#what-is-asc-viz" id="toc-what-is-asc-viz" class="nav-link" data-scroll-target="#what-is-asc-viz">What is AsC-<em>Viz</em>?</a></li>
+  <li><a href="#replication-package" id="toc-replication-package" class="nav-link" data-scroll-target="#replication-package">Replication Package</a>
+  <ul class="collapse">
+  <li><a href="#code-data" id="toc-code-data" class="nav-link" data-scroll-target="#code-data">Code &amp; Data</a></li>
+  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a></li>
+  <li><a href="#empirical-results" id="toc-empirical-results" class="nav-link" data-scroll-target="#empirical-results">Empirical Results</a>
+  <ul class="collapse">
+  <li><a href="#rq1-asc-performance-evaluation" id="toc-rq1-asc-performance-evaluation" class="nav-link" data-scroll-target="#rq1-asc-performance-evaluation">RQ1 AsC Performance Evaluation</a></li>
+  <li><a href="#rq2-empirical-causal-evaluation" id="toc-rq2-empirical-causal-evaluation" class="nav-link" data-scroll-target="#rq2-empirical-causal-evaluation">RQ2 Empirical Causal Evaluation</a></li>
+  <li><a href="#rq3-user-study-on-asc-visualization" id="toc-rq3-user-study-on-asc-visualization" class="nav-link" data-scroll-target="#rq3-user-study-on-asc-visualization">RQ3 User Study on AsC Visualization</a></li>
+  </ul></li>
+  <li><a href="#data-collection" id="toc-data-collection" class="nav-link" data-scroll-target="#data-collection">Data Collection</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/WM-SEMERU/CodeSyntaxConcept/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">ASTxplainer</h1>
+</div>
+
+<div>
+  <div class="description">
+    Syntax Code Concept Library for Neural Code Model Interpretability (API)[https://github.com/WM-SEMERU/CodeSyntaxConcept]
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
+<section id="what-is-astxplainer" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-astxplainer">What is ASTxplainer?</h2>
+<p>ASTxplainer is an explainability method specific to LLMs for code. ASTxplainer enables both new methods for LLM evaluation and visualizations of LLM predictions that aid end-users in understanding model predictions. At its core, ASTxplainer provides an automated method for aligning token predictions with AST nodes, by extracting and aggregating normalized model logits within AST structures. Our approach is composed of AsC-<em>Eval</em>, AsC-<em>Causal</em>, and AsC-<em>Viz</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./figures/approach/approach.png" title="Approach" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">boxplot</figcaption>
+</figure>
+</div>
+<p>The preconditions to using ASTxplainer is to have a held-out testbed and an LLM under analysis. The first step, <strong>inference</strong>, is to generate the Next Token Predictions of each sample in the testbed. The second, <strong>evaluation</strong>, step is to compute <em>Cross-Entropy Loss</em> and our aggregation metric AsC-<em>Eval</em>. The third step, <strong>explainability</strong>, measures the causal effect of AsC-<em>Eval</em> to Cross-Entropy.</p>
+</section>
+<section id="what-is-asc-eval" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-asc-eval">What is AsC-<em>Eval</em>?</h2>
+<p>While LLMs have seen striking advances with regard to code generation and other downstream SE tasks, researchers are still not able to evaluate what aspects of code are actually statistically learned by these models. We propose a new metric, AsC-<em>Eval</em>, to showcase the statistical behavior of syntactic elements generated by LLMs. AsC-<em>Eval</em> comprises the basic units for explainability (see Fig. below) as Abstract Syntax Concepts (AsC), an alignment function <span class="math inline">\(\delta\)</span> that links tokens with ASTs, and an aggregation function <span class="math inline">\(\theta\)</span> that estimates the prediction performance of a terminal and non-terminal nodes. We propose an explainability function <span class="math inline">\(\varphi\)</span> that relies on the alignment function <span class="math inline">\(\delta\)</span> and the aggregation function <span class="math inline">\(\theta\)</span> to perform the mapping from log-probabilites to developer-understandable concepts. AsC-<em>Eval</em>: Left: Nodes are employed as <em>concepts</em>. Center: Each token is aligned to the end nodes of the AST with an offset function. Right: Node probabilities are estimated with an aggregation function.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./figures/approach/asceval.png" title="Eval" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">boxplot</figcaption>
+</figure>
+</div>
+</section>
+<section id="what-is-asc-causal" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-asc-causal">What is AsC-<em>Causal</em>?</h2>
+<p>AsC-<em>Causal</em> component can be used to explain and contextualize other canonical metrics such as the <em>cross-entropy loss</em>. To achieve that, we propose a causal inference technique to estimate the impact of Abstract Syntax Concepts (AsC) predictions on overall LLM performance. We can explain the prediction performance of LLMs using AsC-<em>Eval</em> values as treatment effects. These effects are computed from <strong>Structural Causal Model</strong> (SCM), which represents our assumptions about the underlying causal process. In our study, these assumptions take the form of the performance of each AsC (treatments <span class="math inline">\(T\)</span>), code features (confounders <span class="math inline">\(Z\)</span>), and the LLMs canonical performance (outcome <span class="math inline">\(Y\)</span>). The relationship or directionality information of these causal variables is explicitly stated in the SCM (see Fig below). The goal of the causal analysis is to determine the <em>Average Treatment Effect</em> (ATE) that the prediction of <em>AsC</em> has on the Cross-Entropy after controlling the confounding variables. In other words, we want to estimate the probability <span class="math inline">\(p(Y|do(T))\)</span> to identify cases of <em>spurious correlations</em> (<em>i.e.,</em> association is not causation)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./figures/approach/asccausal.png" title="Causal" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">boxplot</figcaption>
+</figure>
+</div>
+</section>
+<section id="what-is-asc-viz" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-asc-viz">What is AsC-<em>Viz</em>?</h2>
+<p>The visualization component AsC-<em>Viz</em> is a graphical explainability technique that displays the AsC-<em>Eval</em> performance values of the terminal and non-terminal nodes for a <em>single</em> local evaluation. We take advantage of the hierarchical structure of PLs to visually accommodate AsC-<em>Eval</em> values into the AST. Fig. below illustrates how we accommodate the AsC-<em>Eval</em> values for a code generation task using <em>gpt-3</em> model. Region <strong>1</strong> shows a box with a prompt with an incomplete snippet followed by a second box with generated tokens in blue. Then, in region <strong>2</strong>, the resulting auto-completed snippet is processed with AsC-<em>Eval</em> and represented as an AST. Each node has information about the AsC-<em>Eval</em> performance after applying local aggregations <span class="math inline">\(\theta\)</span>. The nodes are color-coded. The highest aggregated values (<em>i.e.,</em> best predictions) are displayed in shades of blue. In contrast, nodes with the smallest values (<em>i.e.,</em> worst predictions) are displayed in shades of red. Nodes, in region <strong>2</strong>, encapsulate the code tokens generated by the LLM as presented in region <strong>3</strong>. We refer to tokens linearly organized as <em>sequence representation</em>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./figures/approach/ascviz.png" title="ascviz" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">boxplot</figcaption>
+</figure>
+</div>
+</section>
+<section id="replication-package" class="level1">
+<h1>Replication Package</h1>
+<section id="code-data" class="level2">
+<h2 class="anchored" data-anchor-id="code-data">Code &amp; Data</h2>
+<p>Below we provide links to the ASTxplainer data set and framework API. The code under the folder <code>CodeSyntaxConcept/</code> is organized as follows: - AST Generation: <code>loader.py</code>, <code>parser.py</code>, <code>tokenizer.py</code> - Aggregation Function: <code>aggregator.py</code>, <code>statistics.py</code> - Alignment Function: <code>embedding.py</code> - Logits (Next Token Prediction) Generator: <code>extractor.py</code></p>
+<p>The API is found in this link: <code>github Pages</code> The <strong>galeras</strong> dataset can be found here:</p>
+</section>
+<section id="usage" class="level2">
+<h2 class="anchored" data-anchor-id="usage">Usage</h2>
+<p>Original empirical analysis notebooks are under the folder <code>CodeSyntaxConcept/experimental_notebooks/</code>.</p>
+<p>Logit extractor works with HugginFace API <code>CausalLMOutputWithPast</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> logit_extractor(batch, <span class="bu">input</span>, from_index<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Output is in CausalLMOutputWithPast</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    CODEMODEL <span class="op">=</span>  params[<span class="st">'codemodel'</span>]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    create_folder(params[<span class="st">'numpy_files_logits_path'</span>])</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> idx, n <span class="kw">in</span> <span class="bu">enumerate</span>( <span class="bu">range</span>( from_index, <span class="bu">len</span>(<span class="bu">input</span>), batch) ):</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        output <span class="op">=</span> [ model( </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            input_ids <span class="op">=</span> i, </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            labels <span class="op">=</span> i.<span class="bu">type</span>(torch.LongTensor).to(device) </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            ) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">input</span>[n:n<span class="op">+</span>batch] ] <span class="co">#Labels must be provided to compute loss</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        output_logits <span class="op">=</span> [ o.logits.detach().to(<span class="st">'cpu'</span>).numpy() <span class="cf">for</span> o <span class="kw">in</span> output ]  <span class="co">#Logits Extraction</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        output_loss <span class="op">=</span> np.array([ o.loss.detach().to(<span class="st">'cpu'</span>).numpy() <span class="cf">for</span> o <span class="kw">in</span> output ])  <span class="co">#Language modeling loss (for next-token prediction).</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="co">#Saving Callbacks</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        current_batch <span class="op">=</span> idx <span class="op">+</span> (from_index<span class="op">//</span>batch)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> jdx, o_logits <span class="kw">in</span> <span class="bu">enumerate</span>( output_logits ):</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>            np.save( params[<span class="st">'numpy_files_logits_path'</span>]<span class="op">+</span> <span class="st">'/'</span><span class="op">+</span> <span class="ss">f'logits_tensor[</span><span class="sc">{</span>jdx<span class="op">+</span>n<span class="sc">}</span><span class="ss">]_batch[</span><span class="sc">{</span>current_batch<span class="sc">}</span><span class="ss">]_model[</span><span class="sc">{</span>CODEMODEL<span class="sc">}</span><span class="ss">].npy'</span>, o_logits) <span class="co">#Saving LOGITS</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        np.save( params[<span class="st">'numpy_files_logits_path'</span>]<span class="op">+</span> <span class="st">'/'</span><span class="op">+</span><span class="ss">f'loss_batch[</span><span class="sc">{</span>current_batch<span class="sc">}</span><span class="ss">]_model[</span><span class="sc">{</span>CODEMODEL<span class="sc">}</span><span class="ss">].npy'</span>, output_loss) <span class="co">#Saving LOSS</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        logging.info(<span class="ss">f"Batch [</span><span class="sc">{</span>current_batch<span class="sc">}</span><span class="ss">] Completed"</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="co">#Memory Liberated</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> out <span class="kw">in</span> output:</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>            <span class="kw">del</span> out.logits</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>            torch.cuda.empty_cache()</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>            <span class="kw">del</span> out.loss</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>            torch.cuda.empty_cache()</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> out <span class="kw">in</span> output_logits:</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>            <span class="kw">del</span> out</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>            torch.cuda.empty_cache()</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> out <span class="kw">in</span> output_loss:</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>            <span class="kw">del</span> out</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>            torch.cuda.empty_cache()</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        <span class="kw">del</span> output</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        <span class="kw">del</span> output_logits</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>        <span class="kw">del</span> output_loss</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="empirical-results" class="level2">
+<h2 class="anchored" data-anchor-id="empirical-results">Empirical Results</h2>
+<section id="rq1-asc-performance-evaluation" class="level3">
+<h3 class="anchored" data-anchor-id="rq1-asc-performance-evaluation">RQ1 AsC Performance Evaluation</h3>
+<p><em>To what extent do Large Language Models for code predict syntactic structures?</em> The prediction of syntactic structures highly depends on LLMs’ parameter size and fine-tuning strategy. More specifically the largest evaluated mono language model (2B) , which was fine-tuned with the BigPython and BigQuery datasets, obtains the highest global average AsC-<em>Eval</em> Performace of <span class="math inline">\(0.84\)</span> with the lowest variability.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./figures/results/rq1/ascperformance.png" title="ascperformance" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">boxplot</figcaption>
+</figure>
+</div>
+<ul>
+<li>The bar plot below depicts the percentage increments of AsC-<em>Eval</em> values between baseline and the largest models.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./figures/results/rq1/increment_bars.png" title="ascperformance" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">boxplot</figcaption>
+</figure>
+</div>
+</section>
+<section id="rq2-empirical-causal-evaluation" class="level3">
+<h3 class="anchored" data-anchor-id="rq2-empirical-causal-evaluation">RQ2 Empirical Causal Evaluation</h3>
+<p><em>How do Abstract Syntax Concepts impact LLMs’ canonical prediction performance?</em> We can observe that cross-entropy loss of LLMs tends to be negatively impacted by the AsC-<em>Eval</em> values at snippet granularity. The figure below shows how the function definition concept impacts the cross-entropy.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./figures/results/rq2/output_2.7B_corr_loss.png" title="corr_loss_ccp" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">boxplot</figcaption>
+</figure>
+</div>
+</section>
+<section id="rq3-user-study-on-asc-visualization" class="level3">
+<h3 class="anchored" data-anchor-id="rq3-user-study-on-asc-visualization">RQ3 User Study on AsC Visualization</h3>
+<p><em>How useful is our AST evaluation method for developers in a practical scenario?</em></p>
+</section>
+</section>
+<section id="data-collection" class="level2">
+<h2 class="anchored" data-anchor-id="data-collection">Data Collection</h2>
+<p>Our selected LLMs were trained on datasets such as BigQuery, BigPython, and Pile, which are based on code repositories from Github up until 2021. We assume that our tested models have already seen the common testing datasets, so it is unfair to test code generation with trained data. Therefore, we generate a new dataset that consists of recent commits performed from January 1st, 2022 to January 1st, 2023. We selected Python repositories from Github that have more than one hundred stars. We took the commit differences, picked changed files and changed methods, and extracted the code snippet for all new and updated methods. Since two or more commits can affect the same method, we deleted duplicated ones. During the process, we generated the Abstract Syntax Tree (AST) for each method and obtained the commit message, code, comments (if any), number of nodes, AST levels, AST errors, whitespaces, lines of code, cyclomatic complexity, and token counts. We obtained a total of 50971 unique snippets.</p>
+<p>To build this extraction pipeline we: 1. Used the pydrill library [https://pypi.org/project/pydrill/] for git repository mining. 2. We filtered GitHub Python repositories with commits between January 1st 2022 and January 1st 2023 and over 100 starts. 3. For each repository we extracted the diff change and extracted the changed methods. 4. We yous extracted the added and changed method, we assume this is a new unseen code. 5. We deleted duplicated methods where the code is exactly the same and there were small changes i.e, tabular or white spaces changes. 6. We used tree-sitter to generate the AST for each method [https://tree-sitter.github.io/tree-sitter/] 7. We save the code and all related features to the output Json file.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
