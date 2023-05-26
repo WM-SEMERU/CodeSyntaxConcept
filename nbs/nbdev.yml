@@ -1,0 +1,9 @@
+project:
+  output-dir: docs
+
+website:
+  title: "CodeSyntaxConcept"
+  site-url: "https://xxxxx.github.io/CodeSyntaxConcept"
+  description: "Code Syntax Concept Library for Neural Code Models Interpretability"
+  repo-branch: master
+  repo-url: "https://github.com/xxxxx/CodeSyntaxConcept"

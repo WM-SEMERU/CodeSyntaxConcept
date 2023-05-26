@@ -1,0 +1,170 @@
+[
+  {
+    "objectID": "embedding_function.html",
+    "href": "embedding_function.html",
+    "title": "Embedding Module for Local Analysis",
+    "section": "",
+    "text": "Imports\n\n\nParameters\n\n\nParent Node Types\n\n\nChildren Node Types\n\n\nLoad Aggregates\n\n\nSnippet Concept Embeddings\n\nsource\n\n\nget_concept_embeddings\n\n get_concept_embeddings (node, concepts)\n\nretrieve the concepts form the given sample’s AST\n\n\n\n\nDetails\n\n\n\n\nnode\nthe tree representation of the sample,\n\n\nconcepts\nthe list of concepts"
+  },
+  {
+    "objectID": "extractor.html",
+    "href": "extractor.html",
+    "title": "Extractor",
+    "section": "",
+    "text": "A Libraray to extract logits from the last layer of a hugginface transformer.\n\n\nLogits Extractor\n\nExtracting Tensor Logits from a given Neural Code Model\n\n\nsource\n\ninit_model_args\n\n init_model_args (current_case='c1', returnModel=False)\n\n\nsource\n\n\nc_eleuther\n\n c_eleuther (model_type, returnModel=False, cache_path='../datax/cache')\n\nEleuther and Salesforce and Parrot uses the same importation\n\n\n\nInit Parameters\n\nLoading Models and Testbeds\n\n\n\nExtracting Logits From a Given Model\n\nCreating data tensors\n\n\nLoading Model to Memory\n\n\nExecuting Logits\n\nsource\n\n\ncreate_folder\n\n create_folder (path)\n\n\nsource\n\n\nlogit_extractor\n\n logit_extractor (batch, input, from_index=0)\n\nOutput is the class CausalLMOutputWithPast (https://huggingface.co/transformers/v4.10.1/main_classes/output.html?highlight=causallmoutputwithpast)” logits (torch.FloatTensor of shape (batch_size, sequence_length, config.vocab_size)) – Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax). The expression i.type(torch.LongTensor).to(device) is for casting labels for the loss"
+  },
+  {
+    "objectID": "evaluator.html",
+    "href": "evaluator.html",
+    "title": "Evaluation Module",
+    "section": "",
+    "text": "source\n\nEvaluator\n\n Evaluator (checkpoint:str, language)\n\nInitialize self. See help(type(self)) for accurate signature.\n\n\nTesting"
+  },
+  {
+    "objectID": "parser.html",
+    "href": "parser.html",
+    "title": "Parser",
+    "section": "",
+    "text": "source\n\nTreeSitterParser\n\n TreeSitterParser (tokenizer:CodeSyntaxConcept.tokenizer.CodeTokenizer)\n\nClass to parse source code snippets using the Tree-sitter grammar\n\n\nTesting"
+  },
+  {
+    "objectID": "utils.html",
+    "href": "utils.html",
+    "title": "Utility Methods",
+    "section": "",
+    "text": "source\n\ntraverse\n\n traverse (node, results)\n\nTraverse in a recursive way, a tree-sitter node and append results to a list.\n\n\n\n\nType\nDetails\n\n\n\n\nnode\n\ntree-sitter node\n\n\nresults\n\nlist to append results to\n\n\nReturns\nNone\n\n\n\n\n\nsource\n\n\nfind_nodes\n\n find_nodes (node, target_node_type, results)\n\nTraverses the tree and find the specified node type\n\n\n\n\nType\nDetails\n\n\n\n\nnode\n\nTree sitter ast tree\n\n\ntarget_node_type\n\nTarget node type to search in the tree\n\n\nresults\n\nList to append the resutls to\n\n\nReturns\nNone\n\n\n\n\n\nsource\n\n\nfind_parent_nodes\n\n find_parent_nodes (node, results)\n\nTraverses the tree and find the parent nodes\n\n\n\n\nType\nDetails\n\n\n\n\nnode\n\nTree sitter ast tree\n\n\nresults\n\nList to append the resutls to\n\n\nReturns\nNone\n\n\n\n\n\nsource\n\n\nunroll_node_types\n\n unroll_node_types (nested_node_types:dict)\n\n\n\n\n\nType\nDetails\n\n\n\n\nnested_node_types\ndict\nnode_types from tree-sitter\n\n\nReturns\nlist\nlist of node types\n\n\n\n\nsource\n\n\nconvert_to_offset\n\n convert_to_offset (point, lines:list)\n\nConvert the point to an offset\n\n\n\n\nType\nDetails\n\n\n\n\npoint\n\npoint to convert\n\n\nlines\nlist\nlist of lines in the source code\n\n\n\n\nsource\n\n\nget_test_sets\n\n get_test_sets (test_set, language, max_token_number, model_tokenizer,\n                with_ranks=False, num_proc=1)\n\n\nsource\n\n\nget_sub_set_test_set\n\n get_sub_set_test_set (test_set, test_size:int)\n\n\nsource\n\n\nget_random_sub_set_test_set\n\n get_random_sub_set_test_set (test_set, test_size:int)\n\n\nsource\n\n\nbootstrapping\n\n bootstrapping (np_data, np_func, size)\n\nCreate a bootstrap sample given data and a function For instance, a bootstrap sample of means, or mediands. The bootstrap replicates are a long as the original size we can choose any observation more than once (resampling with replacement:np.random.choice)"
+  },
+  {
+    "objectID": "loader.html",
+    "href": "loader.html",
+    "title": "CLI Module",
+    "section": "",
+    "text": "source\n\ndownload_grammars\n\n download_grammars (languages)\n\nDownload Tree-sitter grammars, need to be called first\n\n\n\n\n\n\n\n\nDetails\n\n\n\n\nlanguages\nlanguages: Param(“Languages to download”, str, nargs=“+”) = “all”,"
+  },
+  {
+    "objectID": "aggregation_function.html",
+    "href": "aggregation_function.html",
+    "title": "Agregation Module",
+    "section": "",
+    "text": "Imports\n\n\nParameters\n\n\nTokenizer\n\n\nActual Token Predictions\n\n\nToken Binding\n\nsource\n\n\nbind_bpe_tokens\n\n bind_bpe_tokens (node, encoding, actual_probs, lines)\n\nTraverses the tree and bind the leaves with the corresponding node\n\n\n\n\nDetails\n\n\n\n\nnode\nTree sitter ast tree\n\n\nencoding\nToken encoding\n\n\nactual_probs\nActual probabilities\n\n\nlines\nSource code Snippet\n\n\n\n\nsource\n\n\nprocess_bindings\n\n process_bindings (node:dict)\n\nprocess the bindings in the tree to agregate the probabilities\n\n\n\n\nType\nDetails\n\n\n\n\nnode\ndict\nBinded AST tree with actual probabilities\n\n\nReturns\nNone"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ASTxplainer",
+    "section": "",
+    "text": "ASTxplainer is an explainability method specific to LLMs for code. ASTxplainer enables both new methods for LLM evaluation and visualizations of LLM predictions that aid end-users in understanding model predictions. At its core, ASTxplainer provides an automated method for aligning token predictions with AST nodes, by extracting and aggregating normalized model logits within AST structures. Our approach is composed of AsC-Eval, AsC-Causal, and AsC-Viz\n\n\n\nboxplot\n\n\nThe preconditions to using ASTxplainer is to have a held-out testbed and an LLM under analysis. The first step, inference, is to generate the Next Token Predictions of each sample in the testbed. The second, evaluation, step is to compute Cross-Entropy Loss and our aggregation metric AsC-Eval. The third step, explainability, measures the causal effect of AsC-Eval to Cross-Entropy."
+  },
+  {
+    "objectID": "index.html#what-is-astxplainer",
+    "href": "index.html#what-is-astxplainer",
+    "title": "ASTxplainer",
+    "section": "",
+    "text": "ASTxplainer is an explainability method specific to LLMs for code. ASTxplainer enables both new methods for LLM evaluation and visualizations of LLM predictions that aid end-users in understanding model predictions. At its core, ASTxplainer provides an automated method for aligning token predictions with AST nodes, by extracting and aggregating normalized model logits within AST structures. Our approach is composed of AsC-Eval, AsC-Causal, and AsC-Viz\n\n\n\nboxplot\n\n\nThe preconditions to using ASTxplainer is to have a held-out testbed and an LLM under analysis. The first step, inference, is to generate the Next Token Predictions of each sample in the testbed. The second, evaluation, step is to compute Cross-Entropy Loss and our aggregation metric AsC-Eval. The third step, explainability, measures the causal effect of AsC-Eval to Cross-Entropy."
+  },
+  {
+    "objectID": "index.html#what-is-asc-eval",
+    "href": "index.html#what-is-asc-eval",
+    "title": "ASTxplainer",
+    "section": "What is AsC-Eval?",
+    "text": "What is AsC-Eval?\nWhile LLMs have seen striking advances with regard to code generation and other downstream SE tasks, researchers are still not able to evaluate what aspects of code are actually statistically learned by these models. We propose a new metric, AsC-Eval, to showcase the statistical behavior of syntactic elements generated by LLMs. AsC-Eval comprises the basic units for explainability (see Fig. below) as Abstract Syntax Concepts (AsC), an alignment function \\(\\delta\\) that links tokens with ASTs, and an aggregation function \\(\\theta\\) that estimates the prediction performance of a terminal and non-terminal nodes. We propose an explainability function \\(\\varphi\\) that relies on the alignment function \\(\\delta\\) and the aggregation function \\(\\theta\\) to perform the mapping from log-probabilites to developer-understandable concepts. AsC-Eval: Left: Nodes are employed as concepts. Center: Each token is aligned to the end nodes of the AST with an offset function. Right: Node probabilities are estimated with an aggregation function.\n\n\n\nboxplot"
+  },
+  {
+    "objectID": "index.html#what-is-asc-causal",
+    "href": "index.html#what-is-asc-causal",
+    "title": "ASTxplainer",
+    "section": "What is AsC-Causal?",
+    "text": "What is AsC-Causal?\nAsC-Causal component can be used to explain and contextualize other canonical metrics such as the cross-entropy loss. To achieve that, we propose a causal inference technique to estimate the impact of Abstract Syntax Concepts (AsC) predictions on overall LLM performance. We can explain the prediction performance of LLMs using AsC-Eval values as treatment effects. These effects are computed from Structural Causal Model (SCM), which represents our assumptions about the underlying causal process. In our study, these assumptions take the form of the performance of each AsC (treatments \\(T\\)), code features (confounders \\(Z\\)), and the LLMs canonical performance (outcome \\(Y\\)). The relationship or directionality information of these causal variables is explicitly stated in the SCM (see Fig below). The goal of the causal analysis is to determine the Average Treatment Effect (ATE) that the prediction of AsC has on the Cross-Entropy after controlling the confounding variables. In other words, we want to estimate the probability \\(p(Y|do(T))\\) to identify cases of spurious correlations (i.e., association is not causation)\n\n\n\nboxplot"
+  },
+  {
+    "objectID": "index.html#what-is-asc-viz",
+    "href": "index.html#what-is-asc-viz",
+    "title": "ASTxplainer",
+    "section": "What is AsC-Viz?",
+    "text": "What is AsC-Viz?\nThe visualization component AsC-Viz is a graphical explainability technique that displays the AsC-Eval performance values of the terminal and non-terminal nodes for a single local evaluation. We take advantage of the hierarchical structure of PLs to visually accommodate AsC-Eval values into the AST. Fig. below illustrates how we accommodate the AsC-Eval values for a code generation task using gpt-3 model. Region 1 shows a box with a prompt with an incomplete snippet followed by a second box with generated tokens in blue. Then, in region 2, the resulting auto-completed snippet is processed with AsC-Eval and represented as an AST. Each node has information about the AsC-Eval performance after applying local aggregations \\(\\theta\\). The nodes are color-coded. The highest aggregated values (i.e., best predictions) are displayed in shades of blue. In contrast, nodes with the smallest values (i.e., worst predictions) are displayed in shades of red. Nodes, in region 2, encapsulate the code tokens generated by the LLM as presented in region 3. We refer to tokens linearly organized as sequence representation.\n\n\n\nboxplot"
+  },
+  {
+    "objectID": "index.html#code-data",
+    "href": "index.html#code-data",
+    "title": "ASTxplainer",
+    "section": "Code & Data",
+    "text": "Code & Data\nBelow we provide links to the ASTxplainer data set and framework API. The code under the folder CodeSyntaxConcept/ is organized as follows: - AST Generation: loader.py, parser.py, tokenizer.py - Aggregation Function: aggregator.py, statistics.py - Alignment Function: embedding.py - Logits (Next Token Prediction) Generator: extractor.py\nThe API is found in this link: github Pages The galeras dataset can be found here:"
+  },
+  {
+    "objectID": "index.html#usage",
+    "href": "index.html#usage",
+    "title": "ASTxplainer",
+    "section": "Usage",
+    "text": "Usage\nOriginal empirical analysis notebooks are under the folder CodeSyntaxConcept/experimental_notebooks/.\nLogit extractor works with HugginFace API CausalLMOutputWithPast\ndef logit_extractor(batch, input, from_index=0):\n    \"\"\"\n    \"\"\"\n    #Output is in CausalLMOutputWithPast\n    CODEMODEL =  params['codemodel']\n    create_folder(params['numpy_files_logits_path'])\n\n    for idx, n in enumerate( range( from_index, len(input), batch) ):\n        output = [ model( \n            input_ids = i, \n            labels = i.type(torch.LongTensor).to(device) \n            ) for i in input[n:n+batch] ] #Labels must be provided to compute loss\n    \n        output_logits = [ o.logits.detach().to('cpu').numpy() for o in output ]  #Logits Extraction\n        output_loss = np.array([ o.loss.detach().to('cpu').numpy() for o in output ])  #Language modeling loss (for next-token prediction).\n\n        #Saving Callbacks\n        current_batch = idx + (from_index//batch)\n        for jdx, o_logits in enumerate( output_logits ):\n            np.save( params['numpy_files_logits_path']+ '/'+ f'logits_tensor[{jdx+n}]_batch[{current_batch}]_model[{CODEMODEL}].npy', o_logits) #Saving LOGITS\n        np.save( params['numpy_files_logits_path']+ '/'+f'loss_batch[{current_batch}]_model[{CODEMODEL}].npy', output_loss) #Saving LOSS\n        \n        logging.info(f\"Batch [{current_batch}] Completed\")\n        \n        #Memory Liberated\n        for out in output:\n            del out.logits\n            torch.cuda.empty_cache()\n            del out.loss\n            torch.cuda.empty_cache()\n        for out in output_logits:\n            del out\n            torch.cuda.empty_cache()\n        for out in output_loss:\n            del out\n            torch.cuda.empty_cache()\n        del output\n        del output_logits\n        del output_loss"
+  },
+  {
+    "objectID": "index.html#empirical-results",
+    "href": "index.html#empirical-results",
+    "title": "ASTxplainer",
+    "section": "Empirical Results",
+    "text": "Empirical Results\n\nRQ1 AsC Performance Evaluation\nTo what extent do Large Language Models for code predict syntactic structures? The prediction of syntactic structures highly depends on LLMs’ parameter size and fine-tuning strategy. More specifically the largest evaluated mono language model (2B) , which was fine-tuned with the BigPython and BigQuery datasets, obtains the highest global average AsC-Eval Performace of \\(0.84\\) with the lowest variability.\n\n\n\nboxplot\n\n\n\nThe bar plot below depicts the percentage increments of AsC-Eval values between baseline and the largest models.\n\n\n\n\nboxplot\n\n\n\n\nRQ2 Empirical Causal Evaluation\nHow do Abstract Syntax Concepts impact LLMs’ canonical prediction performance? We can observe that cross-entropy loss of LLMs tends to be negatively impacted by the AsC-Eval values at snippet granularity. The figure below shows how the function definition concept impacts the cross-entropy.\n\n\n\nboxplot\n\n\n\n\nRQ3 User Study on AsC Visualization\nHow useful is our AST evaluation method for developers in a practical scenario?"
+  },
+  {
+    "objectID": "index.html#data-collection",
+    "href": "index.html#data-collection",
+    "title": "ASTxplainer",
+    "section": "Data Collection",
+    "text": "Data Collection\nOur selected LLMs were trained on datasets such as BigQuery, BigPython, and Pile, which are based on code repositories from Github up until 2021. We assume that our tested models have already seen the common testing datasets, so it is unfair to test code generation with trained data. Therefore, we generate a new dataset that consists of recent commits performed from January 1st, 2022 to January 1st, 2023. We selected Python repositories from Github that have more than one hundred stars. We took the commit differences, picked changed files and changed methods, and extracted the code snippet for all new and updated methods. Since two or more commits can affect the same method, we deleted duplicated ones. During the process, we generated the Abstract Syntax Tree (AST) for each method and obtained the commit message, code, comments (if any), number of nodes, AST levels, AST errors, whitespaces, lines of code, cyclomatic complexity, and token counts. We obtained a total of 50971 unique snippets.\nTo build this extraction pipeline we: 1. Used the pydrill library [https://pypi.org/project/pydrill/] for git repository mining. 2. We filtered GitHub Python repositories with commits between January 1st 2022 and January 1st 2023 and over 100 starts. 3. For each repository we extracted the diff change and extracted the changed methods. 4. We yous extracted the added and changed method, we assume this is a new unseen code. 5. We deleted duplicated methods where the code is exactly the same and there were small changes i.e, tabular or white spaces changes. 6. We used tree-sitter to generate the AST for each method [https://tree-sitter.github.io/tree-sitter/] 7. We save the code and all related features to the output Json file."
+  },
+  {
+    "objectID": "tokenizer.html",
+    "href": "tokenizer.html",
+    "title": "Core Module Tokenizer",
+    "section": "",
+    "text": "source\n\nget_token_type\n\n get_token_type (tok_span:tuple, nodes:list, lines:list)\n\nGet the parent AST type and token AST type of a token.\n\n\n\n\nType\nDetails\n\n\n\n\ntok_span\ntuple\n(start, end) position of a token in tokenizer\n\n\nnodes\nlist\nlist of tree-sitter nodes\n\n\nlines\nlist\nlist of lines in the code\n\n\nReturns\ntuple\n(parent_type, token_type) of the token\n\n\n\n\nsource\n\n\nCodeTokenizer\n\n CodeTokenizer (tokenizer, parser, node_types)\n\nA tokenizer for code, which aligns the tokens with the AST nodes.\n\n\nTesting"
+  },
+  {
+    "objectID": "bootstrapping.html",
+    "href": "bootstrapping.html",
+    "title": "Statistical Module (Bootstrapping)",
+    "section": "",
+    "text": "Aggregation Module with Bootstrapping Algorihtms."
+  },
+  {
+    "objectID": "bootstrapping.html#init-parameters",
+    "href": "bootstrapping.html#init-parameters",
+    "title": "Statistical Module (Bootstrapping)",
+    "section": "Init Parameters",
+    "text": "Init Parameters"
+  },
+  {
+    "objectID": "bootstrapping.html#logit-uploading-and-flattening",
+    "href": "bootstrapping.html#logit-uploading-and-flattening",
+    "title": "Statistical Module (Bootstrapping)",
+    "section": "Logit Uploading and Flattening",
+    "text": "Logit Uploading and Flattening\n\nsource\n\nactual_logit\n\n actual_logit (logit_vocab_sample_tensor, tokenized_prompt, tokenizer_fn)\n\nCompute actual logits for a sample\n\nsource\n\n\nmin_max_logits\n\n min_max_logits (logit_vocab_sample_tensor, tokenizer_fn)\n\nCompute min_max for a sample\n\nsource\n\n\ntopk_tuple\n\n topk_tuple (logit_vocab_tensor, largest, tokenizer_fn)\n\nRun topk for a token"
+  },
+  {
+    "objectID": "bootstrapping.html#loss-retrieval",
+    "href": "bootstrapping.html#loss-retrieval",
+    "title": "Statistical Module (Bootstrapping)",
+    "section": "Loss Retrieval",
+    "text": "Loss Retrieval\n\nsource\n\nbatching_loss\n\n batching_loss (size)"
+  },
+  {
+    "objectID": "bootstrapping.html#combining-all-datasets",
+    "href": "bootstrapping.html#combining-all-datasets",
+    "title": "Statistical Module (Bootstrapping)",
+    "section": "Combining all datasets",
+    "text": "Combining all datasets"
+  },
+  {
+    "objectID": "bootstrapping.html#median-bootstrapping",
+    "href": "bootstrapping.html#median-bootstrapping",
+    "title": "Statistical Module (Bootstrapping)",
+    "section": "Median Bootstrapping",
+    "text": "Median Bootstrapping\n\nsource\n\nbootstrapping\n\n bootstrapping (np_data, np_func, size)\n\nCreate a bootstrap sample given data and a function For instance, a bootstrap sample of means, or mediands. The bootstrap replicates are a long as the original size we can choose any observation more than once (resampling with replacement:np.random.choice)\n\nsource\n\n\nconfidence_intervals_v2\n\n confidence_intervals_v2 (data, confidence=0.95)\n\n\nsource\n\n\nstandard_error\n\n standard_error (bootstrapped_data)"
+  },
+  {
+    "objectID": "bootstrapping.html#local-combination",
+    "href": "bootstrapping.html#local-combination",
+    "title": "Statistical Module (Bootstrapping)",
+    "section": "Local Combination",
+    "text": "Local Combination"
+  }
+]
