@@ -12,7 +12,7 @@ for aligning token predictions with AST nodes, by extracting and
 aggregating normalized model logits within AST structures. Our approach
 is composed of AsC-*Eval*, AsC-*Causal*, and AsC-*Viz*
 
-![boxplot](https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/figures/approach/approach.png "Approach")
+![boxplot](https://github.com/xxxxx/CodeSyntaxConcept/blob/master/figures/approach/approach.png "Approach")
 
 The preconditions to using ASTxplainer is to have a held-out testbed and
 an LLM under analysis. The first step, **inference**, is to generate the
@@ -184,11 +184,11 @@ scenario?* We proposed 3 different treetments. The following reports
 summarize the user study:
 
 - Treatment 1: [A complete AST
-  Representation](https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/reports/AST-Complete.pdf)
+  Representation](https://github.com/xxxxx/CodeSyntaxConcept/blob/master/reports/AST-Complete.pdf)
 - Treatment 2: [A partial AST
-  Representation](https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/reports/AST-Partial.pdf)  
+  Representation](https://github.com/xxxxx/CodeSyntaxConcept/blob/master/reports/AST-Partial.pdf)  
 - Treatment 3: [Sequence
-  Representation](https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/reports/Sequence.pdf)
+  Representation](https://github.com/xxxxx/CodeSyntaxConcept/blob/master/reports/Sequence.pdf)
 
 ## Data Collection
 
