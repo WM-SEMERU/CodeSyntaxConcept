@@ -181,12 +181,14 @@ cross-entropy.
 
 *How useful is our AST evaluation method for developers in a practical
 scenario?* We proposed 3 different treetments. The following reports
-summarize the user study: - Treatment 1: [A complete AST
-Representation](https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/reports/AST-Complete.pdf) -
-Treatment 2: [A partial AST
-Representation](https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/reports/AST-Partial.pdf)  
+summarize the user study:
+
+- Treatment 1: [A complete AST
+  Representation](https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/reports/AST-Complete.pdf)
+- Treatment 2: [A partial AST
+  Representation](https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/reports/AST-Partial.pdf)  
 - Treatment 3: [Sequence
-Representation](https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/reports/Sequence.pdf)
+  Representation](https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/reports/Sequence.pdf)
 
 ## Data Collection
 
