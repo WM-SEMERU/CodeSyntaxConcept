@@ -6,6 +6,7 @@
 
 SIP $\alpha$ is a method used to interpret LLMs (Language Model for Code). We believe that evaluating and interpreting LLMs for code are closely intertwined. A contextualized evaluation of these models requires understanding their predictions at a detailed level, which demands some level of interpretability. However, achieving fine-grained evaluation poses a challenge because it involves establishing a reliable mapping mechanism between the model's predictions and developer-friendly syntactic concepts, aiding in interpreting the model's decisions. Therefore, to design effective and interpretable evaluation metrics for LLMs of code, it is crucial to establish this conceptual mapping first. To address the challenges of fine-grained evaluation, we propose a novel approach called Syntax-Interpretable Performance (SIP $\alpha$ ). This approach explicitly maps token predictions to code structure, offering an interpretable and detailed methodology for aggregating LLM token predictions into constructs referred to as "Syntax Concepts," which are derived from Abstract Syntax Trees (ASTs).
 
+
 ![fig_1_approach](https://github.com/WM-SEMERU/CodeSyntaxConcept/assets/1779831/5ef2267e-e34e-4702-8b4b-aa854b8b5ad3)
 
 
@@ -182,11 +183,11 @@ scenario?* We proposed 3 different treetments. The following reports
 summarize the user study:
 
 - Treatment 1: [A complete AST
-  Representation](https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/reports/AST-Complete.pdf)
+  Representation](https://github.com/xxxxx/CodeSyntaxConcept/blob/master/reports/AST-Complete.pdf)
 - Treatment 2: [A partial AST
-  Representation](https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/reports/AST-Partial.pdf)  
+  Representation](https://github.com/xxxxx/CodeSyntaxConcept/blob/master/reports/AST-Partial.pdf)  
 - Treatment 3: [Sequence
-  Representation](https://github.com/WM-SEMERU/CodeSyntaxConcept/blob/master/reports/Sequence.pdf)
+  Representation](https://github.com/xxxxx/CodeSyntaxConcept/blob/master/reports/Sequence.pdf)
 
 ## Data Collection
 

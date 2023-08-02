@@ -1,1 +1,1 @@
-Sitemap: https://WM-SEMERU.github.io/CodeSyntaxConcept/sitemap.xml
+Sitemap: https://xxxxx.github.io/CodeSyntaxConcept/sitemap.xml

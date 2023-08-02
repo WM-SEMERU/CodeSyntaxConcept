@@ -11,17 +11,17 @@ from statistics import mean, median
 import json
 
 
-aggregates_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/aggregation_function/out_astevalverticalfiltered_c2.csv"
-#aggregates_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/aggregation_function/out_astevalverticalfiltered_c3.csv"
-#aggregates_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/aggregation_function/out_astevalverticalfiltered_c6.csv"
+aggregates_path = "/scratch1/XXXX/CodeSyntaxConcept/scripts/output/aggregation_function/out_astevalverticalfiltered_c2.csv"
+#aggregates_path = "/scratch1/XXXX/CodeSyntaxConcept/scripts/output/aggregation_function/out_astevalverticalfiltered_c3.csv"
+#aggregates_path = "/scratch1/XXXX/CodeSyntaxConcept/scripts/output/aggregation_function/out_astevalverticalfiltered_c6.csv"
 
-embedding_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/embedding/out_astevalverticalfiltered_c2_bk.csv"
-#embedding_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/embedding/out_astevalverticalfiltered_c3_bk.csv"
-#embedding_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/embedding/out_astevalverticalfiltered_c6_bk.csv"
+embedding_path = "/scratch1/XXXX/CodeSyntaxConcept/scripts/output/embedding/out_astevalverticalfiltered_c2_bk.csv"
+#embedding_path = "/scratch1/XXXX/CodeSyntaxConcept/scripts/output/embedding/out_astevalverticalfiltered_c3_bk.csv"
+#embedding_path = "/scratch1/XXXX/CodeSyntaxConcept/scripts/output/embedding/out_astevalverticalfiltered_c6_bk.csv"
 
-output_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/embedding/out_astevalverticalfiltered_c2.csv"
-#output_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/embedding/out_astevalverticalfiltered_c3.csv"
-#output_path = "/scratch1/svelascodimate/CodeSyntaxConcept/scripts/output/embedding/out_astevalverticalfiltered_c6.csv"
+output_path = "/scratch1/XXXX/CodeSyntaxConcept/scripts/output/embedding/out_astevalverticalfiltered_c2.csv"
+#output_path = "/scratch1/XXXX/CodeSyntaxConcept/scripts/output/embedding/out_astevalverticalfiltered_c3.csv"
+#output_path = "/scratch1/XXXX/CodeSyntaxConcept/scripts/output/embedding/out_astevalverticalfiltered_c6.csv"
 
 ## Load Aggregates
 df_actual_ntp = pd.read_csv(aggregates_path, index_col=0)

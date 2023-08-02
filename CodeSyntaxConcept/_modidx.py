@@ -2,8 +2,8 @@
 
 d = { 'settings': { 'branch': 'master',
                 'doc_baseurl': '/CodeSyntaxConcept',
-                'doc_host': 'https://WM-SEMERU.github.io',
-                'git_url': 'https://github.com/WM-SEMERU/CodeSyntaxConcept',
+                'doc_host': 'https://XXXX-XXXXX.github.io',
+                'git_url': 'https://github.com/XXXX-XXXXX/CodeSyntaxConcept',
                 'lib_path': 'CodeSyntaxConcept'},
   'syms': { 'CodeSyntaxConcept.aggregator': { 'CodeSyntaxConcept.aggregator.bind_bpe_tokens': ( 'aggregation_function.html#bind_bpe_tokens',
                                                                                                 'CodeSyntaxConcept/aggregator.py'),
