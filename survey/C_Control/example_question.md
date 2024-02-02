@@ -2,5 +2,20 @@
 
 Please carefully review the information presented in the two images below. The first image provides a prompt for an incomplete method, while the second image displays the highlighted code (in blue) that has been generated. Once you have reviewed both images, please proceed to answer the questions.
 
+-------
+
 ### Prompt
-![image]()
+![prompt](../Generation/S1_G_C_P.png)
+
+### Prediction
+![prediction](../Generation/S1_G_C_G.png)
+
+-------
+
+1. Do you see any problems (e.g., bugs, efficiency issues) in the generated source code?
+    - Yes, there is a bug in the generated code
+    - No, the generated code is correct
+    - Other (input)
+
+2. If the generated code is incorrect, can you explain why the model might have made the mistake? Otherwise, If the generated code is correct, can you speculate on why the model may have been able to correctly predict the above snippet?
+    - (input)

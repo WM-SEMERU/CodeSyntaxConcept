@@ -10,9 +10,9 @@
 		}
 	},
 	"mounts": [
-		"source=/nfs/xxxxx/projects/code_syntax_concept,target=/workspaces/CodeSyntaxConcept/data,type=bind,consistency=cached",
-		"source=/nfs/xxxxx/data/dvc,target=/tf/dvc,type=bind,consistency=cached",
-		"source=/scratch1/xxxxxrc/datax,target=/workspaces/CodeSyntaxConcept/datax,type=bind,consistency=cached"
+		"source=/nfs/semeru/projects/code_syntax_concept,target=/workspaces/CodeSyntaxConcept/data,type=bind,consistency=cached",
+		"source=/nfs/semeru/data/dvc,target=/tf/dvc,type=bind,consistency=cached",
+		"source=/scratch/svelascodimate/scripts,target=/workspaces/CodeSyntaxConcept/scripts_output,type=bind,consistency=cached"
 	],
 	"remoteEnv": {
         //"MY_PROJECT_NAME": "The-container-name-here" //NOTE: make this name the same as the folder containing the repo
