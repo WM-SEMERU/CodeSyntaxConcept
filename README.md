@@ -11,11 +11,11 @@ To put _ASTtrust_ into practice, we developed an automated visualization that il
 ASTrust is a method to interpret LLMs for code. We believe that evaluating and interpreting LLMs for code are closely intertwined. A contextualized evaluation of these models requires understanding their predictions at a detailed level, which demands some level of interpretability. However, achieving fine-grained evaluation poses a challenge because it involves establishing a reliable mapping mechanism between the model's predictions and developer-friendly syntactic concepts, aiding in interpreting the model's decisions. Therefore, to design effective and interpretable evaluation metrics for LLMs, it is crucial to establish this conceptual mapping first. To address the challenges of fine-grained evaluation, we propose a novel approach called Syntax-Grounded Explanations (ASTrust). This approach explicitly maps token predictions to code structure, offering an interpretable and detailed methodology for aggregating LLM token predictions into constructs referred to as "Syntax Categories", which are derived from Abstract Syntax Trees (ASTs).
 
 
-![fig_1_approach](https://github.com/WM-SEMERU/CodeSyntaxConcept/assets/1779831/5ef2267e-e34e-4702-8b4b-aa854b8b5ad3)
+![fig_1_approach](figures/astrust/overview.png)
 
 
 
-The precondition to using (SIP $`\alpha`$ ) is to have a held-out testbed and
+The precondition to using (ASTrust) is to have a held-out testbed and
 an LLM under analysis. The first step, **inference**, is to generate the
 Next Token Predictions of each sample in the testbed. The second,
 **evaluation**, step is to compute *Cross-Entropy Loss* and our
@@ -66,14 +66,14 @@ association is not causation)
 
 ![boxplot](./figures/approach/asccausal.png "Causal")
 
-## Sysntax-Interpretable Approach
+## Syntax-Grounded Explanations
 
-The visualization component for SIP $`\alpha`$ is a graphical explainability
-technique that displays the the SIP performance values of the
+The visualization component for ASTrust is a graphical explainability
+technique that displays the ASTrust performance values of the
 terminal and non-terminal nodes for a *single* local evaluation. We take
 advantage of the hierarchical structure of PLs to visually accommodate
-SIP values into the AST. Fig. below illustrates how we
-accommodate the SIP values for a code generation task using
+ASTrust values into the AST. Fig. below illustrates how we
+accommodate the ASTrust values for a code generation task using
 *gpt-3* model. Region **1** shows a box with a prompt with an incomplete
 snippet followed by a second box with generated tokens in blue. Then, in
 region **2**, the resulting auto-completed snippet is processed with
@@ -87,13 +87,25 @@ the LLM as presented in region **3**. We refer to tokens linearly
 organized as *sequence representation*.
 ![fig_1_ast_tree](https://github.com/WM-SEMERU/CodeSyntaxConcept/assets/1779831/dab3e16a-6507-4a72-8314-0effb0766060)
 
+### Alignment and Clustering Function
+Here we show an example of alignments and clustering from token predictions to Syntax Categories. 
+![alignment](figures/astrust/alignment.png)
+
+## Local Explanation
+![local](figures/astrust/localexplanations.png)
+
+
+## Global Explanation
+![global](figures/astrust/globalExp.png)
+
+
 
 
 # Replication Package
 
 ## Code & Data
 
-Below we provide links to the SIP $`\alpha`$ data set and framework API.
+Below we post links to the ASTrust data set and framework API.
 The code under the folder `CodeSyntaxConcept/` is organized as
 follows: - AST Generation: `loader.py`, `parser.py`, `tokenizer.py` -
 Aggregation Function: `aggregator.py`, `statistics.py` - Alignment
@@ -159,14 +171,14 @@ def logit_extractor(batch, input, from_index=0):
 *To what extent do Large Language Models for code predict syntactic
 structures?* The prediction of syntactic structures highly depends on
 LLMs’ parameter size and fine-tuning strategy. More specifically the
-largest evaluated mono language model (2B) , which was fine-tuned with
+largest evaluated mono language model (2B), which was fine-tuned with
 the BigPython and BigQuery datasets, obtains the highest global average
 AsC-*Eval* Performace of $0.84$ with the lowest variability.
 
 ![boxplot](./figures/results/rq1/ascperformance.png "ascperformance")
 
 - The bar plot below depicts the percentage increments of AsC-*Eval*
-  values between baseline and the largest models.
+  values between the baseline and the largest models.
 
 ![boxplot](./figures/results/rq1/increment_bars.png "ascperformance")
 
@@ -180,18 +192,22 @@ cross-entropy.
 
 ![boxplot](./figures/results/rq2/output_2.7B_corr_loss.png "corr_loss_ccp")
 
+Causal Effects and Correlations with Terminal and Non-Terminal Nodes
+![boxplot](figures/astrust/causalresults.png)
+
 ### RQ3 User Study on AsC Visualization
 
 *How useful is our AST evaluation method for developers in a practical
-scenario?* We proposed 3 different treetments. The following reports
+scenario?* We proposed 3 different treatments. The following reports
 summarize the user study:
 
+- Control: [No Treatment](survey/C_Control/example_question.md)
 - Treatment 1: [A complete AST
-  Representation](https://github.com/xxxxx/CodeSyntaxConcept/blob/master/reports/AST-Complete.pdf)
+  Representation](survey/S3_ASTComplete/exmaple_question.md)
 - Treatment 2: [A partial AST
-  Representation](https://github.com/xxxxx/CodeSyntaxConcept/blob/master/reports/AST-Partial.pdf)  
+  Representation](survey/S2_ASTPartial/example_question.md)  
 - Treatment 3: [Sequence
-  Representation](https://github.com/xxxxx/CodeSyntaxConcept/blob/master/reports/Sequence.pdf)
+  Representation](survey/S1_Sequence/example_question.md)
 
 ## Data Collection
 
@@ -218,7 +234,7 @@ January 1st 2022 and January 1st 2023 and over 100 starts 3. For each
 repository we extracted the diff change and extracted the changed
 methods 4. We yous extracted the added and changed method, we assume
 this is a new unseen code 5. We deleted duplicated methods where the
-code is exactly the same and there were small changes i.e, tabular or
+code is the same and there were small changes i.e, tabular or
 white spaces changes 6. We used
 [tree-sitter](https://tree-sitter.github.io/tree-sitter/) to generate
 the AST for each method 7. We save the code and all related features to
